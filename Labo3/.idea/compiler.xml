@@ -7,8 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Banque" />
-        <module name="LecteursRedacteurs" />
+        <module name="lecteursredacteurs" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="LecteursRedacteurs" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
