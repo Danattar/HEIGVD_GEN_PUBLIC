@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cf355ad-f5c8-4c80-9b39-ac511d028ef5" name="Default Changelist" comment="add .travis.yml for continuous integration">
-      <change afterPath="$PROJECT_DIR$/LecteursRedacteurs/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LecteursRedacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Controleur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LecteursRedacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LecteursRedacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Livre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LecteursRedacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Redacteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Labo3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LecteursRedacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/LecteursRedacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/test/java/ch/heig/pl/lecteursredacteurs/LecteursRedacteursTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="464">
+              <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,30 +33,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-              <folding>
-                <element signature="e#142#143#0" expanded="true" />
-                <element signature="e#181#182#0" expanded="true" />
-                <element signature="e#191#192#0" expanded="true" />
-                <element signature="e#219#220#0" expanded="true" />
-                <element signature="e#587#588#0" expanded="true" />
-                <element signature="e#613#614#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="407">
+              <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Redacteur.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="22" column="37" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Controleur.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="357">
+              <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
               <folding>
-                <element signature="e#172#173#0" expanded="true" />
-                <element signature="e#204#205#0" expanded="true" />
                 <element signature="e#304#305#0" expanded="true" />
-                <element signature="e#337#338#0" expanded="true" />
+                <element signature="e#344#345#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,6 +69,12 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>notify</find>
+      <find>isAvailable</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -91,11 +90,11 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/LecteursRedacteurs/LecteursRedacteursTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/lecteursredacteurs/src/test/java/ch/heig/pl/lecteursredacteurs/LecteursRedacteursTest.java" />
         <option value="$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Livre.java" />
         <option value="$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Controleur.java" />
         <option value="$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Redacteur.java" />
         <option value="$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java" />
+        <option value="$PROJECT_DIR$/lecteursredacteurs/src/test/java/ch/heig/pl/lecteursredacteurs/LecteursRedacteursTest.java" />
       </list>
     </option>
   </component>
@@ -120,8 +119,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,13 +206,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551805559893" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552310180328" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/lecteursredacteurs/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -281,28 +280,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 17h 55m 31s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 51m 29s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 17h 57m 24s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 53m 31s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 18h 00m 21s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 54m 15s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 18h 01m 27s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 54m 31s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 18h 01m 39s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 58m 21s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 18h 02m 59s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 58m 54s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 18h 04m 48s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 13h 59m 40s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.05 at 18h 05m 27s.xml">
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 14h 02m 41s.xml">
+      <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 14h 05m 54s.xml">
+      <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LecteursRedacteursTest_lecteursRedacteurs - 2019.03.10 at 14h 07m 46s.xml">
       <configuration name="LecteursRedacteursTest.lecteursRedacteurs" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -318,7 +323,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2521322" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25746268" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -391,30 +396,6 @@
     <MESSAGE value="add .travis.yml for continuous integration" />
     <option name="LAST_COMMIT_MESSAGE" value="add .travis.yml for continuous integration" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java</url>
-          <line>21</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java</url>
-          <line>14</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
@@ -426,25 +407,10 @@
     <entry file="file://$PROJECT_DIR$/Banque/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/Controleur">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/Redacteur">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/Lecteur">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/LecteursRedacteursTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/Controleur" />
+    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/Redacteur" />
+    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/Lecteur" />
+    <entry file="file://$PROJECT_DIR$/LecteursRedacteurs/LecteursRedacteursTest.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -468,21 +434,6 @@
             <element signature="e#192#193#0" expanded="true" />
             <element signature="e#221#222#0" expanded="true" />
             <element signature="e#249#250#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Redacteur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="39" />
-          <folding>
-            <element signature="e#112#113#0" expanded="true" />
-            <element signature="e#152#153#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#222#223#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -542,40 +493,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/test/java/ch/heig/pl/lecteursredacteurs/LecteursRedacteursTest.java">
+    <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Redacteur.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="340">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Controleur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Lecteur.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="e#142#143#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="407">
+          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/main/java/ch/heig/pl/lecteursredacteurs/Controleur.java">
+    <entry file="file://$PROJECT_DIR$/lecteursredacteurs/src/test/java/ch/heig/pl/lecteursredacteurs/LecteursRedacteursTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="464">
+          <caret line="77" column="13" lean-forward="true" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
           <folding>
-            <element signature="e#172#173#0" expanded="true" />
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#304#305#0" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -657,6 +605,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: junit:junit:4.13-beta-2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

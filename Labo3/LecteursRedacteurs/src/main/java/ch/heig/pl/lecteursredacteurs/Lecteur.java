@@ -9,17 +9,24 @@ public class Lecteur {
     }
 
     public void startRead() {
+        System.out.println("11");
         synchronized (_controleur) {
+            System.out.println("12");
             while (!_controleur.isAvailable()) {
+                System.out.println("13");
                 _isWaiting = true;
                 try {
-                    this.wait();
+                    System.out.println("10");
+                    _controleur.wait();
+                    System.out.println("2");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
+        System.out.println("test");
         _isWaiting = false;
+
         _controleur.isAvailable(false);
     }
 
@@ -28,6 +35,9 @@ public class Lecteur {
     }
 
     public void stopRead() {
-        _controleur.isAvailable(true);
+        System.out.println("3");
+      //  _controleur.isAvailable(true);
+      //  _controleur.notifyAll();
+    //    notifyAll();
     }
 }
