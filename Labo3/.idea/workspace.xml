@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0cf355ad-f5c8-4c80-9b39-ac511d028ef5" name="Default Changelist" comment="add .travis.yml for continuous integration">
-      <change afterPath="$PROJECT_DIR$/Banque/src/test/java/TransfertsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Banque/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Banque/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Banque/src/main/java/Transferts.java" beforeDir="false" afterPath="$PROJECT_DIR$/Banque/src/main/java/Transferts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Banque/src/main/java/ch/heig/pl/banque/Compte.java" beforeDir="false" afterPath="$PROJECT_DIR$/Banque/src/main/java/ch/heig/pl/banque/Compte.java" afterDir="false" />
-    </list>
+    <list default="true" id="0cf355ad-f5c8-4c80-9b39-ac511d028ef5" name="Default Changelist" comment="add .travis.yml for continuous integration" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/Banque/target/" />
@@ -68,8 +59,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Banque/src/test/java/TransfertsTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+                <state relative-caret-position="170">
+                  <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -169,7 +160,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551805090921" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551805376656" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
@@ -294,18 +285,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KO - 2019.03.05 at 17h 42m 54s.xml">
-      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KO - 2019.03.05 at 17h 43m 52s.xml">
-      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KO - 2019.03.05 at 17h 45m 11s.xml">
-      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KO" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KO - 2019.03.05 at 17h 45m 46s.xml">
-      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KO" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KO - 2019.03.05 at 17h 46m 58s.xml">
       <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KO" configurationId="JUnit" />
     </history-entry>
@@ -324,6 +303,18 @@
     <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KOT - 2019.03.05 at 17h 54m 44s.xml">
       <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KOT" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KOT - 2019.03.05 at 17h 55m 59s.xml">
+      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KOT" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KOT - 2019.03.05 at 17h 57m 36s.xml">
+      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KOT" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KOT - 2019.03.05 at 17h 57m 44s.xml">
+      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KOT" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TransfertsTest_Do_1000_tranferts_1000_times_KOT - 2019.03.05 at 17h 57m 56s.xml">
+      <configuration name="TransfertsTest.Do_1000_tranferts_1000_times_KOT" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -336,7 +327,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
@@ -346,13 +336,13 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Messages" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
@@ -477,8 +467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Banque/src/test/java/TransfertsTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        <state relative-caret-position="170">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
