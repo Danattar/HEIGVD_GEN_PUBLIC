@@ -10,13 +10,9 @@ namespace GenProject.ViewModels
             Author = author;
             Message = message;
         }
-        public ChatMessageViewModel()
-        {
 
-        }
-
-        public string Author { get; } = "Simon";
-        public string Message { get; } = "test";
+        public string Author { get; }
+        public string Message { get; } 
 
     }
 }
