@@ -21,7 +21,7 @@ namespace GenProject.ViewModels
         }
         public ShellViewModel()
         {
-            MainScreen = new DashboardViewModel();
+            MainScreen = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>();
         }
     }
 }

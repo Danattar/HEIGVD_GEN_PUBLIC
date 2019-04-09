@@ -7,6 +7,7 @@ namespace GenProject.ViewModels
         public BindableCollection<ChatMessageViewModel> MessageList { get; } = new BindableCollection<ChatMessageViewModel>();
         public string ChatBoxName { get; }
         public int ChatSessionID { get; }
+        private readonly Service _service;
 
         public string MessageBox
         {
@@ -22,12 +23,13 @@ namespace GenProject.ViewModels
         {
             initialize();
         }
-        public ChatBoxViewModel(string name, int chatSessionID)
+        public ChatBoxViewModel(string name, int chatSessionID, Service service)
         {
             initialize();
             System.Diagnostics.Trace.WriteLine(this.IsInitialized.ToString());
             ChatBoxName = name;
             ChatSessionID = chatSessionID;
+            _service = service;
         }
         private void initialize()
         {
@@ -37,10 +39,16 @@ namespace GenProject.ViewModels
         }
         public void SendMessage()
         {
-            MessageList.Add(new ChatMessageViewModel(ChatBoxName, MessageBox));
+            //MessageList.Add(new ChatMessageViewModel(ChatBoxName, MessageBox));
             //TODO use service to send the message to the other containers with sthe same ChatSessionID
-
+            _service.SendMessage(MessageBox, ChatSessionID);
             MessageBox = "";
+        }
+
+        public void MessageListenerHandler(string message, int chatID)
+        {
+            if(ChatSessionID == chatID)
+                MessageList.Add(new ChatMessageViewModel(ChatBoxName, message));
         }
     }
 }
