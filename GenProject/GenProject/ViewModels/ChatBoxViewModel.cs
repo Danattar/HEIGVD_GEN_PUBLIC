@@ -21,23 +21,18 @@ namespace GenProject.ViewModels
         private string _messageBox;
         public ChatBoxViewModel()
         {
-            initialize();
         }
         public ChatBoxViewModel(string name, int chatSessionID, Service service)
         {
-            initialize();
             System.Diagnostics.Trace.WriteLine(this.IsInitialized.ToString());
             ChatBoxName = name;
             ChatSessionID = chatSessionID;
             _service = service;
         }
-        private void initialize()
-        {
-        }
         public void SendMessage()
         {
             _service.SendMessage(MessageBox, ChatSessionID, ChatBoxName);
-            MessageBox = "";
+            MessageBox = string.Empty;
         }
 
         public void MessageListenerHandler(string message, int chatID, string transmitterRecipient)
