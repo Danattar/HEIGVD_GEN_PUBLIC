@@ -9,7 +9,6 @@ namespace GenProject.ViewModels
 
         public DashboardViewModel(Service service)
         {
-            service.test();
             ChatBox1 = new ChatBoxViewModel("Simon -> Frédéric", 1, service);
             ChatBox2 = new ChatBoxViewModel("Frédéric -> Simon", 1, service);
             service.MessageSent += (ChatBox1 as ChatBoxViewModel).MessageListenerHandler;

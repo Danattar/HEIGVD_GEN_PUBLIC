@@ -20,13 +20,7 @@ namespace GenProject
         {
             Initialize();
         }
-        /// <summary>
-        /// Register globals instances in IoC.
-        ///  Camera type registration come from config file :
-        ///  - 0 or nothing : Mock camera
-        ///  - 1 : Camera UEye
-        ///  - 2 : Camera Imaging Control
-        /// </summary>
+
         protected override void Configure()
         {
             ContainerInstance.RegisterSingleton<IWindowManager, WindowManager>();

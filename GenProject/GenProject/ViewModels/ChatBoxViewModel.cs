@@ -33,22 +33,17 @@ namespace GenProject.ViewModels
         }
         private void initialize()
         {
-            MessageList.Add(new ChatMessageViewModel());
-            MessageList.Add(new ChatMessageViewModel());
-            MessageList.Add(new ChatMessageViewModel());
         }
         public void SendMessage()
         {
-            //MessageList.Add(new ChatMessageViewModel(ChatBoxName, MessageBox));
-            //TODO use service to send the message to the other containers with sthe same ChatSessionID
-            _service.SendMessage(MessageBox, ChatSessionID);
+            _service.SendMessage(MessageBox, ChatSessionID, ChatBoxName);
             MessageBox = "";
         }
 
-        public void MessageListenerHandler(string message, int chatID)
+        public void MessageListenerHandler(string message, int chatID, string transmitterRecipient)
         {
             if(ChatSessionID == chatID)
-                MessageList.Add(new ChatMessageViewModel(ChatBoxName, message));
+                MessageList.Add(new ChatMessageViewModel(transmitterRecipient, message));
         }
     }
 }
