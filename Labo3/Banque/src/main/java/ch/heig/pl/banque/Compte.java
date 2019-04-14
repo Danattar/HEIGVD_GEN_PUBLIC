@@ -26,7 +26,8 @@ public class Compte {
         }
     }
 
-    public void credit(int valeur) {
+    public void credit(int valeur)
+    {
         this.montant += valeur;
     }
 
