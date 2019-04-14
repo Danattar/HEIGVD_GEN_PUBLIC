@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
+using GenProject.ServiceMock;
+using GenProject.Services;
+using GenProject.ViewModelFactory;
 using GenProject.ViewModels;
 using SimpleInjector;
 
@@ -27,6 +30,9 @@ namespace GenProject
             ContainerInstance.RegisterSingleton<Service>();
             ContainerInstance.RegisterSingleton<ShellViewModel>();
             ContainerInstance.RegisterSingleton<DashboardViewModel>();
+            ContainerInstance.RegisterSingleton<ChatboxViewModelFactory>();
+            ContainerInstance.RegisterSingleton<ChatboxManager>();
+            ContainerInstance.RegisterSingleton<ChatboxService>();
             ContainerInstance.Verify();
         }
         protected override void OnStartup(object sender, StartupEventArgs e)
