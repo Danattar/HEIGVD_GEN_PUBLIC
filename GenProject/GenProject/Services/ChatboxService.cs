@@ -11,15 +11,15 @@ namespace GenProject.Services
 {
     public class ChatboxService
     {
-        private readonly ChatboxManager _chatboxManager;
+        private readonly RoomManager _chatboxManager;
         private readonly ChatboxViewModelFactory _chatboxViewModelFactory;
 
-        public ChatboxService(ChatboxManager chatboxManager, ChatboxViewModelFactory chatboxViewModelFactory)
+        public ChatboxService(RoomManager chatboxManager, ChatboxViewModelFactory chatboxViewModelFactory)
         {
             _chatboxManager = chatboxManager;
             _chatboxViewModelFactory = chatboxViewModelFactory;
         }
-        private ChatBoxViewModel CreateChatboxViewModel(Chatbox chatbox)
+        private ChatBoxViewModel CreateChatboxViewModel(Room chatbox)
         {
             var chatboxVM = _chatboxViewModelFactory.CreateChatboxViewModel(chatbox);
             chatboxVM.NewMessage += CreateMessage;

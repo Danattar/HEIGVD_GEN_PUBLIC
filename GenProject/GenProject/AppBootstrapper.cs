@@ -31,7 +31,7 @@ namespace GenProject
             ContainerInstance.RegisterSingleton<ShellViewModel>();
             ContainerInstance.RegisterSingleton<DashboardViewModel>();
             ContainerInstance.RegisterSingleton<ChatboxViewModelFactory>();
-            ContainerInstance.RegisterSingleton<ChatboxManager>();
+            ContainerInstance.RegisterSingleton<RoomManager>();
             ContainerInstance.RegisterSingleton<ChatboxService>();
             ContainerInstance.Verify();
         }

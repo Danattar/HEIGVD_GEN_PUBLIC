@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace GenProject.ServiceMock
 {
-    public class ChatboxManager
+    public class RoomManager
     {
-        private readonly List<Chatbox> _chatboxList= new List<Chatbox>();
+        private readonly List<Room> _chatboxList = new List<Room>();
 
-        public Chatbox CreateChatbox()
+        public Room CreateChatbox()
         {
-            _chatboxList.Add(new Chatbox());
+            _chatboxList.Add(new Room());
             return _chatboxList.Last();
         }
-        public Chatbox GetChatbox(int chatSessionID)
+        public Room GetChatbox(int chatSessionID)
         {
             return _chatboxList.Where(x => x.SessionID == chatSessionID).FirstOrDefault();
         }
@@ -25,9 +25,9 @@ namespace GenProject.ServiceMock
         {
             GetChatbox(chatSessionID).AddMessage(CreateChatboxMessage(message));
         }
-        private ChatboxMessage CreateChatboxMessage(string message)
+        private RoomMessage CreateChatboxMessage(string message)
         {
-            return new ChatboxMessage("test1 -> test2", message);
+            return new RoomMessage("test1 -> test2", message);
         }
     }
 }

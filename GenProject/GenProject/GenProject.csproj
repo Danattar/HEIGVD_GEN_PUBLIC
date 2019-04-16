@@ -75,10 +75,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Models\Chatbox.cs" />
+    <Compile Include="Models\ChatboxMessage.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="ServiceProjectMock\Chatbox.cs" />
-    <Compile Include="ServiceProjectMock\ChatboxManager.cs" />
-    <Compile Include="ServiceProjectMock\ChatboxMessage.cs" />
+    <Compile Include="ServiceProjectMock\Room.cs" />
+    <Compile Include="ServiceProjectMock\RoomManager.cs" />
+    <Compile Include="ServiceProjectMock\RoomMessage.cs" />
     <Compile Include="Services\ChatboxService.cs" />
     <Compile Include="ViewModelFactory\ChatboxViewModelFactory.cs" />
     <Compile Include="ViewModels\ChatboxViewModel.cs" />
@@ -147,8 +149,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

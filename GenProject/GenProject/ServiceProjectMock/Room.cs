@@ -7,27 +7,27 @@ using System.Threading.Tasks;
 
 namespace GenProject.ServiceMock
 {
-    public class Chatbox
+    public class Room
     {
         private static int _nextID = 1;
         internal int SessionID { get; }
         public string ChatboxName { get; set; }
 
-        public List<ChatboxMessage> ChatboxList { get; } = new List<ChatboxMessage>();
+        public List<RoomMessage> ChatboxList { get; } = new List<RoomMessage>();
         
         
 
-        public Chatbox()
+        public Room()
         {
             SessionID = _nextID++;
         }
 
-        internal void AddMessage(ChatboxMessage chatboxMessage)
+        internal void AddMessage(RoomMessage chatboxMessage)
         {
             ChatboxList.Add(chatboxMessage);
             NewMessage?.Invoke(chatboxMessage);
         }
 
-        public event Action<ChatboxMessage> NewMessage;
+        public event Action<RoomMessage> NewMessage;
     }
 }

@@ -10,9 +10,14 @@ namespace GenProject.ViewModelFactory
 {
     public class ChatboxViewModelFactory
     {
-        public ChatBoxViewModel CreateChatboxViewModel(Chatbox chatbox)
+        public ChatBoxViewModel CreateChatboxViewModel(Room chatbox)
         {
+            return new ChatBoxViewModel(chatbox.SessionID, chatbox.ChatboxName);
+
             return new ChatBoxViewModel(chatbox);
+            
+
+
             //return new ChatBoxViewModel("Simon -> Frédéric", 1, null);
         }
 

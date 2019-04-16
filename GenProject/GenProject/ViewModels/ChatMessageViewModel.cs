@@ -5,7 +5,7 @@ namespace GenProject.ViewModels
 {
     public class ChatMessageViewModel : Screen
     {
-        private readonly ChatboxMessage _chatboxMessage;
+        private readonly RoomMessage _chatboxMessage;
         public string Author => _chatboxMessage.Author;
         public string Message => _chatboxMessage.Message;
 
@@ -15,7 +15,7 @@ namespace GenProject.ViewModels
            // Author = author;
             //Message = message;
         }
-        public ChatMessageViewModel(ChatboxMessage chatboxMessage)
+        public ChatMessageViewModel(RoomMessage chatboxMessage)
         {
             _chatboxMessage = chatboxMessage;
         }
