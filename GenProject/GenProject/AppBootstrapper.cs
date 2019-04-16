@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Caliburn.Micro;
-using GenProject.ServiceMock;
-using GenProject.Services;
-using GenProject.ViewModelFactory;
-using GenProject.ViewModels;
+using GenProject.Controllers;
+using GenProjectClientBackend.ServiceProjectMock;
+using GenProjectClientBackend.Services;
+using GenProjectClientInterface.ViewModelFactory;
+using GenProjectClientInterface.ViewModels;
 using SimpleInjector;
 
-namespace GenProject 
+namespace GenProjectClientInterface
 {
     public class AppBootstrapper : BootstrapperBase
     {
@@ -27,12 +23,16 @@ namespace GenProject
         protected override void Configure()
         {
             ContainerInstance.RegisterSingleton<IWindowManager, WindowManager>();
-            ContainerInstance.RegisterSingleton<Service>();
+            //ContainerInstance.RegisterSingleton<Service>();
+
+
             ContainerInstance.RegisterSingleton<ShellViewModel>();
             ContainerInstance.RegisterSingleton<DashboardViewModel>();
             ContainerInstance.RegisterSingleton<ChatboxViewModelFactory>();
             ContainerInstance.RegisterSingleton<RoomManager>();
-            ContainerInstance.RegisterSingleton<ChatboxService>();
+            ContainerInstance.RegisterSingleton<ChatBoxService>();
+            ContainerInstance.RegisterSingleton<ChatBoxController>();
+
             ContainerInstance.Verify();
         }
         protected override void OnStartup(object sender, StartupEventArgs e)

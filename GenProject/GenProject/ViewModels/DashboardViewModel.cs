@@ -1,20 +1,27 @@
 ﻿using Caliburn.Micro;
-using GenProject.Services;
-using GenProject.ViewModelFactory;
+using GenProject.Controllers;
+using GenProjectClientBackend.Services;
+using GenProjectClientInterface.ViewModelFactory;
 
-namespace GenProject.ViewModels
+namespace GenProjectClientInterface.ViewModels
 {
     public class DashboardViewModel : Screen
     {
         public ChatBoxViewModel ChatBox1 { get; }
         public ChatBoxViewModel ChatBox2 { get; }
 
-       // private readonly ChatboxViewModelFactory _chatboxVMFactory;
+        // private readonly ChatboxViewModelFactory _chatboxVMFactory;
 
-        public DashboardViewModel(Service service, ChatboxService chatboxService)
+        private readonly ChatBoxController _chatBoxController;
+        public DashboardViewModel(ChatBoxController chatBoxCtl)
         {
-            ChatBox1 = chatboxService.CreateChatbox();
-            ChatBox2 = chatboxService.GetChatboxViewModel(ChatBox1.ChatSessionID);
+            _chatBoxController = chatBoxCtl;
+            ChatBox1 = chatBoxCtl.GetChatBox();
+
+
+
+      //      ChatBox1 = chatboxService.CreateChatbox();
+      //      ChatBox2 = chatboxService.GetChatboxViewModel(ChatBox1.ChatSessionID);
 
             // ChatBox1 = new ChatBoxViewModel("Simon -> Frédéric", 1, service);
             //ChatBox1 = chatBoxVMFactory.CreateChatBoxViewModel();

@@ -1,11 +1,11 @@
-﻿using GenProject.ServiceProjectMock;
+﻿using GenProjectClientBackend.ServiceProjectMock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenProject.ServiceMock
+namespace GenProjectClientBackend.ServiceProjectMock
 {
     public class RoomManager
     {
@@ -28,6 +28,11 @@ namespace GenProject.ServiceMock
         private RoomMessage CreateChatboxMessage(string message)
         {
             return new RoomMessage("test1 -> test2", message);
+        }
+
+        public Room GetRoom(int roomID)
+        {
+            return _chatboxList.Where(x => x.SessionID == roomID).FirstOrDefault();
         }
     }
 }

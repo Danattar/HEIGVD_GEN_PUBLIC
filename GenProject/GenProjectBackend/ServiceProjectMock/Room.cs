@@ -1,11 +1,11 @@
-﻿using GenProject.ServiceProjectMock;
+﻿using GenProjectClientBackend.ServiceProjectMock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenProject.ServiceMock
+namespace GenProjectClientBackend.ServiceProjectMock
 {
     public class Room
     {

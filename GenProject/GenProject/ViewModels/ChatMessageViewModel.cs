@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
-using GenProject.ServiceProjectMock;
+using GenProjectClientBackend.ServiceProjectMock;
 
-namespace GenProject.ViewModels
+namespace GenProjectClientInterface.ViewModels
 {
     public class ChatMessageViewModel : Screen
     {

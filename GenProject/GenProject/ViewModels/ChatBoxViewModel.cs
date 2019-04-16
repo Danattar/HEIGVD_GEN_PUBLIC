@@ -1,10 +1,10 @@
 ﻿using Caliburn.Micro;
-using GenProject.Models;
-using GenProject.ServiceMock;
-using GenProject.ServiceProjectMock;
+using GenProjectClientBackend.Models;
+using GenProjectClientBackend.ServiceProjectMock;
+using GenProjectClientBackend.ServiceProjectMock;
 using System;
 
-namespace GenProject.ViewModels
+namespace GenProjectClientInterface.ViewModels
 {
     public class ChatBoxViewModel : Screen
     {
@@ -19,7 +19,7 @@ namespace GenProject.ViewModels
             set => _chatbox.Name = value;
         }
 
-        private readonly Service _service;
+     //   private readonly Service _service;
 
         public string MessageBox
         {
@@ -61,11 +61,11 @@ namespace GenProject.ViewModels
         {
             
            // _chatbox = chatbox;
-            chatbox.NewMessage += test;
+         //   chatbox.NewMessage += test;
         }
         private void test(RoomMessage message)
         {
-            MessageList.Add(new ChatMessageViewModel(message));
+           // MessageList.Add(new ChatMessageViewModel(message));
         }
         public void SendMessage()
         {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GenProject.Properties
+namespace GenProjectClientInterface.Properties
 {
 
 

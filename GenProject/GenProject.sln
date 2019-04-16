@@ -3,11 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenProject", "GenProject\GenProject.csproj", "{42B8466D-D1C3-42FC-8BA3-81126A8A66F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenProjectClientInterface", "GenProject\GenProjectClientInterface.csproj", "{42B8466D-D1C3-42FC-8BA3-81126A8A66F9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D7F6862-D4DA-4EBA-9098-CE7E2F6C73FC} = {3D7F6862-D4DA-4EBA-9098-CE7E2F6C73FC}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenProjectTest", "GenProjectTest\GenProjectTest.csproj", "{713ED294-D86F-476F-A9A4-34C3EE6CF77E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenProjectBackend", "GenProjectBackend\GenProjectBackend.csproj", "{3D7F6862-D4DA-4EBA-9098-CE7E2F6C73FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenProjectClientBackend", "GenProjectBackend\GenProjectClientBackend.csproj", "{3D7F6862-D4DA-4EBA-9098-CE7E2F6C73FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
