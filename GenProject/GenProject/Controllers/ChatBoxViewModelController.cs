@@ -13,12 +13,12 @@ namespace GenProject.Controllers
     {
         private readonly ChatBoxService _chatBoxService;
         private readonly List<ChatBoxViewModel> _chatBoxViewModelList = new List<ChatBoxViewModel>();
+        
 
         public ChatBoxViewModelController(ChatBoxService chatBoxService)
         {
             _chatBoxService = chatBoxService;
-            chatBoxService.MessageAdded += AddMessageBoxViewModel;
-
+            chatBoxService.MessageAdded += AddChatMessageViewModel;
         }
         public ChatBoxViewModel GetChatBox()
         {
@@ -33,15 +33,15 @@ namespace GenProject.Controllers
             return chatBoxVM;
         }
 
-        private void AddMessageBoxViewModel(ChatBox chatBox, ChatBoxMessage chatBoxMessage)
+        private void AddChatMessageViewModel(ChatBox chatBox, ChatBoxMessage chatBoxMessage)
         {
             _chatBoxViewModelList.Where(x => x.Chatbox == chatBox).ToList()
                 .ForEach(y => y.MessageList.Add(CreateChatBoxMessageViewModel(chatBoxMessage)));
         }
 
-        private void SendMessage(int roomID, string message, string author)
+        private void SendMessage(int roomID, string message)
         {
-            _chatBoxService.AddMessage(roomID, message, author);
+            _chatBoxService.AddMessage(roomID, "author test1", message);
         }
 
         #region Factory

@@ -9,21 +9,12 @@ namespace GenProjectClientInterface.ViewModels
         private readonly ChatBoxMessage _chatboxMessage;
      //   public string Author => _chatboxMessage.Author;
         public string Message => _chatboxMessage.Message;
+        public string Author => _chatboxMessage.Author;
 
 
-        public ChatMessageViewModel(string author, string message)
-        {
-           // Author = author;
-            //Message = message;
-        }
         public ChatMessageViewModel(ChatBoxMessage chatboxMessage)
         {
             _chatboxMessage = chatboxMessage;
         }
-
-        /*   public string Author { get; }
-           public string Message { get; } */
-        
-        
     }
 }

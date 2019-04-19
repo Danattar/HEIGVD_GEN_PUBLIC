@@ -8,11 +8,12 @@ namespace GenProjectClientBackend.Models
 {
     public class ChatBoxMessage
     {
-        public ChatBoxMessage(string message)
+        public string Author { get; }
+        public string Message { get; }
+        public ChatBoxMessage(string author, string message)
         {
+            Author = author;
             Message = message;
         }
-
-        public string Message { get; } 
     }
 }

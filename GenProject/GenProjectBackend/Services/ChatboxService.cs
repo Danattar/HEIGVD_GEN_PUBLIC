@@ -23,15 +23,15 @@ namespace GenProjectClientBackend.Services
 
         
 
-        public void AddMessage(int chatSessionID, string message, string author)
+        public void AddMessage(int roomID, string author, string message)
         {
-            _chatboxManager.CreateChatboxMessage(chatSessionID, message);
+            _chatboxManager.AddChatboxMessage(roomID, author, message);
         }
         public ChatBox GetChatBox(int roomID)
         {
             Room room = _chatboxManager.GetChatbox(roomID);
             ChatBox chatBox = CreateChatbox(room);
-            room.RoomMessageList.ForEach(x => chatBox.MessageList.Add(CreateChatBoxMessage(x.Message)));
+            room.RoomMessageList.ForEach(x => chatBox.MessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
             return chatBox;
         }
         public ChatBox GetNewChatBox()
@@ -46,7 +46,7 @@ namespace GenProjectClientBackend.Services
             ChatBoxMessage chatBoxMessage;
             chatBoxLinkedToRoomList.ForEach(y => 
             {
-                chatBoxMessage = CreateChatBoxMessage(roomMessage.Message);
+                chatBoxMessage = CreateChatBoxMessage(roomMessage.Author, roomMessage.Message);
                 y.MessageList.Add(chatBoxMessage);
                 MessageAdded?.Invoke(y, chatBoxMessage);
             });
@@ -67,9 +67,9 @@ namespace GenProjectClientBackend.Services
             _chatBoxList.Add(a);
             return a;
         }
-        private ChatBoxMessage CreateChatBoxMessage(string message)
+        private ChatBoxMessage CreateChatBoxMessage(string author, string message)
         {
-            return new ChatBoxMessage(message);
+            return new ChatBoxMessage(author, message);
         }
 
         #endregion

@@ -21,16 +21,16 @@ namespace GenProjectClientBackend.ServiceProjectMock
             return _chatboxList.Where(x => x.SessionID == chatSessionID).FirstOrDefault();
         }
 
-        internal void CreateChatboxMessage(int chatSessionID, string message)
+        internal void AddChatboxMessage(int roomID, string author, string message)
         {
-            var a = CreateChatboxMessage(message);
-            var b = GetChatbox(chatSessionID);
-            b.AddMessage(a);
-            MessageAdded?.Invoke(b, a);
+            RoomMessage roomMessage = CreateChatboxMessage(author, message);
+            Room room = GetChatbox(roomID);
+            room.AddMessage(roomMessage);
+            MessageAdded?.Invoke(room, roomMessage);
         }
-        private RoomMessage CreateChatboxMessage(string message)
+        private RoomMessage CreateChatboxMessage(string author, string message)
         {
-            return new RoomMessage("test1 -> test2", message);
+            return new RoomMessage(author, message);
         }
 
         public Room GetRoom(int roomID)

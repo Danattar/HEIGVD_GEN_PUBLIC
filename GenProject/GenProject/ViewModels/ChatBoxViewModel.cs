@@ -56,16 +56,9 @@ namespace GenProjectClientInterface.ViewModels
 
         public void SendMessage()
         {
-            NewMessage?.Invoke(RoomID, MessageBox, "test35");
+            NewMessage?.Invoke(RoomID, MessageBox);
             MessageBox = string.Empty;
         }
-
-        public void MessageListenerHandler(string message, int chatID, string transmitterRecipient)
-        {
-         //    if(ChatSessionID == chatID)
-                MessageList.Add(new ChatMessageViewModel(transmitterRecipient, message));
-        }
-
-        public event Action<int, string, string> NewMessage; 
+        public event Action<int, string> NewMessage; 
     }
 }
