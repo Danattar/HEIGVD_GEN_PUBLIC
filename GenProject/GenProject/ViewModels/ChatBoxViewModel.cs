@@ -9,14 +9,12 @@ namespace GenProjectClientInterface.ViewModels
     public class ChatBoxViewModel : Screen
     {
         public BindableCollection<ChatMessageViewModel> MessageList { get; } = new BindableCollection<ChatMessageViewModel>();
-        //public int ChatSessionID => _chatbox.SessionID;
-        //public string ChatBoxName => _chatbox.ChatboxName;
 
-
+        public int RoomID => Chatbox.RoomID;
         public string Name
         {
-            get => _chatbox.Name;
-            set => _chatbox.Name = value;
+            get => Chatbox.Name;
+            set => Chatbox.Name = value;
         }
 
      //   private readonly Service _service;
@@ -32,21 +30,13 @@ namespace GenProjectClientInterface.ViewModels
         }
         private string _messageBox;
 
-        //    private readonly Chatbox _chatbox;
-
-        private readonly Chatbox _chatbox;
-        public ChatBoxViewModel(Chatbox chatbox)
+        internal ChatBox Chatbox { get; }
+        public ChatBoxViewModel(ChatBox chatBox)
         {
-            _chatbox = chatbox;
+            Chatbox = chatBox;
+/*            chatBox.MessageList.ForEach(x => MessageList.Add())
+            MessageList*/
         }
-        /* public ChatBoxViewModel(string name, int chatSessionID, Service service)
-         {
-             System.Diagnostics.Trace.WriteLine(this.IsInitialized.ToString());
-    //         ChatBoxName = name;
-   //          ChatSessionID = chatSessionID;
-             _service = service;
-         }*/
-
         public ChatBoxViewModel(int chatSessionID, string name)
         {
             System.Diagnostics.Trace.WriteLine(this.IsInitialized.ToString());
@@ -63,14 +53,10 @@ namespace GenProjectClientInterface.ViewModels
            // _chatbox = chatbox;
          //   chatbox.NewMessage += test;
         }
-        private void test(RoomMessage message)
-        {
-           // MessageList.Add(new ChatMessageViewModel(message));
-        }
+
         public void SendMessage()
         {
-            //  _service.SendMessage(MessageBox, ChatSessionID, ChatBoxName);
-       //     NewMessage(ChatSessionID, MessageBox, "test3 -> test4");
+            NewMessage?.Invoke(RoomID, MessageBox, "test35");
             MessageBox = string.Empty;
         }
 
@@ -80,6 +66,6 @@ namespace GenProjectClientInterface.ViewModels
                 MessageList.Add(new ChatMessageViewModel(transmitterRecipient, message));
         }
 
-        public Action<int, string, string> NewMessage; 
+        public event Action<int, string, string> NewMessage; 
     }
 }

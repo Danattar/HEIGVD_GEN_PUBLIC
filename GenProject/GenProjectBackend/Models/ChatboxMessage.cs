@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GenProjectClientBackend.Models
 {
-    public class ChatboxMessage
+    public class ChatBoxMessage
     {
-        public ChatboxMessage(string message)
+        public ChatBoxMessage(string message)
         {
             Message = message;
         }

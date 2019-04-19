@@ -7,24 +7,15 @@ using GenProjectClientBackend.ServiceProjectMock;
 
 namespace GenProjectClientBackend.Models
 {
-    public class Chatbox
+    public class ChatBox
     {
-        //private Room room;
+        public int RoomID { get; }
+        public string Name { get; set; }
+        public List<ChatBoxMessage> MessageList { get; } = new List<ChatBoxMessage>();
 
-        /*   public Chatbox(Room room)
-           {
-               this.room = room;
-           }*/
-
-      //  private readonly int _sessionID;
-        public Chatbox(int roomID)
+        public ChatBox(int roomID)
         {
-            //_sessionID = sessionID;
             RoomID = roomID;
         }
-        
-        public int RoomID { get; set; }
-        public string Name { get; set; }
-        public List<ChatboxMessage> MessageList { get; } = new List<ChatboxMessage>();
     }
 }

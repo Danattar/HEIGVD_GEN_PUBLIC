@@ -13,7 +13,7 @@ namespace GenProjectClientBackend.Services
     {
         private readonly RoomManager _chatboxManager;
         //     private readonly ChatboxViewModelFactory _chatboxViewModelFactory;
-        private readonly List<Chatbox> _chatBoxList = new List<Chatbox>();
+        private readonly List<ChatBox> _chatBoxList = new List<ChatBox>();
 
         public ChatBoxService(RoomManager chatboxManager)//, ChatboxViewModelFactory chatboxViewModelFactory)
         {
@@ -27,35 +27,50 @@ namespace GenProjectClientBackend.Services
         {
             _chatboxManager.CreateChatboxMessage(chatSessionID, message);
         }
-        public Chatbox GetChatBox(int roomID)
+        public ChatBox GetChatBox(int roomID)
         {
-
-            return CreateChatbox(_chatboxManager.GetChatbox(roomID));
+            Room room = _chatboxManager.GetChatbox(roomID);
+            ChatBox chatBox = CreateChatbox(room);
+            room.RoomMessageList.ForEach(x => chatBox.MessageList.Add(CreateChatBoxMessage(x.Message)));
+            return chatBox;
         }
-        public Chatbox GetNewChatBox()
+        public ChatBox GetNewChatBox()
         {
             return CreateChatbox(_chatboxManager.CreateChatbox());
         }
 
         private void AddMessage(Room room, RoomMessage roomMessage)
         {
-            _chatBoxList.Where(x => x.RoomID == room.SessionID).ToList().ForEach(y => y.MessageList.Add(CreateChatBoxMessage(roomMessage.Message)));
-
+            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.RoomID == room.SessionID).ToList();
+            var addedChatBoxMessageList = new List<ChatBoxMessage>();
+            ChatBoxMessage chatBoxMessage;
+            chatBoxLinkedToRoomList.ForEach(y => 
+            {
+                chatBoxMessage = CreateChatBoxMessage(roomMessage.Message);
+                y.MessageList.Add(chatBoxMessage);
+                MessageAdded?.Invoke(y, chatBoxMessage);
+            });
         }
+
+
+
+        public event Action<ChatBox, ChatBoxMessage> MessageAdded;
+
+
+
+
         #region Factory
 
-        private Chatbox CreateChatbox(Room room)
+        private ChatBox CreateChatbox(Room room)
         {
-            var a = new Chatbox(room.SessionID);
+            var a = new ChatBox(room.SessionID);
             _chatBoxList.Add(a);
             return a;
         }
-        private ChatboxMessage CreateChatBoxMessage(string message)
+        private ChatBoxMessage CreateChatBoxMessage(string message)
         {
-            return new ChatboxMessage(message);
+            return new ChatBoxMessage(message);
         }
-
-
 
         #endregion
 

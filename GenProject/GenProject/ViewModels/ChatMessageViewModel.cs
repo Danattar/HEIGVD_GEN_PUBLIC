@@ -1,12 +1,13 @@
 ﻿using Caliburn.Micro;
+using GenProjectClientBackend.Models;
 using GenProjectClientBackend.ServiceProjectMock;
 
 namespace GenProjectClientInterface.ViewModels
 {
     public class ChatMessageViewModel : Screen
     {
-        private readonly RoomMessage _chatboxMessage;
-        public string Author => _chatboxMessage.Author;
+        private readonly ChatBoxMessage _chatboxMessage;
+     //   public string Author => _chatboxMessage.Author;
         public string Message => _chatboxMessage.Message;
 
 
@@ -15,7 +16,7 @@ namespace GenProjectClientInterface.ViewModels
            // Author = author;
             //Message = message;
         }
-        public ChatMessageViewModel(RoomMessage chatboxMessage)
+        public ChatMessageViewModel(ChatBoxMessage chatboxMessage)
         {
             _chatboxMessage = chatboxMessage;
         }

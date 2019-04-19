@@ -8,9 +8,10 @@ namespace GenProjectClientBackendTest
     [TestClass]
     public class RoomManagerTest
     {
-        private Chatbox _chatbox1;
-        private Chatbox _chatbox2;
+        private ChatBox _chatbox1;
+        private ChatBox _chatbox2;
         private ChatBoxService _chatBoxService;
+        private string _testMessage = "test01";
 
         [TestInitialize]
         public void SetUp()
@@ -20,11 +21,20 @@ namespace GenProjectClientBackendTest
         [TestMethod]
         public void Test_Communication_Two_ChatBox()
         {
-            string message = "test01";
             _chatbox1 = _chatBoxService.GetNewChatBox();
             _chatbox2 = _chatBoxService.GetChatBox(_chatbox1.RoomID);
-            _chatBoxService.AddMessage(_chatbox1.RoomID, message, "saumon");
-            Assert.AreEqual(message, _chatbox2.MessageList.FindLast(x => true).Message);
+            _chatBoxService.AddMessage(_chatbox1.RoomID, _testMessage, "saumon");
+            Assert.AreEqual(_testMessage, _chatbox2.MessageList.FindLast(x => true).Message);
+        }
+
+        [TestMethod]
+        public void Test_Communication_Two_ChatBox2()
+        {
+            _chatbox1 = _chatBoxService.GetNewChatBox();
+            _chatBoxService.AddMessage(_chatbox1.RoomID, _testMessage, "saumon");
+            _chatbox2 = _chatBoxService.GetChatBox(_chatbox1.RoomID);
+
+            Assert.AreEqual(_testMessage, _chatbox2.MessageList.FindLast(x => true).Message);
         }
 
 

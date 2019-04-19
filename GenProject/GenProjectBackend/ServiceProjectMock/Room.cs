@@ -13,7 +13,7 @@ namespace GenProjectClientBackend.ServiceProjectMock
         internal int SessionID { get; }
         public string ChatboxName { get; set; }
 
-        public List<RoomMessage> ChatboxList { get; } = new List<RoomMessage>();
+        public List<RoomMessage> RoomMessageList { get; } = new List<RoomMessage>();
         
         
 
@@ -24,7 +24,7 @@ namespace GenProjectClientBackend.ServiceProjectMock
 
         internal void AddMessage(RoomMessage chatboxMessage)
         {
-            ChatboxList.Add(chatboxMessage);
+            RoomMessageList.Add(chatboxMessage);
             NewMessage?.Invoke(chatboxMessage);
         }
 

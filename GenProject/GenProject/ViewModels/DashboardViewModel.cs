@@ -16,7 +16,7 @@ namespace GenProjectClientInterface.ViewModels
         {
             _chatBoxController = chatBoxCtl;
             ChatBox1 = chatBoxCtl.GetChatBox();
-
+            ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID);
 
 
       //      ChatBox1 = chatboxService.CreateChatbox();
