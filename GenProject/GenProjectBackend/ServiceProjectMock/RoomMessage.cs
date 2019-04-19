@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenProject.ServiceProjectMock
+namespace GenProjectClientBackend.ServiceProjectMock
 {
-    public class ChatboxMessage
+    public class RoomMessage
     {
         public string Author { get; }
         public string Message { get; }
-        public ChatboxMessage(string author, string message)
+        internal RoomMessage(string author, string message)
         {
             Author = author;
             Message = message;
         }
-
-
     }
 }

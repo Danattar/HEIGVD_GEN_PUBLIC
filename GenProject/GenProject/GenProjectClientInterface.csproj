@@ -75,18 +75,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Service.cs" />
-    <Compile Include="ServiceProjectMock\Chatbox.cs" />
-    <Compile Include="ServiceProjectMock\ChatboxManager.cs" />
-    <Compile Include="ServiceProjectMock\ChatboxMessage.cs" />
-    <Compile Include="Services\ChatboxService.cs" />
-    <Compile Include="ViewModelFactory\ChatboxViewModelFactory.cs" />
-    <Compile Include="ViewModels\ChatboxViewModel.cs" />
-    <Compile Include="ViewModels\ChatMessageViewModel.cs" />
+    <Compile Include="Controllers\ChatBoxViewModelController.cs" />
+    <Compile Include="ViewModels\ChatBoxViewModel.cs" />
+    <Compile Include="ViewModels\ChatBoxMessageViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\ChatboxView.xaml.cs">
-      <DependentUpon>ChatboxView.xaml</DependentUpon>
+    <Compile Include="Views\ChatBoxView.xaml.cs">
+      <DependentUpon>ChatBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ChatMessageView.xaml.cs">
       <DependentUpon>ChatMessageView.xaml</DependentUpon>
@@ -130,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ChatboxView.xaml">
+    <Page Include="Views\ChatBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,7 +143,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\GenProjectBackend\GenProjectClientBackend.csproj">
+      <Project>{3d7f6862-d4da-4eba-9098-ce7e2f6c73fc}</Project>
+      <Name>GenProjectClientBackend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
