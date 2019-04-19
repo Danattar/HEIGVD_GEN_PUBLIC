@@ -9,14 +9,22 @@ namespace GenProjectClientBackend.Models
 {
     public class Chatbox
     {
-        private Room room;
+        //private Room room;
 
-     /*   public Chatbox(Room room)
+        /*   public Chatbox(Room room)
+           {
+               this.room = room;
+           }*/
+
+      //  private readonly int _sessionID;
+        public Chatbox(int roomID)
         {
-            this.room = room;
-        }*/
-
+            //_sessionID = sessionID;
+            RoomID = roomID;
+        }
+        
+        public int RoomID { get; set; }
         public string Name { get; set; }
-        public List<ChatboxMessage> MessageList { get; set; }
+        public List<ChatboxMessage> MessageList { get; } = new List<ChatboxMessage>();
     }
 }

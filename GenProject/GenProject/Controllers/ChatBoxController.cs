@@ -21,7 +21,7 @@ namespace GenProject.Controllers
         }
         public ChatBoxViewModel GetChatBox()
         {
-            return _chatBoxViewModelFactory.CreateChatboxViewModel(_chatBoxService.GetChat(1));
+            return _chatBoxViewModelFactory.CreateChatboxViewModel(_chatBoxService.GetNewChatBox());
         }
 
     }

@@ -23,7 +23,10 @@ namespace GenProjectClientBackend.ServiceProjectMock
 
         internal void CreateChatboxMessage(int chatSessionID, string message)
         {
-            GetChatbox(chatSessionID).AddMessage(CreateChatboxMessage(message));
+            var a = CreateChatboxMessage(message);
+            var b = GetChatbox(chatSessionID);
+            b.AddMessage(a);
+            MessageAdded?.Invoke(b, a);
         }
         private RoomMessage CreateChatboxMessage(string message)
         {
@@ -34,5 +37,6 @@ namespace GenProjectClientBackend.ServiceProjectMock
         {
             return _chatboxList.Where(x => x.SessionID == roomID).FirstOrDefault();
         }
+        public event Action<Room, RoomMessage> MessageAdded;
     }
 }
