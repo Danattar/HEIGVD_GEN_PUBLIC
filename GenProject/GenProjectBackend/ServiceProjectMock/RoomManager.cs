@@ -9,7 +9,7 @@ namespace GenProjectClientBackend.ServiceProjectMock
 {
     public class RoomManager
     {
-        private readonly List<Room> _chatboxList = new List<Room>();
+        private readonly List<Room> _roomList = new List<Room>();
 
         internal void AddChatboxMessage(int roomID, string author, string message)
         {
@@ -21,12 +21,12 @@ namespace GenProjectClientBackend.ServiceProjectMock
         public Room AddRoom()
         {
             Room room = CreateRoom();
-            _chatboxList.Add(room);
+            _roomList.Add(room);
             return room;
         }
         public Room GetRoom(int roomID)
         {
-            return _chatboxList.Where(x => x.ID == roomID).FirstOrDefault();
+            return _roomList.Where(x => x.ID == roomID).FirstOrDefault();
         }
 
         public event Action<Room, RoomMessage> MessageAdded;
