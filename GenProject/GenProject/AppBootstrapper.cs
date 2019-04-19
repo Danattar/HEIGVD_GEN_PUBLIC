@@ -3,7 +3,6 @@ using Caliburn.Micro;
 using GenProject.Controllers;
 using GenProjectClientBackend.ServiceProjectMock;
 using GenProjectClientBackend.Services;
-using GenProjectClientInterface.ViewModelFactory;
 using GenProjectClientInterface.ViewModels;
 using SimpleInjector;
 
@@ -28,10 +27,9 @@ namespace GenProjectClientInterface
 
             ContainerInstance.RegisterSingleton<ShellViewModel>();
             ContainerInstance.RegisterSingleton<DashboardViewModel>();
-            ContainerInstance.RegisterSingleton<ChatboxViewModelFactory>();
             ContainerInstance.RegisterSingleton<RoomManager>();
             ContainerInstance.RegisterSingleton<ChatBoxService>();
-            ContainerInstance.RegisterSingleton<ChatBoxController>();
+            ContainerInstance.RegisterSingleton<ChatBoxViewModelController>();
 
             ContainerInstance.Verify();
         }

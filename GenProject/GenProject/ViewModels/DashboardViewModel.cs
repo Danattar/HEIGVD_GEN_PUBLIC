@@ -1,7 +1,6 @@
 ﻿using Caliburn.Micro;
 using GenProject.Controllers;
 using GenProjectClientBackend.Services;
-using GenProjectClientInterface.ViewModelFactory;
 
 namespace GenProjectClientInterface.ViewModels
 {
@@ -12,8 +11,8 @@ namespace GenProjectClientInterface.ViewModels
 
         // private readonly ChatboxViewModelFactory _chatboxVMFactory;
 
-        private readonly ChatBoxController _chatBoxController;
-        public DashboardViewModel(ChatBoxController chatBoxCtl)
+        private readonly ChatBoxViewModelController _chatBoxController;
+        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl)
         {
             _chatBoxController = chatBoxCtl;
             ChatBox1 = chatBoxCtl.GetChatBox();

@@ -75,9 +75,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="Controllers\ChatBoxController.cs" />
+    <Compile Include="Controllers\ChatBoxViewModelController.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="ViewModelFactory\ChatboxViewModelFactory.cs" />
     <Compile Include="ViewModels\ChatBoxViewModel.cs" />
     <Compile Include="ViewModels\ChatMessageViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
