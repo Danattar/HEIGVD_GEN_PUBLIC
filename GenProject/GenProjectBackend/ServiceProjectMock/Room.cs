@@ -10,16 +10,13 @@ namespace GenProjectClientBackend.ServiceProjectMock
     public class Room
     {
         private static int _nextID = 1;
-        internal int SessionID { get; }
-        public string ChatboxName { get; set; }
-
+        internal int ID { get; }
+        public string Name { get; set; }
         public List<RoomMessage> RoomMessageList { get; } = new List<RoomMessage>();
-        
-        
 
         public Room()
         {
-            SessionID = _nextID++;
+            ID = _nextID++;
         }
 
         internal void AddMessage(RoomMessage chatboxMessage)

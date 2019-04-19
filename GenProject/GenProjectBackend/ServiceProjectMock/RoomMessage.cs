@@ -10,12 +10,10 @@ namespace GenProjectClientBackend.ServiceProjectMock
     {
         public string Author { get; }
         public string Message { get; }
-        public RoomMessage(string author, string message)
+        internal RoomMessage(string author, string message)
         {
             Author = author;
             Message = message;
         }
-
-
     }
 }

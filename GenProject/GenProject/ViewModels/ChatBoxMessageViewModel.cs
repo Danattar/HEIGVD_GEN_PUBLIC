@@ -4,15 +4,13 @@ using GenProjectClientBackend.ServiceProjectMock;
 
 namespace GenProjectClientInterface.ViewModels
 {
-    public class ChatMessageViewModel : Screen
+    public class ChatBoxMessageViewModel : Screen
     {
         private readonly ChatBoxMessage _chatboxMessage;
-     //   public string Author => _chatboxMessage.Author;
         public string Message => _chatboxMessage.Message;
         public string Author => _chatboxMessage.Author;
-
-
-        public ChatMessageViewModel(ChatBoxMessage chatboxMessage)
+               
+        public ChatBoxMessageViewModel(ChatBoxMessage chatboxMessage)
         {
             _chatboxMessage = chatboxMessage;
         }

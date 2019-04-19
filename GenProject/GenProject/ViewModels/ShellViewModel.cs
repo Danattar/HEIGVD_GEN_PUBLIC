@@ -9,7 +9,6 @@ namespace GenProjectClientInterface.ViewModels
 {
     public class ShellViewModel : Screen
     {
-        private Screen _mainScreen;
         public Screen MainScreen
         {
             get => _mainScreen;
@@ -19,6 +18,7 @@ namespace GenProjectClientInterface.ViewModels
                 NotifyOfPropertyChange(nameof(MainScreen));
             }
         }
+        private Screen _mainScreen;
         public ShellViewModel()
         {
             MainScreen = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>();

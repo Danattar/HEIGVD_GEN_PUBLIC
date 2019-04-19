@@ -12,16 +12,13 @@ namespace GenProjectClientBackend.Services
     public class ChatBoxService
     {
         private readonly RoomManager _chatboxManager;
-        //     private readonly ChatboxViewModelFactory _chatboxViewModelFactory;
         private readonly List<ChatBox> _chatBoxList = new List<ChatBox>();
 
-        public ChatBoxService(RoomManager chatboxManager)//, ChatboxViewModelFactory chatboxViewModelFactory)
+        public ChatBoxService(RoomManager chatboxManager)
         {
             _chatboxManager = chatboxManager;
             chatboxManager.MessageAdded += AddMessage;
         }
-
-        
 
         public void AddMessage(int roomID, string author, string message)
         {
@@ -29,19 +26,19 @@ namespace GenProjectClientBackend.Services
         }
         public ChatBox GetChatBox(int roomID)
         {
-            Room room = _chatboxManager.GetChatbox(roomID);
-            ChatBox chatBox = CreateChatbox(room);
+            Room room = _chatboxManager.GetRoom(roomID);
+            ChatBox chatBox = AddChatBox(room);
             room.RoomMessageList.ForEach(x => chatBox.MessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
             return chatBox;
         }
         public ChatBox GetNewChatBox()
         {
-            return CreateChatbox(_chatboxManager.CreateChatbox());
+            return AddChatBox(_chatboxManager.AddRoom());
         }
 
         private void AddMessage(Room room, RoomMessage roomMessage)
         {
-            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.RoomID == room.SessionID).ToList();
+            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.RoomID == room.ID).ToList();
             var addedChatBoxMessageList = new List<ChatBoxMessage>();
             ChatBoxMessage chatBoxMessage;
             chatBoxLinkedToRoomList.ForEach(y => 
@@ -52,20 +49,20 @@ namespace GenProjectClientBackend.Services
             });
         }
 
-
-
+        private ChatBox AddChatBox(Room room)
+        {
+            ChatBox chatBox = CreateChatbox(room);
+            _chatBoxList.Add(chatBox);
+            return chatBox;
+        }
+               
         public event Action<ChatBox, ChatBoxMessage> MessageAdded;
-
-
-
-
+               
         #region Factory
 
         private ChatBox CreateChatbox(Room room)
         {
-            var a = new ChatBox(room.SessionID);
-            _chatBoxList.Add(a);
-            return a;
+            return new ChatBox(room.ID);
         }
         private ChatBoxMessage CreateChatBoxMessage(string author, string message)
         {

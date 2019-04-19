@@ -12,7 +12,7 @@ namespace GenProjectClientBackendTest
         private ChatBox _chatbox2;
         private ChatBoxService _chatBoxService;
         private string _testMessage = "test01";
-        private string _testAuthor = "SimonTest";
+        private string _testAuthor = "AuthorTest";
 
         [TestInitialize]
         public void SetUp()

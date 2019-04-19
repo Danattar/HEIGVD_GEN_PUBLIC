@@ -1,14 +1,13 @@
 ﻿using Caliburn.Micro;
 using GenProjectClientBackend.Models;
 using GenProjectClientBackend.ServiceProjectMock;
-using GenProjectClientBackend.ServiceProjectMock;
 using System;
 
 namespace GenProjectClientInterface.ViewModels
 {
     public class ChatBoxViewModel : Screen
     {
-        public BindableCollection<ChatMessageViewModel> MessageList { get; } = new BindableCollection<ChatMessageViewModel>();
+        public BindableCollection<ChatBoxMessageViewModel> MessageList { get; } = new BindableCollection<ChatBoxMessageViewModel>();
 
         public int RoomID => Chatbox.RoomID;
         public string Name
@@ -16,8 +15,6 @@ namespace GenProjectClientInterface.ViewModels
             get => Chatbox.Name;
             set => Chatbox.Name = value;
         }
-
-     //   private readonly Service _service;
 
         public string MessageBox
         {
@@ -34,26 +31,7 @@ namespace GenProjectClientInterface.ViewModels
         public ChatBoxViewModel(ChatBox chatBox)
         {
             Chatbox = chatBox;
-/*            chatBox.MessageList.ForEach(x => MessageList.Add())
-            MessageList*/
         }
-        public ChatBoxViewModel(int chatSessionID, string name)
-        {
-            System.Diagnostics.Trace.WriteLine(this.IsInitialized.ToString());
-            //         ChatBoxName = name;
-            //          ChatSessionID = chatSessionID;
-            //     _service = service;
-
-
-        }
-
-        public ChatBoxViewModel(Room chatbox)
-        {
-            
-           // _chatbox = chatbox;
-         //   chatbox.NewMessage += test;
-        }
-
         public void SendMessage()
         {
             NewMessage?.Invoke(RoomID, MessageBox);

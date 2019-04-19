@@ -22,15 +22,16 @@ namespace GenProjectClientInterface
         protected override void Configure()
         {
             ContainerInstance.RegisterSingleton<IWindowManager, WindowManager>();
-            //ContainerInstance.RegisterSingleton<Service>();
-
-
             ContainerInstance.RegisterSingleton<ShellViewModel>();
+
             ContainerInstance.RegisterSingleton<DashboardViewModel>();
-            ContainerInstance.RegisterSingleton<RoomManager>();
-            ContainerInstance.RegisterSingleton<ChatBoxService>();
+
             ContainerInstance.RegisterSingleton<ChatBoxViewModelController>();
 
+            ContainerInstance.RegisterSingleton<ChatBoxService>();
+
+            ContainerInstance.RegisterSingleton<RoomManager>();
+            
             ContainerInstance.Verify();
         }
         protected override void OnStartup(object sender, StartupEventArgs e)

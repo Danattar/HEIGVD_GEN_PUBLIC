@@ -14,7 +14,6 @@ namespace GenProject.Controllers
         private readonly ChatBoxService _chatBoxService;
         private readonly List<ChatBoxViewModel> _chatBoxViewModelList = new List<ChatBoxViewModel>();
         
-
         public ChatBoxViewModelController(ChatBoxService chatBoxService)
         {
             _chatBoxService = chatBoxService;
@@ -41,7 +40,7 @@ namespace GenProject.Controllers
 
         private void SendMessage(int roomID, string message)
         {
-            _chatBoxService.AddMessage(roomID, "author test1", message);
+            _chatBoxService.AddMessage(roomID, System.Security.Principal.WindowsIdentity.GetCurrent().Name, message);
         }
 
         #region Factory
@@ -52,9 +51,9 @@ namespace GenProject.Controllers
             chatBoxVM.NewMessage += SendMessage;
             return chatBoxVM;
         }
-        private ChatMessageViewModel CreateChatBoxMessageViewModel(ChatBoxMessage chatBoxMessage)
+        private ChatBoxMessageViewModel CreateChatBoxMessageViewModel(ChatBoxMessage chatBoxMessage)
         {
-            return new ChatMessageViewModel(chatBoxMessage);
+            return new ChatBoxMessageViewModel(chatBoxMessage);
         }
 
         #endregion

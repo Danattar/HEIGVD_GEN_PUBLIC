@@ -11,32 +11,37 @@ namespace GenProjectClientBackend.ServiceProjectMock
     {
         private readonly List<Room> _chatboxList = new List<Room>();
 
-        public Room CreateChatbox()
-        {
-            _chatboxList.Add(new Room());
-            return _chatboxList.Last();
-        }
-        public Room GetChatbox(int chatSessionID)
-        {
-            return _chatboxList.Where(x => x.SessionID == chatSessionID).FirstOrDefault();
-        }
-
         internal void AddChatboxMessage(int roomID, string author, string message)
         {
             RoomMessage roomMessage = CreateChatboxMessage(author, message);
-            Room room = GetChatbox(roomID);
+            Room room = GetRoom(roomID);
             room.AddMessage(roomMessage);
             MessageAdded?.Invoke(room, roomMessage);
+        }
+        public Room AddRoom()
+        {
+            Room room = CreateRoom();
+            _chatboxList.Add(room);
+            return room;
+        }
+        public Room GetRoom(int roomID)
+        {
+            return _chatboxList.Where(x => x.ID == roomID).FirstOrDefault();
+        }
+
+        public event Action<Room, RoomMessage> MessageAdded;
+
+        #region Factory
+
+        private Room CreateRoom()
+        {
+            return new Room();
         }
         private RoomMessage CreateChatboxMessage(string author, string message)
         {
             return new RoomMessage(author, message);
         }
 
-        public Room GetRoom(int roomID)
-        {
-            return _chatboxList.Where(x => x.SessionID == roomID).FirstOrDefault();
-        }
-        public event Action<Room, RoomMessage> MessageAdded;
+        #endregion
     }
 }

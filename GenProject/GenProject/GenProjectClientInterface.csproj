@@ -76,13 +76,12 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="Controllers\ChatBoxViewModelController.cs" />
-    <Compile Include="Service.cs" />
     <Compile Include="ViewModels\ChatBoxViewModel.cs" />
-    <Compile Include="ViewModels\ChatMessageViewModel.cs" />
+    <Compile Include="ViewModels\ChatBoxMessageViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\ChatboxView.xaml.cs">
-      <DependentUpon>ChatboxView.xaml</DependentUpon>
+    <Compile Include="Views\ChatBoxView.xaml.cs">
+      <DependentUpon>ChatBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ChatMessageView.xaml.cs">
       <DependentUpon>ChatMessageView.xaml</DependentUpon>
@@ -126,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ChatboxView.xaml">
+    <Page Include="Views\ChatBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

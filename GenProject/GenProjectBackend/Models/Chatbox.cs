@@ -13,7 +13,7 @@ namespace GenProjectClientBackend.Models
         public string Name { get; set; }
         public List<ChatBoxMessage> MessageList { get; } = new List<ChatBoxMessage>();
 
-        public ChatBox(int roomID)
+        internal ChatBox(int roomID)
         {
             RoomID = roomID;
         }

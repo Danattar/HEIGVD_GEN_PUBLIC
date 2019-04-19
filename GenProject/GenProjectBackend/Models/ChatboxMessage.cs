@@ -10,7 +10,7 @@ namespace GenProjectClientBackend.Models
     {
         public string Author { get; }
         public string Message { get; }
-        public ChatBoxMessage(string author, string message)
+        internal ChatBoxMessage(string author, string message)
         {
             Author = author;
             Message = message;
