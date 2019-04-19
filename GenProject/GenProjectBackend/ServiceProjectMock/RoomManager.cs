@@ -11,7 +11,7 @@ namespace GenProjectClientBackend.ServiceProjectMock
     {
         private readonly List<Room> _roomList = new List<Room>();
 
-        internal void AddChatboxMessage(int roomID, string author, string message)
+        internal void AddRoomMessage(int roomID, string author, string message)
         {
             RoomMessage roomMessage = CreateChatboxMessage(author, message);
             Room room = GetRoom(roomID);

@@ -22,7 +22,7 @@ namespace GenProjectClientBackend.Services
 
         public void AddMessage(int roomID, string author, string message)
         {
-            _chatboxManager.AddChatboxMessage(roomID, author, message);
+            _chatboxManager.AddRoomMessage(roomID, author, message);
         }
         public ChatBox GetChatBox(int roomID)
         {
