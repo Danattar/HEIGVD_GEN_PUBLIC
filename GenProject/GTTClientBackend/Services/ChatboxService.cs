@@ -35,15 +35,15 @@ namespace GTTClientBackend.Services
 
         private void ConnectToServer()
         {
-            /*_client = new IpcServiceClientBuilder<IRoomManager>()
+            _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-            */
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
+            
+/*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseTcp(serverIP, 45684)
                 .Build();
-            //            192.168.0.248
+ */           //            192.168.0.248
         }
 
         public void AddMessage(int roomID, string author, string message)
