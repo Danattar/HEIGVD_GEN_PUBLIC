@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JKang.IpcServiceFramework.Server" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GTTServiceContract\GTTServiceContract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GTTServiceContract">
+      <HintPath>..\GTTServiceContract\bin\Debug\netcoreapp3.0\GTTServiceContract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
