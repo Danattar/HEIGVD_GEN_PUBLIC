@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,10 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="GTTServiceContract">
-      <HintPath>..\GTTServiceContract\bin\Debug\netcoreapp2.1\GTTServiceContract.dll</HintPath>
-      <Private></Private>
-    </Reference>
+    <ProjectReference Include="..\GTTServiceContract\GTTServiceContract.csproj" />
   </ItemGroup>
 
 </Project>

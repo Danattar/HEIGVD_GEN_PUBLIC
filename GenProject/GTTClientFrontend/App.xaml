@@ -1,0 +1,15 @@
+﻿<Application x:Class="GTTClientFrontend.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:gttClientFrontend="clr-namespace:GTTClientFrontend">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <gttClientFrontend:AppBootstrapper x:Key="bootstrapper"/>
+                </ResourceDictionary >
+                <ResourceDictionary Source="Resources/Styles/StylesBase.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
