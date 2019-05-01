@@ -1,8 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:GenProject.Resources.Styles">
-    <Style TargetType="Label">
+    <Style TargetType="Label" >
         <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <Style x:Name="StandardButton" TargetType="Button" >
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Padding" Value="8"/>
     </Style>
     
 </ResourceDictionary>

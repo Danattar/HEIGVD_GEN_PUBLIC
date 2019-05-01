@@ -16,6 +16,7 @@ namespace GTTClientFrontend.ViewModels
             }
         }
         private ChatBoxViewModel _chatBox1;
+        private double _zoomLevel = 1.2;
 
         public ChatBoxViewModel ChatBox1
         {
@@ -27,6 +28,15 @@ namespace GTTClientFrontend.ViewModels
             }
         }
         public ChatBoxViewModel ChatBox2 { get; }
+        public double ZoomLevel
+        {
+            get => _zoomLevel;
+            private set
+            {
+                _zoomLevel = value;
+                NotifyOfPropertyChange(nameof(ZoomLevel));
+            }
+        }
 
         private readonly ChatBoxViewModelController _chatBoxController;
         private readonly TaskBoxViewModelController _taskBoxController;
@@ -36,13 +46,16 @@ namespace GTTClientFrontend.ViewModels
             _chatBoxController = chatBoxCtl;
             _taskBoxController = taskBoxCtl;
             TaskBox = new TaskBoxViewModel();
-//            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
-           // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
+            //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
+            // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
         }
         public async void AddChatBox()
         {
             ChatBox1 = await _chatBoxController.GetChatBoxAsync();
         }
+        public void Zoom()
+        {
+            ZoomLevel = ZoomLevel < 1.5 ? 1.5 : 1;
+        }
     }
-
 }

@@ -6,7 +6,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel LastChildFill="False">
-        <Label Content="Dashboard" DockPanel.Dock="Top"/>
+        <DockPanel.LayoutTransform>
+            <ScaleTransform ScaleX="{Binding ZoomLevel}" ScaleY="{Binding ZoomLevel}" />
+        </DockPanel.LayoutTransform>
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+            <Label Content="Dashboard" DockPanel.Dock="Left"/>
+            <Button Name="Zoom" Content="Zoom" DockPanel.Dock="Right"/>
+        </DockPanel>
         <ContentControl Name="TaskBox" DockPanel.Dock="Left" Margin="10" MinWidth="200"/>
         <Button Content="GetChatBox" Name="AddChatBox" VerticalAlignment="Top"/>
         <ContentControl Name="ChatBox1" DockPanel.Dock="Left"

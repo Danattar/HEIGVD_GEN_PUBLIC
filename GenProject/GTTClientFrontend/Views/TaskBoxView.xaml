@@ -9,12 +9,12 @@
     <DockPanel>
         <TextBox Name="TaskName" DockPanel.Dock="Top"/>
         <DockPanel DockPanel.Dock="Bottom">
-            <Button Name="Submit" Content="Submit"/>
+            <Button Name="Submit" Content="Submit" />
             <Button Name="Reset" Content="Reset"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Right">
             <Button Name="TimerStartStop" Content="{Binding TimerLabel}" DockPanel.Dock="Top"/>
-            <Label Name="EllapsedTime"/>
+            <Label Name="EllapsedTime" />
         </DockPanel>
             <TextBox Name="TaskDescription" />
     </DockPanel>
