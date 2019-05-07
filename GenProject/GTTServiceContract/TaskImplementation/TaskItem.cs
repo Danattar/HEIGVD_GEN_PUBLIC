@@ -1,4 +1,5 @@
 ﻿using GTTServiceContract.Task;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,13 @@ namespace GTTServiceContract.TaskImplementation
             Summary = summary;
             AssignedUser = assignedUser;
         }
-
+        [JsonConstructor]
+        public TaskItem(int id, string brief, string summary, string assignedUser)  
+        {
+            ID = id;
+            Brief = brief;
+            Summary = summary;
+            AssignedUser = assignedUser;
+        }
     }
 }

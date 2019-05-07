@@ -19,7 +19,7 @@ namespace GTTServerBackend
                 .AddNamedPipeEndpoint<IRoomManager>(name: "endpoint1", pipeName: "pipeName")
                 .AddNamedPipeEndpoint<ITaskManager>(name: "endpoint3", pipeName: "pipeName2")
                 .AddTcpEndpoint<IRoomManager>(name: "endpoint2", ipEndpoint: serverIP, port: 45684)
-                .AddTcpEndpoint<ITaskManager>(name: "endpoint4", ipEndpoint: serverIP, port: 45684)
+                .AddTcpEndpoint<ITaskManager>(name: "endpoint4", ipEndpoint: serverIP, port: 45685)
                 .Build()
                 .Run();
 

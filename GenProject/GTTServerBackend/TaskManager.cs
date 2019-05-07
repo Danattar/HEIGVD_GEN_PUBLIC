@@ -9,10 +9,15 @@ namespace GTTServerBackend
 {
     public class TaskManager : ITaskManager
     {
-        private readonly List<TaskItem> _taskList = new List<TaskItem>();
+        private static readonly List<TaskItem> _taskList = new List<TaskItem>();
         public bool IsConnected()
         {
             return true;
+        }
+
+        public TaskManager()
+        {
+            Console.WriteLine("w");
         }
 
         public TaskItem AddTask(string brief, string summary, string assignedUser)
@@ -26,9 +31,9 @@ namespace GTTServerBackend
         {
             return _taskList.Where(x => x.ID == taskID).FirstOrDefault();
         }
-        public List<TaskItem> GetTaskAssignedToUser(string user)
+        public TaskItem[] GetTaskAssignedToUser(string user)
         {
-            return _taskList.Where(x => x.AssignedUser == user).ToList();
+            return _taskList.Where(x => x.AssignedUser == user).ToArray();
         }
         public void DeleteTask(int taskId)
         {

@@ -9,7 +9,7 @@ namespace GTTServiceContract.Task
     {
         TaskItem AddTask(string brief, string summary, string assignedUser);
         TaskItem GetTask(int taskID);
-        List<TaskItem> GetTaskAssignedToUser(string user);
+        TaskItem[] GetTaskAssignedToUser(string user);
         void DeleteTask(int taskId);
         void AssignTaskToUser(int taskId, string newUser);
 

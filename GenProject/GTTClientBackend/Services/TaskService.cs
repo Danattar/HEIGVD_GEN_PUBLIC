@@ -4,6 +4,7 @@ using JKang.IpcServiceFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -101,6 +102,45 @@ namespace GTTClientBackend.Services
             TaskBox taskBox = CreateTaskBox(taskItem);
             _taskBoxList.Add(taskBox);
             return taskBox;
+        }
+
+        public async Task AssignTask(int idTask, string user)
+        {
+            try
+            {
+                await _client.InvokeAsync(x => x.AssignTaskToUser(idTask, user));
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<TaskBox>> GetTaskBoxListForUser(string user)
+        {
+            ITaskItem[] taskItemsList;
+            try
+            {
+                taskItemsList = await _client.InvokeAsync(x => x.GetTaskAssignedToUser(user));
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            var userTaskBox = new List<TaskBox>();
+            TaskBox tempTaskBox;
+            Array.ForEach(taskItemsList, x =>
+            {
+                tempTaskBox = _taskBoxList.Where(y => y.ID == x.ID).FirstOrDefault();
+                if (tempTaskBox != null)
+                {
+                    userTaskBox.Add(tempTaskBox);
+                }
+            });
+            return userTaskBox;
+
+            //return _taskBoxList.Where(
+            //    x => taskItemsList.ToList().Where(y => x.ID == y.ID).FirstOrDefault() != null);
         }
 
         #region Factory
