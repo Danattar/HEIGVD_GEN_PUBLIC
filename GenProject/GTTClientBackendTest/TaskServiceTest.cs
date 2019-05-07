@@ -20,8 +20,6 @@ namespace GTTClientBackendTest
         public void setUp()
         {
              _taskService = new TaskService();
-
-
         }
 
         [TestMethod]
@@ -54,11 +52,20 @@ namespace GTTClientBackendTest
         [TestMethod]
         public async Task AssignTask__Task_is_assigned_to_other_user__OK()
         {
+            string user1 = "simon";
+            string user2 = "fred";
             TaskBox task1 = await _taskService.GetNewTaskBoxAsync("test task assignment",
-                "This is a task created by a unit test", "Simon");
+                "This is a task created by a unit test", user1);
             TaskBox task2 = await _taskService.GetNewTaskBoxAsync("test task assignment2",
-                "This is a task created by a unit test", "Fred");
+                "This is a task created by a unit test", user2);
 
+            List<TaskBox> userTask = await _taskService.GetTaskBoxListForUser(user1);
+            Assert.AreEqual(userTask.Count, 1);
+
+            await _taskService.AssignTask(task2.ID, user1);
+
+            //Todo: Implement event from server to clients to update tasks in client 
+            Assert.AreEqual(userTask.Count, 2);
         }
 
 
