@@ -9,14 +9,14 @@ namespace GTTClientBackend.Models
         public int ID { get; }
         public string Brief { get; set; }
         public string Summary { get; set; }
-        public string AssignedUser { get; set; }
+        public string Assignee { get; set; }
 
-        internal TaskBox(int taskID, string brief, string summary, string assignedUser)
+        internal TaskBox(int taskID, string brief, string summary, string assignee)
         {
             ID = taskID;
             Brief = brief;
             Summary = summary;
-            AssignedUser = assignedUser;
+            Assignee = assignee;
         }
     }
 }

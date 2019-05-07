@@ -33,7 +33,7 @@ namespace GTTServerBackend
         }
         public TaskItem[] GetTaskAssignedToUser(string user)
         {
-            return _taskList.Where(x => x.AssignedUser == user).ToArray();
+            return _taskList.Where(x => x.Assignee == user).ToArray();
         }
         public void DeleteTask(int taskId)
         {
@@ -50,7 +50,7 @@ namespace GTTServerBackend
         {
             try
             {
-                _taskList.Where(x => x.ID == taskId).First().AssignedUser = newUser;
+                _taskList.Where(x => x.ID == taskId).First().Assignee = newUser;
             }
             catch
             {

@@ -9,6 +9,6 @@ namespace GTTServiceContract.Task
         int ID { get; }
         string Brief { get; set; }
         string Summary { get; set; }
-        string AssignedUser { get; set; }
+        string Assignee { get; set; }
     }
 }

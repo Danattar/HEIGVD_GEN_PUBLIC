@@ -145,7 +145,7 @@ namespace GTTClientBackend.Services
 
         #region Factory
 
-        private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.AssignedUser);
+        private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.Assignee);
 
         #endregion
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
 using GTTClientFrontend.Controllers;
@@ -50,13 +51,12 @@ namespace GTTClientFrontend.ViewModels
             ZoomLevel = ZoomLevel < 1.5 ? 1.5 : 1;
         }
 
-        public void AddTask()
+        public async Task AddTask()
         {
-            Screen task = new TaskBoxViewModel();
+            Screen task = await _taskBoxController.GetTaskBoxAsync("","","");
             bool? result = _windowManager.ShowDialog(task);
             if (result.HasValue)
             {
-
                 if ((bool)result)
                 {
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");

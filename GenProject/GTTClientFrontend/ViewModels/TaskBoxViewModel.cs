@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Threading;
+using GTTClientBackend.Models;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -15,22 +16,23 @@ namespace GTTClientFrontend.ViewModels
         private TimeSpan _aMinute = new System.TimeSpan(0, 0, 10);
         private bool _quickTask = true;
         private Visibility _expandedDetailsVisibility = Visibility.Collapsed;
+        private TaskBox _taskBox;
 
         public string Brief
         {
-            get => _brief;
+            get => _taskBox.Brief;
             set
             {
-                _brief = value;
+                _taskBox.Brief = value;
                 NotifyOfPropertyChange(nameof(Brief));
             }
         }
         public string Summary
         {
-            get => _summary;
+            get => _taskBox.Summary;
             set
             {
-                _summary = value;
+                _taskBox.Summary = value;
                 NotifyOfPropertyChange(nameof(Summary));
             }
         }
@@ -67,9 +69,20 @@ namespace GTTClientFrontend.ViewModels
 
         public TaskBoxViewModel()
         {
+            InitDispatcher();
+        }
+
+        private void InitDispatcher()
+        {
             _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Tick += Tick;
             _dispatcherTimer.Interval = _aMinute;
+         }
+
+        public TaskBoxViewModel(TaskBox taskBox)
+        {
+            _taskBox = taskBox;
+            InitDispatcher();
         }
 
         public void TimerStartStop()
