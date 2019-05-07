@@ -50,7 +50,8 @@ namespace GTTServerBackend
         {
             try
             {
-                _taskList.Where(x => x.ID == taskId).First().Assignee = newUser;
+                _taskList.Where(x => x.ID == taskId).First().AssignedUser = newUser;
+
             }
             catch
             {
@@ -59,7 +60,6 @@ namespace GTTServerBackend
         }
 
 
-        //public event Action<IRoom, IRoomMessage> MessageAdded;
 
         #region Factory
 
