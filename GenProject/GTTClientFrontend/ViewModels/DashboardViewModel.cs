@@ -6,16 +6,6 @@ namespace GTTClientFrontend.ViewModels
 {
     public class DashboardViewModel : Screen
     {
-        private Screen _taskBox;
-        public Screen TaskBox
-        {
-            get => _taskBox;
-            set
-            {
-                _taskBox = value;
-                NotifyOfPropertyChange(nameof(TaskBox));
-            }
-        }
         private ChatBoxViewModel _chatBox1;
         private double _zoomLevel = 1.2;
 
@@ -48,7 +38,6 @@ namespace GTTClientFrontend.ViewModels
             _chatBoxController = chatBoxCtl;
             _taskBoxController = taskBoxCtl;
             _windowManager = windowManager;
-            TaskBox = new TaskBoxViewModel();
             //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
             // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
         }
@@ -63,7 +52,8 @@ namespace GTTClientFrontend.ViewModels
 
         public void AddTask()
         {
-            bool? result = _windowManager.ShowDialog(TaskBox);
+            Screen task = new TaskBoxViewModel();
+            bool? result = _windowManager.ShowDialog(task);
             if (result.HasValue)
             {
 
