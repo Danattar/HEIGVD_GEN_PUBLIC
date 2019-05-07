@@ -80,6 +80,16 @@ namespace GTTClientFrontend.ViewModels
             _taskName = string.Empty;
             _taskDescription = string.Empty;
         }
+
+        public void OK()
+        {
+            TryClose(true);
+        }
+
+        public void Cancel()
+        {
+            TryClose(false);
+        }
         private void Tick(object sender, EventArgs e)
         {
             ++EllapsedTime;

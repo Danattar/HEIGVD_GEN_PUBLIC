@@ -125,7 +125,7 @@ namespace GTTClientBackend.Services
         {
             while (!_clientService.CancellationPending)
             {
-                System.Diagnostics.Trace.WriteLine("service running");
+//                System.Diagnostics.Trace.WriteLine("service running");
                 Thread.Sleep(100);
             }
 
