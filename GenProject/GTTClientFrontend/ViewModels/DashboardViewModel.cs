@@ -1,6 +1,7 @@
-﻿using Caliburn.Micro;
+﻿using System;
+using System.Windows;
+using Caliburn.Micro;
 using GTTClientFrontend.Controllers;
-
 namespace GTTClientFrontend.ViewModels
 {
     public class DashboardViewModel : Screen
@@ -40,11 +41,13 @@ namespace GTTClientFrontend.ViewModels
 
         private readonly ChatBoxViewModelController _chatBoxController;
         private readonly TaskBoxViewModelController _taskBoxController;
+        private IWindowManager _windowManager;
 
-        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl, TaskBoxViewModelController taskBoxCtl)
+        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl, TaskBoxViewModelController taskBoxCtl, IWindowManager windowManager)
         {
             _chatBoxController = chatBoxCtl;
             _taskBoxController = taskBoxCtl;
+            _windowManager = windowManager;
             TaskBox = new TaskBoxViewModel();
             //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
             // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
@@ -56,6 +59,23 @@ namespace GTTClientFrontend.ViewModels
         public void Zoom()
         {
             ZoomLevel = ZoomLevel < 1.5 ? 1.5 : 1;
+        }
+
+        public void AddTask()
+        {
+            bool? result = _windowManager.ShowDialog(TaskBox);
+            if (result.HasValue)
+            {
+
+                if ((bool)result)
+                {
+                    System.Diagnostics.Trace.WriteLine("Result is TRUE");
+                }
+                else
+                {
+                    System.Diagnostics.Trace.WriteLine("Result is FALSE");
+                }
+            }
         }
     }
 }
