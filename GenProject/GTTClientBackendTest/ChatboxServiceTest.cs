@@ -16,7 +16,7 @@ namespace GTTClientBackendTest
              _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
+            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
   /*          _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseTcp(serverIP, 45684)
                 .Build();
@@ -26,7 +26,7 @@ namespace GTTClientBackendTest
         [TestMethod]
         public void testConnection_by_IP__OK()
         {
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
+            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseTcp(serverIP, 45684)
                 .Build();
