@@ -1,7 +1,7 @@
-﻿using Caliburn.Micro;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Threading;
+using Caliburn.Micro;
 using Castle.Core.Internal;
 using GTTClientBackend.Models;
 
@@ -9,18 +9,31 @@ namespace GTTClientFrontend.ViewModels
 {
     public class TaskBoxViewModel : Screen
     {
+        private readonly TimeSpan _aMinute = new TimeSpan(0, 0, 10);
+        private string _assignee;
         private string _brief;
-        private string _summary;
-        private int _taskID;
-        private string _timerLabel = "Start";
         private DispatcherTimer _dispatcherTimer;
         private int _ellapsedTime;
-        private TimeSpan _aMinute = new System.TimeSpan(0, 0, 10);
-        private bool _quickTask = true;
         private Visibility _expandedDetailsVisibility = Visibility.Collapsed;
-        private TaskBox _taskBox;
-        private string _assignee;
+        private bool _quickTask = true;
         private string _selectedAssignee;
+        private string _summary;
+        private readonly TaskBox _taskBox;
+        private int _taskID;
+        private string _timerLabel = "Start";
+
+        public TaskBoxViewModel()
+        {
+            _taskBox = new TaskBox();
+            InitDispatcher();
+        }
+
+        public TaskBoxViewModel(TaskBox taskBox)
+        {
+            _taskBox = taskBox;
+            InitDispatcher();
+        }
+
 
         public string Brief
         {
@@ -31,6 +44,7 @@ namespace GTTClientFrontend.ViewModels
                 NotifyOfPropertyChange(nameof(Brief));
             }
         }
+
         public string Summary
         {
             get => _taskBox.Summary;
@@ -42,6 +56,7 @@ namespace GTTClientFrontend.ViewModels
         }
 
         public int TaskID => _taskBox.ID;
+
         public string TimerLabel
         {
             get => _timerLabel;
@@ -61,6 +76,7 @@ namespace GTTClientFrontend.ViewModels
                 NotifyOfPropertyChange(nameof(ExpandedDetailsVisibility));
             }
         }
+
         public BindableCollection<string> Users { get; set; } = new BindableCollection<string>();
 
 
@@ -80,7 +96,7 @@ namespace GTTClientFrontend.ViewModels
             set
             {
                 _selectedAssignee = value;
-                if(!value.IsNullOrEmpty())
+                if (!value.IsNullOrEmpty())
                     Assignee = SelectedAssignee;
                 NotifyOfPropertyChange(nameof(SelectedAssignee));
             }
@@ -92,7 +108,7 @@ namespace GTTClientFrontend.ViewModels
             set
             {
                 _taskBox.Assignee = value;
-                NotifyOfPropertyChange((nameof(Assignee)));
+                NotifyOfPropertyChange(nameof(Assignee));
             }
         }
 
@@ -100,23 +116,12 @@ namespace GTTClientFrontend.ViewModels
         {
             SelectedAssignee = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>().Username;
         }
-        public TaskBoxViewModel()
-        {
-            _taskBox = new TaskBox();
-            InitDispatcher();
-        }
 
         private void InitDispatcher()
         {
             _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Tick += Tick;
             _dispatcherTimer.Interval = _aMinute;
-        }
-
-        public TaskBoxViewModel(TaskBox taskBox)
-        {
-            _taskBox = taskBox;
-            InitDispatcher();
         }
 
         public void TimerStartStop()
@@ -132,10 +137,12 @@ namespace GTTClientFrontend.ViewModels
                 TimerLabel = "Stop";
             }
         }
+
         public void Save()
         {
             TryClose(true);
         }
+
         public void Next()
         {
             if (_quickTask)
@@ -144,7 +151,9 @@ namespace GTTClientFrontend.ViewModels
                 _quickTask = false;
             }
             else
+            {
                 ShowLinkedTasks();
+            }
         }
 
         private void ExpandDetails()
@@ -167,6 +176,7 @@ namespace GTTClientFrontend.ViewModels
         {
             TryClose(false);
         }
+
         private void Tick(object sender, EventArgs e)
         {
             ++EllapsedTime;

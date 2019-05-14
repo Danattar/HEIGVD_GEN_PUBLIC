@@ -130,6 +130,7 @@ namespace GTTClientFrontend.ViewModels
             SelectedTask.Users.Clear();
             SelectedTask.Users.AddRange(a);
             SelectedTask.SelectedAssignee = SelectedTask.Assignee;
+            SelectedTask.ExpandedDetailsVisibility = Visibility.Visible;
 
             bool? result = _windowManager.ShowDialog(SelectedTask);
             if (result.HasValue)
