@@ -10,6 +10,8 @@ namespace GTTServerBackend
     public class TaskManager : ITaskManager
     {
         private static readonly List<TaskItem> _taskList = new List<TaskItem>();
+        private List<string> _users;
+
         public bool IsConnected()
         {
             return true;
@@ -59,6 +61,10 @@ namespace GTTServerBackend
             }
         }
 
+        public void LoggedInAs(string loginScreenUsername)
+        {
+            _users.Add(loginScreenUsername);
+        }
 
 
         #region Factory

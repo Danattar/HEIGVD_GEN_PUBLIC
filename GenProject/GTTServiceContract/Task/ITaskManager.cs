@@ -16,5 +16,6 @@ namespace GTTServiceContract.Task
         //public event Action<IRoom, IRoomMessage> MessageAdded;
 
 
+        void LoggedInAs(string loginScreenUsername);
     }
 }

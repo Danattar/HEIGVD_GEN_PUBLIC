@@ -38,5 +38,10 @@ namespace GTTClientFrontend.Controllers
         {
             return new TaskBoxViewModel(taskBox);
         }
+
+        public void LoggedInAs(string loginScreenUsername)
+        {
+            _taskService.LoggedInAs(loginScreenUsername);
+        }
     }
 }

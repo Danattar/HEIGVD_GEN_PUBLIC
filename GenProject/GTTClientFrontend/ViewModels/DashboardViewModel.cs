@@ -61,6 +61,7 @@ namespace GTTClientFrontend.ViewModels
                 if ((bool)result)
                 {
                     Username = loginScreen.Username;
+                    _taskBoxController.LoggedInAs(loginScreen.Username);
                     return true;
                 }
             }

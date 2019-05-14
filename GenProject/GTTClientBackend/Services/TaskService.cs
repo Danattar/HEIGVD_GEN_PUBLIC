@@ -148,5 +148,10 @@ namespace GTTClientBackend.Services
         private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.Assignee);
 
         #endregion
+
+        public void LoggedInAs(string loginScreenUsername)
+        {
+            _client.InvokeAsync(x => x.LoggedInAs(loginScreenUsername));
+        }
     }
 }
