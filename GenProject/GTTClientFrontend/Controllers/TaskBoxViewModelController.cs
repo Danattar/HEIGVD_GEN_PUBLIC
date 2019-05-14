@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 using GTTClientBackend.Models;
@@ -21,7 +22,7 @@ namespace GTTClientFrontend.Controllers
             TaskBoxViewModel taskBoxVM = null;
             try
             {
-                taskBoxVM = CreateTaskBoxViewModel(await _taskService.GetNewTaskBoxAsync(brief, summary, assignee));
+                taskBoxVM = await CreateTaskBoxViewModel(await _taskService.GetNewTaskBoxAsync(brief, summary, assignee));
             }
             catch (Exception e)
             {
@@ -34,9 +35,21 @@ namespace GTTClientFrontend.Controllers
             return taskBoxVM;
         }
 
-        private TaskBoxViewModel CreateTaskBoxViewModel(TaskBox taskBox)
+        private async Task<TaskBoxViewModel> CreateTaskBoxViewModel(TaskBox taskBox)
         {
-            return new TaskBoxViewModel(taskBox);
+            var a = new TaskBoxViewModel(taskBox);
+//            a.Users.AddRange(await _taskService.GetAllUsers());
+            return a;
+        }
+
+        public void LoggedInAs(string loginScreenUsername)
+        {
+            _taskService.LoggedInAs(loginScreenUsername);
+        }
+
+        public async Task<List<string>> GetAllUsers()
+        {
+            return await _taskService.GetAllUsers();
         }
     }
 }

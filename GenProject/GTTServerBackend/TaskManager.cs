@@ -10,6 +10,8 @@ namespace GTTServerBackend
     public class TaskManager : ITaskManager
     {
         private static readonly List<TaskItem> _taskList = new List<TaskItem>();
+        private static List<string> _users = new List<String>();
+
         public bool IsConnected()
         {
             return true;
@@ -115,6 +117,7 @@ namespace GTTServerBackend
 
 
 
+            Console.WriteLine("Task Added : \nBrief : " + brief + "\nAssignee : " + assignedUser);
             return task;
         }
         public TaskItem GetTask(int taskID)
@@ -149,6 +152,16 @@ namespace GTTServerBackend
             }
         }
 
+        public void LoggedInAs(string loginScreenUsername)
+        {
+            _users.Add(loginScreenUsername);
+            Console.WriteLine("Logged in as : " + loginScreenUsername);
+        }
+
+        public List<string> GetAllUsers()
+        {
+            return _users;
+        }
 
 
         #region Factory

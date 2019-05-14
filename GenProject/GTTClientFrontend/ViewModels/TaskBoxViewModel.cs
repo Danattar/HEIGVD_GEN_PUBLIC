@@ -56,6 +56,7 @@ namespace GTTClientFrontend.ViewModels
                 NotifyOfPropertyChange(nameof(ExpandedDetailsVisibility));
             }
         }
+        public BindableCollection<string> Users { get; set; } = new BindableCollection<string>();
 
 
         public int EllapsedTime
@@ -70,10 +71,10 @@ namespace GTTClientFrontend.ViewModels
 
         public string Assignee
         {
-            get => _assignee;
+            get => _taskBox.Assignee;
             set
             {
-                _assignee = value;
+                _taskBox.Assignee= value;
                 NotifyOfPropertyChange((nameof(Assignee)));
             }
         }

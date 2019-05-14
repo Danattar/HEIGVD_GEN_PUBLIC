@@ -61,6 +61,7 @@ namespace GTTClientFrontend.ViewModels
                 if ((bool)result)
                 {
                     Username = loginScreen.Username;
+                    _taskBoxController.LoggedInAs(loginScreen.Username);
                     return true;
                 }
             }
@@ -80,6 +81,9 @@ namespace GTTClientFrontend.ViewModels
         public async Task AddTask()
         {
             TaskBoxViewModel task = new TaskBoxViewModel();
+            var a = await _taskBoxController.GetAllUsers();
+            task.Users.AddRange(a);
+
             bool? result = _windowManager.ShowDialog(task);
             if (result.HasValue)
             {
