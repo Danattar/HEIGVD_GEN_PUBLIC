@@ -52,7 +52,7 @@ namespace GTTClientFrontend.ViewModels
             // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
         }
 
-        public bool Login()
+        public async Task<bool> Login()
         {
             LoginViewModel loginScreen = new LoginViewModel();
             bool? result = _windowManager.ShowDialog(loginScreen);
@@ -62,6 +62,8 @@ namespace GTTClientFrontend.ViewModels
                 {
                     Username = loginScreen.Username;
                     _taskBoxController.LoggedInAs(loginScreen.Username);
+                    TaskList.Clear();
+                    TaskList.AddRange(await _taskBoxController.GetTaskBoxListForUser(Username));
                     return true;
                 }
             }

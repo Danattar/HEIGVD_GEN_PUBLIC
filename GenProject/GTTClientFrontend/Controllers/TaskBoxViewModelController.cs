@@ -62,5 +62,13 @@ namespace GTTClientFrontend.Controllers
                 return false;
             }
         }
+
+        public async Task<List<TaskBoxViewModel>> GetTaskBoxListForUser(string username)
+        {
+            List<TaskBox> taskBoxList = await _taskService.GetTaskBoxListForUser(username);
+            List<TaskBoxViewModel> taskBoxViewModelsList = new List<TaskBoxViewModel>();
+            taskBoxList.ForEach(async taskBox => { taskBoxViewModelsList.Add(await CreateTaskBoxViewModel(taskBox)); });
+            return taskBoxViewModelsList;
+        }
     }
 }

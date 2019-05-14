@@ -154,7 +154,8 @@ namespace GTTServerBackend
 
         public void LoggedInAs(string loginScreenUsername)
         {
-            _users.Add(loginScreenUsername);
+            if(_users.Where(x=> x == loginScreenUsername).Count() == 0)
+                _users.Add(loginScreenUsername);
             Console.WriteLine("Logged in as : " + loginScreenUsername);
         }
 
