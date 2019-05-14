@@ -10,5 +10,7 @@ namespace GTTServiceContract.Task
         string Brief { get; set; }
         string Summary { get; set; }
         string Assignee { get; set; }
+        string Reviewer { get; set; }
+        DateTime DueDate { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace GTTClientBackendTest
         {
             string taskBrief = "TaskCreatedByUnitTest";
             TaskBox task1 = await _taskService.GetNewTaskBoxAsync(taskBrief,
-                "This is a task created by a unit test", "user1");
+                "This is a task created by a unit test", "user1", "user1", DateTime.Today);
             TaskBox taskGetById = await _taskService.GetTaskBox(task1.ID);
             Assert.AreEqual(taskBrief, taskGetById.Brief);
         }
@@ -39,11 +39,11 @@ namespace GTTClientBackendTest
             string user1 = "simon";
             string user2 = "fred";
             await _taskService.GetNewTaskBoxAsync("test task1",
-                "This is a task created by a unit test", user1);
+                "This is a task created by a unit test", user1, user2,DateTime.Today);
             await _taskService.GetNewTaskBoxAsync("test task2",
-                "This is a task created by a unit test", user2);
+                "This is a task created by a unit test", user2, user1, DateTime.Today);
             await _taskService.GetNewTaskBoxAsync("test task3",
-                "This is a task created by a unit test", user1);
+                "This is a task created by a unit test", user1, user2, DateTime.Today);
 
             List<TaskBox> userTask = await _taskService.GetTaskBoxListForUser(user1);
             Assert.AreEqual(userTask.Count, 2);
@@ -55,9 +55,9 @@ namespace GTTClientBackendTest
             string user1 = "simon";
             string user2 = "fred";
             TaskBox task1 = await _taskService.GetNewTaskBoxAsync("test task assignment",
-                "This is a task created by a unit test", user1);
+                "This is a task created by a unit test", user1, user2, DateTime.Today);
             TaskBox task2 = await _taskService.GetNewTaskBoxAsync("test task assignment2",
-                "This is a task created by a unit test", user2);
+                "This is a task created by a unit test", user2, user2, DateTime.Today);
 
             List<TaskBox> userTask = await _taskService.GetTaskBoxListForUser(user1);
             Assert.AreEqual(userTask.Count, 1);

@@ -66,12 +66,12 @@ namespace GTTClientBackend.Services
             System.Diagnostics.Trace.WriteLine("Client Service Stopped");
         }
 
-        public async Task<TaskBox> GetNewTaskBoxAsync(string brief, string summary, string assignedUser)
+        public async Task<TaskBox> GetNewTaskBoxAsync(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate)
         {
             ITaskItem taskItem;
             try
             {
-                taskItem = await _client.InvokeAsync(x => x.AddTask(brief, summary, assignedUser));
+                taskItem = await _client.InvokeAsync(x => x.AddTask(brief, summary, assignedUser, reviewer, dueDate));
             }
             catch (Exception e)
             {
@@ -145,7 +145,7 @@ namespace GTTClientBackend.Services
 
         #region Factory
 
-        private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.Assignee);
+        private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.Assignee, taskItem.Reviewer, taskItem.DueDate);
 
         #endregion
 

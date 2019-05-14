@@ -2,6 +2,7 @@
 using GTTServiceContract.TaskImplementation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -49,10 +50,18 @@ namespace GTTServerBackend
             }
         }
         private static string _smartVisionDirectory;
+        private static bool _isDeserialized = false;
 
         public TaskManager()
         {
-          /*  var d = new System.IO.DirectoryInfo(_programsDirectory);
+            if (!_isDeserialized) { }
+    //            Deserialize();
+        }
+
+
+        private void Deserialize()
+        {
+            var d = new System.IO.DirectoryInfo(ProgramsDirectory);
             System.IO.FileInfo[] files = d.GetFiles("*.sbc");
             foreach (System.IO.FileInfo file in files)
             {
@@ -89,15 +98,26 @@ namespace GTTServerBackend
                     }
 
                 }
-            }*/
+            }
+
+            File.WriteAllText(@"C:\temp\logfile.txt", _taskList.Count.ToString());
+            _isDeserialized = true;
         }
 
-        public TaskItem AddTask(string brief, string summary, string assignedUser)
+        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate)
         {
-            TaskItem task = CreateTask(brief, summary, assignedUser);
+            TaskItem task = CreateTask(brief, summary, assignedUser, reviewer, dueDate);
             _taskList.Add(task);
             Console.WriteLine("Task added");
-            /*
+//            Serialize();
+            
+
+            Console.WriteLine("Task Added : \nBrief : " + brief + "\nAssignee : " + assignedUser);
+            return task;
+        }
+
+        private void Serialize()
+        {
             var settings = new System.Xml.XmlWriterSettings { Indent = true };
             foreach (TaskItem document in _taskList)
             {
@@ -112,14 +132,9 @@ namespace GTTServerBackend
                         writer.Close();
                     }
                 }
-            }*/
-
-
-
-
-            Console.WriteLine("Task Added : \nBrief : " + brief + "\nAssignee : " + assignedUser);
-            return task;
+            }
         }
+
         public TaskItem GetTask(int taskID)
         {
             return _taskList.Where(x => x.ID == taskID).FirstOrDefault();
@@ -167,9 +182,9 @@ namespace GTTServerBackend
 
         #region Factory
 
-        private TaskItem CreateTask(string brief, string summary, string assignedUser)
+        private TaskItem CreateTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate)
         {
-            return new TaskItem(brief, summary, assignedUser);
+            return new TaskItem(brief, summary, assignedUser, reviewer, dueDate);
         }
 
 

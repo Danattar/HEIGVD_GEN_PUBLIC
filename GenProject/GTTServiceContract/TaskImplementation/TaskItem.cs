@@ -16,24 +16,30 @@ namespace GTTServiceContract.TaskImplementation
         public string Brief { get; set; }
         public string Summary { get; set; }
         public string Assignee { get; set; }
+        public string Reviewer { get; set; }
+        public DateTime DueDate { get; set; }
 
         public TaskItem()
         {
         }
-        public TaskItem(string brief, string summary, string assignee)
+        public TaskItem(string brief, string summary, string assignee, string reviewer, DateTime dueDate)
         {
             ID = _nextID++;
             Brief = brief;
             Summary = summary;
             Assignee = assignee;
+            Reviewer = reviewer;
+            DueDate = dueDate;
         }
         [JsonConstructor]
-        public TaskItem(int id, string brief, string summary, string assignee)  
+        public TaskItem(int id, string brief, string summary, string assignee, string reviewer, DateTime dueDate)
         {
             ID = id;
             Brief = brief;
             Summary = summary;
             Assignee = assignee;
+            Reviewer = reviewer;
+            DueDate = dueDate;
         }
 
         public XmlSchema GetSchema()

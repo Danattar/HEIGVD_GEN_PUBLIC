@@ -111,6 +111,25 @@ namespace GTTClientFrontend.ViewModels
                 NotifyOfPropertyChange(nameof(Assignee));
             }
         }
+        public string Reviewer
+        {
+            get => _taskBox.Reviewer;
+            set
+            {
+                _taskBox.Reviewer = value;
+                NotifyOfPropertyChange(nameof(Reviewer));
+            }
+        }
+
+        public DateTime DueDate
+        {
+            get => _taskBox.DueDate;
+            set
+            {
+                _taskBox.DueDate = value;
+                NotifyOfPropertyChange(nameof(DueDate));
+            }
+        }
 
         public void TakeTask()
         {

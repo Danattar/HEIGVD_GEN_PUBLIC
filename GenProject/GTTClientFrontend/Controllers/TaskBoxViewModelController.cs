@@ -17,12 +17,12 @@ namespace GTTClientFrontend.Controllers
             _taskService = taskService;
 
         }
-        public async Task<TaskBoxViewModel> GetTaskBoxAsync(string brief, string summary, string assignee)
+        public async Task<TaskBoxViewModel> GetTaskBoxAsync(string brief, string summary, string assignee, string reviewer, DateTime dueDate)
         {
             TaskBoxViewModel taskBoxVM = null;
             try
             {
-                taskBoxVM = await CreateTaskBoxViewModel(await _taskService.GetNewTaskBoxAsync(brief, summary, assignee));
+                taskBoxVM = await CreateTaskBoxViewModel(await _taskService.GetNewTaskBoxAsync(brief, summary, assignee, reviewer, dueDate));
             }
             catch (Exception e)
             {

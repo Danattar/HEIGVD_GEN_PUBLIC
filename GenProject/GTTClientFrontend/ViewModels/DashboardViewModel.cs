@@ -91,7 +91,7 @@ namespace GTTClientFrontend.ViewModels
             {
                 if ((bool)result)
                 {
-                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee);
+                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee, task.Reviewer, task.DueDate);
                     TaskList.Add(t);
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");
                 }

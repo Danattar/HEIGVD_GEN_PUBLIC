@@ -7,7 +7,7 @@ namespace GTTServiceContract.Task
 {
     public interface ITaskManager
     {
-        TaskItem AddTask(string brief, string summary, string assignedUser);
+        TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate);
         TaskItem GetTask(int taskID);
         TaskItem[] GetTaskAssignedToUser(string user);
         void DeleteTask(int taskId);
