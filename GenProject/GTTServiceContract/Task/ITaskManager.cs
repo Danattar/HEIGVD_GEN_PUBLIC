@@ -17,5 +17,6 @@ namespace GTTServiceContract.Task
 
 
         void LoggedInAs(string loginScreenUsername);
+        List<string> GetAllUsers();
     }
 }

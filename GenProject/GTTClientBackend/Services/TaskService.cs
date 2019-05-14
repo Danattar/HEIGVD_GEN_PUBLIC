@@ -153,5 +153,10 @@ namespace GTTClientBackend.Services
         {
             _client.InvokeAsync(x => x.LoggedInAs(loginScreenUsername));
         }
+
+        public Task<List<string>> GetAllUsers()
+        {
+            return _client.InvokeAsync(x => x.GetAllUsers());
+        }
     }
 }
