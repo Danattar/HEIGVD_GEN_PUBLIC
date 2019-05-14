@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Threading;
+using Castle.Core.Internal;
 using GTTClientBackend.Models;
 
 namespace GTTClientFrontend.ViewModels
@@ -10,6 +11,7 @@ namespace GTTClientFrontend.ViewModels
     {
         private string _brief;
         private string _summary;
+        private int _taskID;
         private string _timerLabel = "Start";
         private DispatcherTimer _dispatcherTimer;
         private int _ellapsedTime;
@@ -18,6 +20,7 @@ namespace GTTClientFrontend.ViewModels
         private Visibility _expandedDetailsVisibility = Visibility.Collapsed;
         private TaskBox _taskBox;
         private string _assignee;
+        private string _selectedAssignee;
 
         public string Brief
         {
@@ -37,6 +40,8 @@ namespace GTTClientFrontend.ViewModels
                 NotifyOfPropertyChange(nameof(Summary));
             }
         }
+
+        public int TaskID => _taskBox.ID;
         public string TimerLabel
         {
             get => _timerLabel;
@@ -69,14 +74,31 @@ namespace GTTClientFrontend.ViewModels
             }
         }
 
+        public string SelectedAssignee
+        {
+            get => _selectedAssignee;
+            set
+            {
+                _selectedAssignee = value;
+                if(!value.IsNullOrEmpty())
+                    Assignee = SelectedAssignee;
+                NotifyOfPropertyChange(nameof(SelectedAssignee));
+            }
+        }
+
         public string Assignee
         {
             get => _taskBox.Assignee;
             set
             {
-                _taskBox.Assignee= value;
+                _taskBox.Assignee = value;
                 NotifyOfPropertyChange((nameof(Assignee)));
             }
+        }
+
+        public void TakeTask()
+        {
+            SelectedAssignee = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>().Username;
         }
         public TaskBoxViewModel()
         {
@@ -89,7 +111,7 @@ namespace GTTClientFrontend.ViewModels
             _dispatcherTimer = new DispatcherTimer();
             _dispatcherTimer.Tick += Tick;
             _dispatcherTimer.Interval = _aMinute;
-         }
+        }
 
         public TaskBoxViewModel(TaskBox taskBox)
         {
@@ -121,7 +143,7 @@ namespace GTTClientFrontend.ViewModels
                 ExpandDetails();
                 _quickTask = false;
             }
-            else 
+            else
                 ShowLinkedTasks();
         }
 

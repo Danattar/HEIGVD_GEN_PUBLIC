@@ -37,9 +37,7 @@ namespace GTTClientFrontend.Controllers
 
         private async Task<TaskBoxViewModel> CreateTaskBoxViewModel(TaskBox taskBox)
         {
-            var a = new TaskBoxViewModel(taskBox);
-//            a.Users.AddRange(await _taskService.GetAllUsers());
-            return a;
+            return new TaskBoxViewModel(taskBox);
         }
 
         public void LoggedInAs(string loginScreenUsername)
@@ -50,6 +48,19 @@ namespace GTTClientFrontend.Controllers
         public async Task<List<string>> GetAllUsers()
         {
             return await _taskService.GetAllUsers();
+        }
+
+        public bool UpdateTask(TaskBoxViewModel selectedTask)
+        {
+            try
+            {
+                _taskService.AssignTask(selectedTask.TaskID, selectedTask.Assignee);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

@@ -101,6 +101,7 @@ namespace GTTClientFrontend.ViewModels
         }
         private string _username;
         private int _chatBoxID = 0;
+        private TaskBoxViewModel _selectedTask;
 
         public string Username
         {
@@ -112,5 +113,36 @@ namespace GTTClientFrontend.ViewModels
             }
         }
         public BindableCollection<TaskBoxViewModel> TaskList { get; set; } = new BindableCollection<TaskBoxViewModel>();
+        public TaskBoxViewModel SelectedTask
+        {
+            get => _selectedTask;
+            set
+            {
+                _selectedTask = value;
+                NotifyOfPropertyChange(nameof(SelectedTask));
+            }
+        }
+        public async Task EditSelectedTask()
+        {
+            var a = await _taskBoxController.GetAllUsers();
+            SelectedTask.Users.Clear();
+            SelectedTask.Users.AddRange(a);
+            SelectedTask.SelectedAssignee = SelectedTask.Assignee;
+
+            bool? result = _windowManager.ShowDialog(SelectedTask);
+            if (result.HasValue)
+            {
+                if ((bool)result)
+                {
+                    bool resultUpdate = _taskBoxController.UpdateTask(SelectedTask);
+                    System.Diagnostics.Trace.WriteLine("Result is TRUE");
+                }
+                else
+                {
+                    System.Diagnostics.Trace.WriteLine("Result is FALSE");
+                }
+            }
+        }
+
     }
 }

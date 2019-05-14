@@ -23,6 +23,8 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -54,8 +56,11 @@
                Grid.Column="7" Grid.Row="1"/>
             <Label Content="Assignee" Visibility="{Binding ExpandedDetailsVisibility}"
                    Grid.Column="8" Grid.Row="2"/>
-            <ComboBox SelectedItem="{Binding Assignee}" ItemsSource="{Binding Users}" Visibility="{Binding ExpandedDetailsVisibility}"
+            <ComboBox SelectedItem="{Binding SelectedAssignee}" ItemsSource="{Binding Users}" Visibility="{Binding ExpandedDetailsVisibility}"
                   Grid.Column="9" Grid.Row="2" VerticalAlignment="Top"/>
+            <Button Content="Take" Name="TakeTask" Visibility="{Binding ExpandedDetailsVisibility}"
+                          Grid.Column="10" Grid.Row="2" VerticalAlignment="Top"
+                          />
             <Label Content="Reviewer" Visibility="{Binding ExpandedDetailsVisibility}"
                    Grid.Column="8" Grid.Row="3"/>
             <ComboBox SelectedItem="{Binding Reviewer}" ItemsSource="{Binding Users}" Visibility="{Binding ExpandedDetailsVisibility}"
