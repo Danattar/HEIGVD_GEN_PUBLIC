@@ -17,6 +17,7 @@ namespace GTTClientFrontend.ViewModels
         private bool _quickTask = true;
         private Visibility _expandedDetailsVisibility = Visibility.Collapsed;
         private TaskBox _taskBox;
+        private string _assignee;
 
         public string Brief
         {
@@ -67,8 +68,18 @@ namespace GTTClientFrontend.ViewModels
             }
         }
 
+        public string Assignee
+        {
+            get => _assignee;
+            set
+            {
+                _assignee = value;
+                NotifyOfPropertyChange((nameof(Assignee)));
+            }
+        }
         public TaskBoxViewModel()
         {
+            _taskBox = new TaskBox();
             InitDispatcher();
         }
 
@@ -120,7 +131,7 @@ namespace GTTClientFrontend.ViewModels
 
         private void ShowLinkedTasks()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Reset()

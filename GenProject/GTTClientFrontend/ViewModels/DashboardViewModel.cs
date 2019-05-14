@@ -53,12 +53,14 @@ namespace GTTClientFrontend.ViewModels
 
         public async Task AddTask()
         {
-            Screen task = await _taskBoxController.GetTaskBoxAsync("","","");
+            TaskBoxViewModel task  = new TaskBoxViewModel();
             bool? result = _windowManager.ShowDialog(task);
             if (result.HasValue)
             {
                 if ((bool)result)
                 {
+                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief,task.Summary, task.Assignee);
+                    TaskList.Add(t);
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");
                 }
                 else
@@ -67,5 +69,7 @@ namespace GTTClientFrontend.ViewModels
                 }
             }
         }
+
+        public BindableCollection<TaskBoxViewModel> TaskList { get; set; }= new BindableCollection<TaskBoxViewModel>();
     }
 }

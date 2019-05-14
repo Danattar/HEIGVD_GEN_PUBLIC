@@ -11,6 +11,10 @@ namespace GTTClientBackend.Models
         public string Summary { get; set; }
         public string Assignee { get; set; }
 
+        public TaskBox()
+        {
+            
+        }
         internal TaskBox(int taskID, string brief, string summary, string assignee)
         {
             ID = taskID;
