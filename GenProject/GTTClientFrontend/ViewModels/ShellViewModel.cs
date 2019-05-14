@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using System;
+using Caliburn.Micro;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -14,6 +15,7 @@ namespace GTTClientFrontend.ViewModels
             }
         }
         private Screen _mainScreen;
+    
         public ShellViewModel()
         {
             MainScreen = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>();

@@ -50,7 +50,7 @@ namespace GTTServerBackend
         {
             try
             {
-                _taskList.Where(x => x.ID == taskId).First().AssignedUser = newUser;
+                _taskList.Where(x => x.ID == taskId).First().Assignee = newUser;
 
             }
             catch

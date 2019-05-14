@@ -30,6 +30,15 @@ namespace GTTClientFrontend.ViewModels
             }
         }
 
+        public int ChatBoxID
+        {
+            get => _chatBoxID;
+            set
+            {
+                _chatBoxID = value;
+                NotifyOfPropertyChange(nameof(ChatBoxID));
+            }
+        }
         private readonly ChatBoxViewModelController _chatBoxController;
         private readonly TaskBoxViewModelController _taskBoxController;
         private IWindowManager _windowManager;
@@ -42,6 +51,23 @@ namespace GTTClientFrontend.ViewModels
             //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
             // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
         }
+
+        public bool Login()
+        {
+            LoginViewModel loginScreen = new LoginViewModel();
+            bool? result = _windowManager.ShowDialog(loginScreen);
+            if (result.HasValue)
+            {
+                if ((bool)result)
+                {
+                    Username = loginScreen.Username;
+                    return true;
+                }
+            }
+            Username = "Anonymous";
+            return false;
+        }
+
         public async void AddChatBox()
         {
             ChatBox1 = await _chatBoxController.GetChatBoxAsync();
@@ -53,13 +79,13 @@ namespace GTTClientFrontend.ViewModels
 
         public async Task AddTask()
         {
-            TaskBoxViewModel task  = new TaskBoxViewModel();
+            TaskBoxViewModel task = new TaskBoxViewModel();
             bool? result = _windowManager.ShowDialog(task);
             if (result.HasValue)
             {
                 if ((bool)result)
                 {
-                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief,task.Summary, task.Assignee);
+                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee);
                     TaskList.Add(t);
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");
                 }
@@ -69,7 +95,18 @@ namespace GTTClientFrontend.ViewModels
                 }
             }
         }
+        private string _username;
+        private int _chatBoxID = 0;
 
-        public BindableCollection<TaskBoxViewModel> TaskList { get; set; }= new BindableCollection<TaskBoxViewModel>();
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                NotifyOfPropertyChange(nameof(Username));
+            }
+        }
+        public BindableCollection<TaskBoxViewModel> TaskList { get; set; } = new BindableCollection<TaskBoxViewModel>();
     }
 }

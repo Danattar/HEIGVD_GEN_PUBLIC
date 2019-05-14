@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Views\CommentItemView.xaml" />
+    <None Remove="Views\LoginView.xaml" />
     <None Remove="Views\TaskBoxView.xaml" />
   </ItemGroup>
 
