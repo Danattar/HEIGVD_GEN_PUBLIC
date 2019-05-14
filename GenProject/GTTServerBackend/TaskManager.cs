@@ -14,10 +14,80 @@ namespace GTTServerBackend
         {
             return true;
         }
+        //todo refacto
+        public static string ProgramsDirectory
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(_programsDirectory))
+                {
+                    _programsDirectory = System.IO.Path.Combine(SmartVisionDirectory, "Programs");
+                    if (!System.IO.Directory.Exists(_programsDirectory))
+                    {
+                        System.IO.Directory.CreateDirectory(_programsDirectory);
+                    }
+                }
+                return _programsDirectory;
+            }
+        }
+        private static string _programsDirectory;
+        public static string SmartVisionDirectory
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(_smartVisionDirectory))
+                {
+                    _smartVisionDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SBC", "GTT");
+                    if (!System.IO.Directory.Exists(_smartVisionDirectory))
+                    {
+                        System.IO.Directory.CreateDirectory(_smartVisionDirectory);
+                    }
+                }
+                return _smartVisionDirectory;
+            }
+        }
+        private static string _smartVisionDirectory;
 
         public TaskManager()
         {
-            Console.WriteLine("w");
+          /*  var d = new System.IO.DirectoryInfo(_programsDirectory);
+            System.IO.FileInfo[] files = d.GetFiles("*.sbc");
+            foreach (System.IO.FileInfo file in files)
+            {
+                var str = _programsDirectory + @"\" + file.Name;
+
+                using (System.Xml.XmlReader reader = System.Xml.XmlReader.Create(str))
+                {
+                    try
+                    {
+                        while (reader.Read())
+                        {
+                            switch (reader.NodeType)
+                            {
+                                case System.Xml.XmlNodeType.Element:
+                                    if (reader.Name == "TaskItem")
+                                    {
+                                        TaskItem document = new TaskItem();
+                                        document.ReadXml(reader);
+                                        _taskList.Add(document);
+                                    }
+                                    break;
+                                case System.Xml.XmlNodeType.EndElement:
+                                    if (reader.Name == "TaskItem")
+                                    {
+                                        return;
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        reader.Close();
+                    }
+
+                }
+            }*/
         }
 
         public TaskItem AddTask(string brief, string summary, string assignedUser)
@@ -25,6 +95,26 @@ namespace GTTServerBackend
             TaskItem task = CreateTask(brief, summary, assignedUser);
             _taskList.Add(task);
             Console.WriteLine("Task added");
+            /*
+            var settings = new System.Xml.XmlWriterSettings { Indent = true };
+            foreach (TaskItem document in _taskList)
+            {
+                using (System.Xml.XmlWriter writer = System.Xml.XmlWriter.Create(_programsDirectory + @"\" + "test" + ".sbc", settings))
+                {
+                    try
+                    {
+                        document.WriteXml(writer);
+                    }
+                    finally
+                    {
+                        writer.Close();
+                    }
+                }
+            }*/
+
+
+
+
             return task;
         }
         public TaskItem GetTask(int taskID)
