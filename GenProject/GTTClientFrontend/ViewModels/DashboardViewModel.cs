@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
 using GTTClientFrontend.Controllers;
+using GTTServiceContract.Task;
+
 namespace GTTClientFrontend.ViewModels
 {
     public class DashboardViewModel : Screen
@@ -36,7 +38,7 @@ namespace GTTClientFrontend.ViewModels
             get => _requestedChatBoxID;
             set
             {
-                _requestedChatBoxID= value;
+                _requestedChatBoxID = value;
                 NotifyOfPropertyChange(nameof(RequestedChatBoxID));
             }
         }
@@ -74,6 +76,12 @@ namespace GTTClientFrontend.ViewModels
                     _taskBoxController.LoggedInAs(loginScreen.Username);
                     TaskList.Clear();
                     TaskList.AddRange(await _taskBoxController.GetTaskBoxListForUser(Username));
+                    OtherTaskList.Clear();
+                    BugTaskList.Clear();
+                    foreach (TaskBoxViewModel t in TaskList)
+                    {
+                        AddTaskBoxViewModelToLists(t);
+                    }
                     return true;
                 }
             }
@@ -99,7 +107,7 @@ namespace GTTClientFrontend.ViewModels
             RequestedChatBoxID = string.Empty;
         }
 
-        
+
 
         public void Zoom()
         {
@@ -119,6 +127,8 @@ namespace GTTClientFrontend.ViewModels
                 {
                     TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee, task.Reviewer, task.DueDate, task.SelectedTaskType);
                     TaskList.Add(t);
+                    AddTaskBoxViewModelToLists(t);
+
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");
                 }
                 else
@@ -127,6 +137,26 @@ namespace GTTClientFrontend.ViewModels
                 }
             }
         }
+
+        private void AddTaskBoxViewModelToLists(TaskBoxViewModel t)
+        {
+            switch (t.SelectedTaskType)
+            {
+                case TaskType.Task:
+                    OtherTaskList.Add(t);
+                    break;
+                case TaskType.Bug:
+                    BugTaskList.Add(t);
+                    break;
+                default:
+                    throw new NotImplementedException("Use of a not implemented TaskType");
+            }
+        }
+
+        public BindableCollection<TaskBoxViewModel> BugTaskList { get; set; } = new BindableCollection<TaskBoxViewModel>();
+
+        public BindableCollection<TaskBoxViewModel> OtherTaskList { get; set; } = new BindableCollection<TaskBoxViewModel>();
+
         private string _username;
         private int _chatBoxID = 0;
         private TaskBoxViewModel _selectedTask;
@@ -158,6 +188,7 @@ namespace GTTClientFrontend.ViewModels
             SelectedTask.Users.AddRange(a);
             SelectedTask.SelectedAssignee = SelectedTask.Assignee;
             SelectedTask.ExpandedDetailsVisibility = Visibility.Visible;
+            int selectedTaskID = SelectedTask.TaskID;
 
             bool? result = _windowManager.ShowDialog(SelectedTask);
             if (result.HasValue)
@@ -165,6 +196,25 @@ namespace GTTClientFrontend.ViewModels
                 if ((bool)result)
                 {
                     bool resultUpdate = _taskBoxController.UpdateTask(SelectedTask);
+                    if (SelectedTask.PreviousSelectedTaskType != SelectedTask.SelectedTaskType)
+                    {
+                        switch (SelectedTask.SelectedTaskType)
+                        {
+                            case TaskType.Task:
+//                                BugTaskList.Remove(BugTaskList.Select(x => x.TaskID == selectedTaskID).ToList().First()());
+                                OtherTaskList.Add(SelectedTask);
+                                BugTaskList.Remove(SelectedTask);
+                                break;
+                            case TaskType.Bug:
+                                BugTaskList.Add(SelectedTask);
+                                OtherTaskList.Remove(SelectedTask);
+                                break;
+                            default:
+                                throw new NotImplementedException("Use of a not implemented TaskType");
+
+                        }
+                    }
+
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");
                 }
                 else

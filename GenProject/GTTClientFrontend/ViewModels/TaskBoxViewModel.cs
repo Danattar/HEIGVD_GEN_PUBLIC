@@ -24,7 +24,7 @@ namespace GTTClientFrontend.ViewModels
         private readonly TaskBox _taskBox;
         private int _taskID;
         private string _timerLabel = "Start";
-
+        public TaskType PreviousSelectedTaskType { get; set; }
         public TaskBoxViewModel()
         {
                 TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
@@ -215,6 +215,7 @@ namespace GTTClientFrontend.ViewModels
                 get => _taskBox.TaskType;
                 set
                 {
+                    PreviousSelectedTaskType = SelectedTaskType;
                     _taskBox.TaskType = value;
                 }
             }
