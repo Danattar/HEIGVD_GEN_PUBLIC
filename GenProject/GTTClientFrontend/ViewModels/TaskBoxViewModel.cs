@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 using Caliburn.Micro;
 using Castle.Core.Internal;
 using GTTClientBackend.Models;
+using GTTServiceContract.Task;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -24,12 +27,14 @@ namespace GTTClientFrontend.ViewModels
 
         public TaskBoxViewModel()
         {
+                TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
             _taskBox = new TaskBox();
             InitDispatcher();
         }
 
         public TaskBoxViewModel(TaskBox taskBox)
         {
+                TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
             _taskBox = taskBox;
             InitDispatcher();
         }
@@ -56,6 +61,7 @@ namespace GTTClientFrontend.ViewModels
         }
 
         public int TaskID => _taskBox.ID;
+
 
         public string TimerLabel
         {
@@ -200,5 +206,20 @@ namespace GTTClientFrontend.ViewModels
         {
             ++EllapsedTime;
         }
+        #region ManageTaskTypeEnumCombobox
+
+            private TaskType _selectedTaskType;
+
+            public TaskType SelectedTaskType
+            {
+                get => _taskBox.TaskType;
+                set
+                {
+                    _taskBox.TaskType = value;
+                }
+            }
+
+            public IReadOnlyList<TaskType> TaskType { get; }
+        #endregion
     }
 }

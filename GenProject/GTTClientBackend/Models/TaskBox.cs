@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GTTServiceContract.Task;
 
 namespace GTTClientBackend.Models
 {
@@ -12,12 +13,13 @@ namespace GTTClientBackend.Models
         public string Assignee { get; set; }
         public DateTime DueDate { get; set; } = DateTime.Today.AddDays(1);
         public string Reviewer { get; set; }
+        public TaskType TaskType { get; set; }
 
         public TaskBox()
         {
             
         }
-        internal TaskBox(int taskID, string brief, string summary, string assignee, string reviewer, DateTime dueDate)
+        internal TaskBox(int taskID, string brief, string summary, string assignee, string reviewer, DateTime dueDate, TaskType taskType)
         {
             ID = taskID;
             Brief = brief;
@@ -25,6 +27,7 @@ namespace GTTClientBackend.Models
             Assignee = assignee;
             Reviewer = reviewer;
             DueDate = dueDate;
+            TaskType = taskType;
         }
     }
 }

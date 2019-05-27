@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
@@ -7,19 +8,19 @@ namespace GTTClientFrontend.ViewModels
 {
     public class DashboardViewModel : Screen
     {
-        private ChatBoxViewModel _chatBox1;
+        private ChatBoxViewModel _displayedChatBox;
         private double _zoomLevel = 1.2;
 
-        public ChatBoxViewModel ChatBox1
+        public ChatBoxViewModel DisplayedChatBox
         {
-            get => _chatBox1;
+            get => _displayedChatBox;
             set
             {
-                _chatBox1 = value;
-                NotifyOfPropertyChange(nameof(ChatBox1));
+                _displayedChatBox = value;
+                NotifyOfPropertyChange(nameof(DisplayedChatBox));
             }
         }
-        public ChatBoxViewModel ChatBox2 { get; }
+        public BindableCollection<ChatBoxViewModel> ChatBoxList { get; set; } = new BindableCollection<ChatBoxViewModel>();
         public double ZoomLevel
         {
             get => _zoomLevel;
@@ -58,7 +59,7 @@ namespace GTTClientFrontend.ViewModels
             _taskBoxController = taskBoxCtl;
             _windowManager = windowManager;
             //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
-            // ChatBox2 = chatBoxCtl.GetChatBox(ChatBox1.RoomID); //TODO call this async
+            // ChatBox2 = chatBoxCtl.GetChatBox(DisplayedChatBox.RoomID); //TODO call this async
         }
 
         public async Task<bool> Login()
@@ -84,14 +85,22 @@ namespace GTTClientFrontend.ViewModels
         {
             if (String.IsNullOrEmpty(RequestedChatBoxID))
             {
-                ChatBox1 = await _chatBoxController.GetChatBoxAsync();
+                DisplayedChatBox = await _chatBoxController.GetChatBoxAsync();
             }
             else
             {
-                ChatBox1 = await _chatBoxController.GetChatBoxAsync(RequestedChatBoxID);
+                DisplayedChatBox = await _chatBoxController.GetChatBoxAsync(RequestedChatBoxID);
+            }
+
+            if (ChatBoxList.Count(x => x.RoomID == DisplayedChatBox.RoomID) <= 0)
+            {
+                ChatBoxList.Add(DisplayedChatBox);
             }
             RequestedChatBoxID = string.Empty;
         }
+
+        
+
         public void Zoom()
         {
             ZoomLevel = ZoomLevel < 1.5 ? 1.5 : 1;
@@ -108,7 +117,7 @@ namespace GTTClientFrontend.ViewModels
             {
                 if ((bool)result)
                 {
-                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee, task.Reviewer, task.DueDate);
+                    TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee, task.Reviewer, task.DueDate, task.SelectedTaskType);
                     TaskList.Add(t);
                     System.Diagnostics.Trace.WriteLine("Result is TRUE");
                 }

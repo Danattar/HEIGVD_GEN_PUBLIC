@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
@@ -18,11 +19,12 @@ namespace GTTServiceContract.TaskImplementation
         public string Assignee { get; set; }
         public string Reviewer { get; set; }
         public DateTime DueDate { get; set; }
+        public TaskType TaskType { get; set; }
 
         public TaskItem()
         {
         }
-        public TaskItem(string brief, string summary, string assignee, string reviewer, DateTime dueDate)
+        public TaskItem(string brief, string summary, string assignee, string reviewer, DateTime dueDate, TaskType taskType)
         {
             ID = _nextID++;
             Brief = brief;
@@ -30,9 +32,10 @@ namespace GTTServiceContract.TaskImplementation
             Assignee = assignee;
             Reviewer = reviewer;
             DueDate = dueDate;
+            TaskType = taskType;
         }
         [JsonConstructor]
-        public TaskItem(int id, string brief, string summary, string assignee, string reviewer, DateTime dueDate)
+        public TaskItem(int id, string brief, string summary, string assignee, string reviewer, DateTime dueDate, TaskType taskType)
         {
             ID = id;
             Brief = brief;
@@ -40,6 +43,7 @@ namespace GTTServiceContract.TaskImplementation
             Assignee = assignee;
             Reviewer = reviewer;
             DueDate = dueDate;
+            TaskType = taskType;
         }
 
         public XmlSchema GetSchema()
@@ -62,6 +66,9 @@ namespace GTTServiceContract.TaskImplementation
             writer.WriteAttributeString("Brief", Brief);
             writer.WriteAttributeString("Summary", Summary);
             writer.WriteAttributeString("Assignee", Assignee);
+            writer.WriteAttributeString("Reviewer", Reviewer);
+            writer.WriteAttributeString("DueDate", DueDate.ToString(CultureInfo.InvariantCulture)); //TODO serialize correctly to enable deserialize
+            writer.WriteAttributeString("TaskType", TaskType.ToString());
             writer.WriteFullEndElement();
         }
     }

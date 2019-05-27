@@ -104,9 +104,9 @@ namespace GTTServerBackend
             _isDeserialized = true;
         }
 
-        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate)
+        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate, TaskType taskType)
         {
-            TaskItem task = CreateTask(brief, summary, assignedUser, reviewer, dueDate);
+            TaskItem task = CreateTask(brief, summary, assignedUser, reviewer, dueDate, taskType);
             _taskList.Add(task);
             Console.WriteLine("Task added");
 //            Serialize();
@@ -182,9 +182,9 @@ namespace GTTServerBackend
 
         #region Factory
 
-        private TaskItem CreateTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate)
+        private TaskItem CreateTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate, TaskType taskType)
         {
-            return new TaskItem(brief, summary, assignedUser, reviewer, dueDate);
+            return new TaskItem(brief, summary, assignedUser, reviewer, dueDate, taskType);
         }
 
 

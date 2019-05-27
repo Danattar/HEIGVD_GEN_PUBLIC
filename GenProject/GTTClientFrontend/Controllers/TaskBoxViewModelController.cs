@@ -5,6 +5,7 @@ using System.Windows.Media.Animation;
 using GTTClientBackend.Models;
 using GTTClientFrontend.ViewModels;
 using GTTClientBackend.Services;
+using GTTServiceContract.Task;
 
 namespace GTTClientFrontend.Controllers
 {
@@ -17,12 +18,13 @@ namespace GTTClientFrontend.Controllers
             _taskService = taskService;
 
         }
-        public async Task<TaskBoxViewModel> GetTaskBoxAsync(string brief, string summary, string assignee, string reviewer, DateTime dueDate)
+        public async Task<TaskBoxViewModel> GetTaskBoxAsync(string brief, string summary, string assignee,
+            string reviewer, DateTime dueDate, TaskType taskSelectedTaskType)
         {
             TaskBoxViewModel taskBoxVM = null;
             try
             {
-                taskBoxVM = await CreateTaskBoxViewModel(await _taskService.GetNewTaskBoxAsync(brief, summary, assignee, reviewer, dueDate));
+                taskBoxVM = await CreateTaskBoxViewModel(await _taskService.GetNewTaskBoxAsync(brief, summary, assignee, reviewer, dueDate, taskSelectedTaskType));
             }
             catch (Exception e)
             {
