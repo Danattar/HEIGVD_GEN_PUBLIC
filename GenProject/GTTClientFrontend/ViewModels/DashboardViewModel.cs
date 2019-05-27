@@ -5,6 +5,7 @@ using System.Windows;
 using Caliburn.Micro;
 using GTTClientFrontend.Controllers;
 using GTTServiceContract.Task;
+using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientFrontend.ViewModels
 {

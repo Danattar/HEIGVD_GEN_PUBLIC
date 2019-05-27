@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using GTTServiceContract.Task;
+using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientBackend.Models
 {

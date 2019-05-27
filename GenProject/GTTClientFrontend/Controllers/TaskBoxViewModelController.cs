@@ -6,6 +6,7 @@ using GTTClientBackend.Models;
 using GTTClientFrontend.ViewModels;
 using GTTClientBackend.Services;
 using GTTServiceContract.Task;
+using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientFrontend.Controllers
 {

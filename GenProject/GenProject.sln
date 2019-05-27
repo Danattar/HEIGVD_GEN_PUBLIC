@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTTServiceContract", "GTTSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTTClientBackendTest", "GTTClientBackendTest\GTTClientBackendTest.csproj", "{5654F809-1866-4EB6-9EB8-07319A4C906E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBCHelpersCore", "SBCHelpersCore\SBCHelpersCore.csproj", "{38A639AC-0DB1-40F8-AE62-ED0245E3C508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SBCHelpersCore", "SBCHelpersCore\SBCHelpersCore.csproj", "{38A639AC-0DB1-40F8-AE62-ED0245E3C508}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTTServerBackendTest", "GTTServerBackendTest\GTTServerBackendTest.csproj", "{7D5ADC42-5B51-44AC-B235-5D9F141F7EC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{38A639AC-0DB1-40F8-AE62-ED0245E3C508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38A639AC-0DB1-40F8-AE62-ED0245E3C508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38A639AC-0DB1-40F8-AE62-ED0245E3C508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5ADC42-5B51-44AC-B235-5D9F141F7EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5ADC42-5B51-44AC-B235-5D9F141F7EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5ADC42-5B51-44AC-B235-5D9F141F7EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5ADC42-5B51-44AC-B235-5D9F141F7EC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

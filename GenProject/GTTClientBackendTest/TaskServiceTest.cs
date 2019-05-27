@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GTTServiceContract.Task;
 using GTTClientBackend.Services;
 using GTTClientBackend.Models;
+using GTTServiceContract.TaskImplementation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GTTClientBackendTest

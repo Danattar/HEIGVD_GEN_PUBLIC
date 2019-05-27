@@ -7,6 +7,7 @@ using Caliburn.Micro;
 using Castle.Core.Internal;
 using GTTClientBackend.Models;
 using GTTServiceContract.Task;
+using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientFrontend.ViewModels
 {
