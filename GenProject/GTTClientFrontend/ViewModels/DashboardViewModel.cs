@@ -30,6 +30,15 @@ namespace GTTClientFrontend.ViewModels
             }
         }
 
+        public string RequestedChatBoxID
+        {
+            get => _requestedChatBoxID;
+            set
+            {
+                _requestedChatBoxID= value;
+                NotifyOfPropertyChange(nameof(RequestedChatBoxID));
+            }
+        }
         public int ChatBoxID
         {
             get => _chatBoxID;
@@ -73,7 +82,15 @@ namespace GTTClientFrontend.ViewModels
 
         public async void AddChatBox()
         {
-            ChatBox1 = await _chatBoxController.GetChatBoxAsync();
+            if (String.IsNullOrEmpty(RequestedChatBoxID))
+            {
+                ChatBox1 = await _chatBoxController.GetChatBoxAsync();
+            }
+            else
+            {
+                ChatBox1 = await _chatBoxController.GetChatBoxAsync(RequestedChatBoxID);
+            }
+            RequestedChatBoxID = string.Empty;
         }
         public void Zoom()
         {
@@ -104,6 +121,7 @@ namespace GTTClientFrontend.ViewModels
         private string _username;
         private int _chatBoxID = 0;
         private TaskBoxViewModel _selectedTask;
+        private string _requestedChatBoxID;
 
         public string Username
         {

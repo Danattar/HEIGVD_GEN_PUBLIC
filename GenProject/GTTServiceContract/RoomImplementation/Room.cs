@@ -12,15 +12,13 @@ namespace GTTServiceContract.RoomImplementation
 {
     public class Room  : IRoom, IXmlSerializable
     {
-        private static int _nextID = 1;
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string Name { get; set; }
         public List<IRoomMessage> RoomMessageList { get; } = new List<IRoomMessage>();
 
-        public Room()
+        public Room(string id)
         {
-            ID = _nextID++;
-//            AddMessage(new RoomMessage("GTT", "Welcome to your new Room"));
+            ID = id;
         }
 
         public void AddMessage(IRoomMessage chatboxMessage)
@@ -36,7 +34,7 @@ namespace GTTServiceContract.RoomImplementation
 
         public void ReadXml(XmlReader reader)
         {
-            ID = Int32.Parse(reader.GetAttribute("ID"));
+            ID = reader.GetAttribute("ID");
             Name = reader.GetAttribute("Name");
             while (reader.Read())
             {
@@ -61,7 +59,7 @@ namespace GTTServiceContract.RoomImplementation
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteStartElement("Room");
-            writer.WriteAttributeString("Id", ID.ToString());
+            writer.WriteAttributeString("Id", ID);
             writer.WriteAttributeString("Name", Name);
             foreach (IRoomMessage message in RoomMessageList)
             {

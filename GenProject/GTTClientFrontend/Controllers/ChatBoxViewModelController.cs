@@ -37,10 +37,22 @@ namespace GTTClientFrontend.Controllers
             }
             return chatBoxVM;
         }
-        public async Task<ChatBoxViewModel> GetChatBoxAsync(int idRoom)
+        public async Task<ChatBoxViewModel> GetChatBoxAsync(string roomId)
         {
-            ChatBoxViewModel chatBoxVM = CreateChatboxViewModel(await _chatBoxService.GetChatBoxAsync(idRoom));
-            _chatBoxViewModelList.Add(chatBoxVM);
+             ChatBoxViewModel chatBoxVM = null;
+            try
+            {
+                chatBoxVM = CreateChatboxViewModel(await _chatBoxService.GetNewChatBoxAsync(roomId));
+                _chatBoxViewModelList.Add(chatBoxVM);
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show("An error occured while retrieving a new ChatBox "
+                                               + Environment.NewLine + "Message : " + e.Message
+                                               + Environment.NewLine + "Stack Trace : " + e.StackTrace
+                                               + Environment.NewLine + "Inner Exception : " + e.InnerException
+                );
+            }
             return chatBoxVM;
         }
 
@@ -50,7 +62,7 @@ namespace GTTClientFrontend.Controllers
                 .ForEach(y => y.MessageList.Add(CreateChatBoxMessageViewModel(chatBoxMessage)));
         }
 
-        private void SendMessage(int roomID, string message)
+        private void SendMessage(string roomID, string message)
         {
             _chatBoxService.AddMessage(roomID, System.Security.Principal.WindowsIdentity.GetCurrent().Name, message);
         }

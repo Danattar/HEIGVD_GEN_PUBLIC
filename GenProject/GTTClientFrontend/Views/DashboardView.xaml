@@ -20,10 +20,8 @@
         <ListView DockPanel.Dock="Left" MinWidth="200" ItemsSource="{Binding TaskList}" SelectedItem="{Binding SelectedTask}" DisplayMemberPath="Brief"/>
         <Button Content="Edit Task" Name="EditSelectedTask"/>
         <Button Content="GetChatBox" Name="AddChatBox" VerticalAlignment="Top"/>
-<!--        <TextBox Name="ChatBoxID"/>-->
+        <TextBox Name="RequestedChatBoxID" Style="{StaticResource PlaceHolder}" Tag="10"/>
         <ContentControl Name="ChatBox1" DockPanel.Dock="Left"
-                        Margin="10" MinWidth="300" />
-        <ContentControl Name="ChatBox2" DockPanel.Dock="Right"
                         Margin="10" MinWidth="300" />
     </DockPanel>
 </UserControl>

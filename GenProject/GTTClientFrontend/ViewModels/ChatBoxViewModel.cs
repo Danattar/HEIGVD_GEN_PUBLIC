@@ -8,7 +8,7 @@ namespace GTTClientFrontend.ViewModels
     {
         public BindableCollection<ChatBoxMessageViewModel> MessageList { get; } = new BindableCollection<ChatBoxMessageViewModel>();
 
-        public int RoomID => Chatbox.ID;
+        public string RoomID => Chatbox.ID;
         public string Name
         {
             get => Chatbox.Name;
@@ -40,6 +40,6 @@ namespace GTTClientFrontend.ViewModels
             NewMessage?.Invoke(RoomID, MessageBox);
             MessageBox = string.Empty;
         }
-        public event Action<int, string> NewMessage; 
+        public event Action<string, string> NewMessage; 
     }
 }
