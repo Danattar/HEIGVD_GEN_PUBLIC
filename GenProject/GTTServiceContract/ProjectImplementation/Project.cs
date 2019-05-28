@@ -9,7 +9,10 @@ namespace GTTServiceContract.ProjectImplementation
         public string ID { get; set; }
 
         public string ProjectName { get; set; }
-         public Project(string id, string projectName)
+        public List<string> TaskList { get; set; } = new List<string>();
+        public List<string> RoomList { get; set; } = new List<string>();
+
+        public Project(string id, string projectName)
         {
             ID = id;
             ProjectName = projectName;

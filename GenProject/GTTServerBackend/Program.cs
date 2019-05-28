@@ -1,5 +1,6 @@
 ﻿using GTTServiceContract.Room;
 using GTTServiceContract.Task;
+using GTTServiceContract.Project;
 using JKang.IpcServiceFramework;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,8 +19,10 @@ namespace GTTServerBackend
             new IpcServiceHostBuilder(services.BuildServiceProvider())
                 .AddNamedPipeEndpoint<IRoomManager>(name: "endpoint1", pipeName: "pipeName")
                 .AddNamedPipeEndpoint<ITaskManager>(name: "endpoint3", pipeName: "pipeName2")
+                .AddNamedPipeEndpoint<IProjectManager>(name: "endpoint5", pipeName: "pipeName3")
                 .AddTcpEndpoint<IRoomManager>(name: "endpoint2", ipEndpoint: serverIP, port: 45684)
                 .AddTcpEndpoint<ITaskManager>(name: "endpoint4", ipEndpoint: serverIP, port: 45685)
+                .AddTcpEndpoint<IProjectManager>(name: "endpoint6", ipEndpoint: serverIP, port: 45686)
                 .Build()
                 .Run();
 

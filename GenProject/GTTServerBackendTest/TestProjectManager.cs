@@ -9,21 +9,43 @@ namespace GTTServerBackendTest
     [TestClass]
     public class TestProjectManager
     {
+        private ProjectManager _pm;
         [TestInitialize]
         public void setUp()
         {
-    
+            _pm = new ProjectManager();
+
         }
-       [TestMethod]
+        [TestMethod]
         public void TestCreateNewProject()
         {
-            ProjectManager pm = new ProjectManager();
-            Project p = pm.GetProject("GEN");
+            Project p = _pm.GetProject("GEN");
             Assert.AreEqual(p.ProjectName, "School-GEN");
         }
+
+        [TestMethod]
+        public void LinkTaskToProject()
+        {
+            bool result = _pm.LinkTaskToProject("100", "GEN");
+            Assert.AreEqual(true, result);
+        }
+        [TestMethod]
+        public void LinkRoomToProject()
+        {
+            bool result = _pm.LinkRoomToProject("GEN", "GEN");
+            Assert.AreEqual(true, result);
+        }
+
+        [TestMethod]
+        public void CreateProject()
+        {
+            Project result = _pm.AddProject("SBC", "SBC Default Project");
+            Assert.AreEqual("SBC", result.ID);
+        }
+
         [TestCleanup]
         public void tearDown()
         {
         }
-     }
+    }
 }
