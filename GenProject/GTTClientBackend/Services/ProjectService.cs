@@ -65,5 +65,10 @@ namespace GTTClientBackend.Services
         {
             return await _client.InvokeAsync(x => x.GetProjectByTask(taskId));
         }
+
+        public async Task<bool> LinkRoomToProject(string roomId, string projectId)
+        {
+            return await _client.InvokeAsync(x => x.LinkRoomToProject(roomId, projectId));
+        }
     }
 }

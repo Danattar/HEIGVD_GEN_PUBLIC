@@ -27,7 +27,6 @@ namespace GTTClientFrontend.ViewModels
         private readonly TaskBox _taskBox;
         private int _taskID;
         private string _timerLabel = "Start";
-        private string _selectedProject;
         public TaskType PreviousSelectedTaskType { get; set; }
         public TaskBoxViewModel()
         {
@@ -66,7 +65,6 @@ namespace GTTClientFrontend.ViewModels
 
         public int TaskID => _taskBox.ID;
 
-
         public string TimerLabel
         {
             get => _timerLabel;
@@ -92,10 +90,10 @@ namespace GTTClientFrontend.ViewModels
 
         public string SelectedProject
         {
-            get => _selectedProject;
+            get => _taskBox.SelectedProject;
             set
             {
-                _selectedProject = value;
+                _taskBox.SelectedProject = value;
                 AppBootstrapper.ContainerInstance.GetInstance<ProjectService>().LinkTaskToProject(TaskID.ToString(), value);
             }
         }
