@@ -28,6 +28,7 @@ namespace GTTServerBackend
             Room room = (Room)GetRoom(roomID);
             room.AddMessage(roomMessage);
             MessageAdded?.Invoke(room, roomMessage);
+            Console.WriteLine("Message added in RoomID : " + room.ID + " \n   Author : " + roomMessage.Author + " \n   Message : " + roomMessage.Message);
         }
 
         public Room AddRoom()
@@ -53,6 +54,7 @@ namespace GTTServerBackend
                 roomId += "1";
             }
             Room room = CreateRoom(roomId);
+            //todo: put below line in a method and lock it (concurential access)
             _roomList.Add(room.ID, room);
             Console.WriteLine("Room added\n   RoomID : " + _roomList[roomId].ID);
             return room;

@@ -64,7 +64,13 @@ namespace GTTClientFrontend.Controllers
 
         private void SendMessage(string roomID, string message)
         {
-            _chatBoxService.AddMessage(roomID, System.Security.Principal.WindowsIdentity.GetCurrent().Name, message);
+            //todo: put below in appservice
+            string author = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>().Username;
+            if(String.IsNullOrEmpty(author) || author == "Anonymous")
+            {
+                author = "Anonymous (" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + ")";
+            }
+            _chatBoxService.AddMessage(roomID, author, message);
         }
 
         #region Factory
