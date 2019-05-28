@@ -9,8 +9,8 @@ namespace GTTServiceContract.Room
     {
         bool IsConnected();
         RoomImplementation.Room AddRoom();
-        RoomImplementation.Room GetRoom(int roomID);
-        void AddRoomMessage(int roomID, string author, string message);
+        RoomImplementation.Room GetRoom(string roomID);
+        void AddRoomMessage(string roomID, string author, string message);
 
 
     }

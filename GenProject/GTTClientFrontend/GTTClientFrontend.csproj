@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\CommentItemView.xaml" />
+    <None Remove="Views\LoginView.xaml" />
     <None Remove="Views\TaskBoxView.xaml" />
   </ItemGroup>
 
@@ -24,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\CommentItemView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\TaskBoxView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

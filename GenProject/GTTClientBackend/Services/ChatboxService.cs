@@ -35,23 +35,23 @@ namespace GTTClientBackend.Services
 
         private void ConnectToServer()
         {
-            /*_client = new IpcServiceClientBuilder<IRoomManager>()
+            _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-            */
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
+            
+/*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseTcp(serverIP, 45684)
                 .Build();
-            //            192.168.0.248
+ */           //            192.168.0.248
         }
 
-        public void AddMessage(int roomID, string author, string message)
+        public void AddMessage(string roomID, string author, string message)
         {
             //            _chatboxManager.AddRoomMessage(roomID, author, message);
             _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
         }
-        public async Task<ChatBox> GetChatBoxAsync(int roomID)
+        public async Task<ChatBox> GetChatBoxAsync(string roomID)
         {
             IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
             //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
@@ -76,6 +76,24 @@ namespace GTTClientBackend.Services
             // return new ChatBox(10);
             // return AddChatBox(_chatboxManager.AddRoom());
         }
+
+
+
+        public async Task<ChatBox> GetNewChatBoxAsync(string roomId)
+        {
+            IRoom room;
+            try
+            {
+                room = await _client.InvokeAsync(x => x.GetRoom(roomId));
+            }
+            catch (Exception e)
+            {
+                throw new Exception("An error occured while retrieving an existing Room", e);
+            }
+
+            return AddChatBox(room);
+        }
+ 
 
         private async void AddMessage(IRoom room, IRoomMessage roomMessage)
         {
@@ -125,7 +143,7 @@ namespace GTTClientBackend.Services
         {
             while (!_clientService.CancellationPending)
             {
-                System.Diagnostics.Trace.WriteLine("service running");
+//                System.Diagnostics.Trace.WriteLine("service running");
                 Thread.Sleep(100);
             }
 
@@ -144,5 +162,6 @@ namespace GTTClientBackend.Services
             _clientService.CancelAsync();
             return true;
         }
-    }
+
+   }
 }

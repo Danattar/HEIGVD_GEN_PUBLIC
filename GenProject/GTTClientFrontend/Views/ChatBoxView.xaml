@@ -14,8 +14,7 @@
         </DockPanel>
         <Border DockPanel.Dock="Bottom" BorderBrush="Black" BorderThickness="2">
             <DockPanel >
-                <Button Name="SendMessage" Content="Send" DockPanel.Dock="Right" IsDefault="True"
-                        Background="#FB3F0E" Foreground="White" FontWeight="DemiBold" Padding="4" />
+                <Button Name="SendMessage" Content="Send" DockPanel.Dock="Right" IsDefault="True"/>
                 <TextBox Name="MessageBox" DockPanel.Dock="Bottom"/>
             </DockPanel>
         </Border>

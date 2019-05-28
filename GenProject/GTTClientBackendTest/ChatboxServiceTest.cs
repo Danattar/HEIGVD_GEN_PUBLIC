@@ -13,20 +13,20 @@ namespace GTTClientBackendTest
         [TestInitialize]
         public void setUp()
         {
-/*             _client = new IpcServiceClientBuilder<IRoomManager>()
+             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-  */          System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
-            _client = new IpcServiceClientBuilder<IRoomManager>()
+            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
+  /*          _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseTcp(serverIP, 45684)
                 .Build();
             Assert.IsNotNull(_client);
-          }
+   */       }
 
         [TestMethod]
         public void testConnection_by_IP__OK()
         {
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
+            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseTcp(serverIP, 45684)
                 .Build();
