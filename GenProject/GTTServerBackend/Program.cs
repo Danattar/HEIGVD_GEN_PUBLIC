@@ -12,6 +12,7 @@ namespace GTTServerBackend
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("New instance of GTTServerBackend Program");
             IServiceCollection services = ConfigureServices(new ServiceCollection());
 
             //            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");

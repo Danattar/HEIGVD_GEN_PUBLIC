@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+//TODO 
 namespace GTTServerBackend
 {
     public class TaskManager : ITaskManager
@@ -56,6 +56,7 @@ namespace GTTServerBackend
         {
             if (!_isDeserialized) { }
     //            Deserialize();
+            Console.WriteLine("New instance of TaskManager");
         }
 
 

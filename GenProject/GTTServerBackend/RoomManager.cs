@@ -14,6 +14,10 @@ namespace GTTServerBackend
         private Random _random;
         private string DEFAULT_ROOM_NUMBER = "1000";
 
+        public RoomManager()
+        {
+                Console.WriteLine("New instance of RoomManager");
+        }
         public bool IsConnected()
         {
             return true;
@@ -28,12 +32,13 @@ namespace GTTServerBackend
 
         public Room AddRoom()
         {
-            return AddRoom(DEFAULT_ROOM_NUMBER);
+            return GetRoom(DEFAULT_ROOM_NUMBER);
         }
 
         public Room GetRoom(string roomID)
         {
             bool r = _roomList.TryGetValue(roomID, out Room room);
+//            Console.WriteLine("Room Getted : " + room.ID + " For roomid : " + roomID);
             if (!r)
             {
                 return AddRoom(roomID);
