@@ -1,6 +1,7 @@
 ﻿using System;
 using Caliburn.Micro;
 using GTTClientBackend.Models;
+using GTTClientBackend.Services;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -29,12 +30,25 @@ namespace GTTClientFrontend.ViewModels
             }
         }
         private string _messageBox;
+        private string _selectedProject;
 
         internal ChatBox Chatbox { get; }
         public ChatBoxViewModel(ChatBox chatBox)
         {
             Chatbox = chatBox;
         }
+        public BindableCollection<string> Project { get; set; } = new BindableCollection<string>();
+
+        public string SelectedProject
+        {
+            get => _selectedProject;
+            set
+            {
+                _selectedProject = value;
+                AppBootstrapper.ContainerInstance.GetInstance<ProjectService>().LinkRoomToProject(RoomID, value);
+            }
+        }
+
         public void SendMessage()
         {
             NewMessage?.Invoke(RoomID, MessageBox);

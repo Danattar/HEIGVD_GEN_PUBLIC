@@ -15,6 +15,7 @@ namespace GTTClientBackend.Models
         public DateTime DueDate { get; set; } = DateTime.Today.AddDays(1);
         public string Reviewer { get; set; }
         public TaskType TaskType { get; set; }
+        public string SelectedProject { get; set; }
 
         public TaskBox()
         {

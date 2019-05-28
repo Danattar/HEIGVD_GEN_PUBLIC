@@ -132,6 +132,7 @@ namespace GTTClientFrontend.ViewModels
                 if ((bool)result)
                 {
                     TaskBoxViewModel t = await _taskBoxController.GetTaskBoxAsync(task.Brief, task.Summary, task.Assignee, task.Reviewer, task.DueDate, task.SelectedTaskType);
+                    t.SelectedProject = task.SelectedProject;
                     TaskList.Add(t);
                     AddTaskBoxViewModelToLists(t);
 
@@ -192,12 +193,14 @@ namespace GTTClientFrontend.ViewModels
         {
             var a = await _taskBoxController.GetAllUsers();
             var b = await _projectService.GetProjectsId();
+            var p = SelectedTask.SelectedProject;
             SelectedTask.Users.Clear();
             SelectedTask.Users.AddRange(a);
             SelectedTask.Project.Clear();
             SelectedTask.Project.AddRange(b);
             SelectedTask.SelectedAssignee = SelectedTask.Assignee;
             SelectedTask.ExpandedDetailsVisibility = Visibility.Visible;
+            SelectedTask.SelectedProject = p;
             int selectedTaskID = SelectedTask.TaskID;
 
             bool? result = _windowManager.ShowDialog(SelectedTask);
