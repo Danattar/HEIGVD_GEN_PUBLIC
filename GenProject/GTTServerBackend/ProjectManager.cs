@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GTTServiceContract.Project;
 using GTTServiceContract.ProjectImplementation;
 
 namespace GTTServerBackend
 {
-    public class ProjectManager
+    public class ProjectManager : IProjectManager
     {
         private Dictionary<string, Project> _projectList = new Dictionary<string, Project>();
 
@@ -24,6 +25,7 @@ namespace GTTServerBackend
             _projectList.Add(project3.ID, project3);
             _projectList.Add(project4.ID, project4);
             _projectList.Add(project5.ID, project5);
+            Console.WriteLine("ProjectManagerConnected");
         }
 
         public Project GetProject(string id)
@@ -35,9 +37,9 @@ namespace GTTServerBackend
             }
             return project;
         }
-        public Dictionary<string, Project> GetProjects()
+        public List<string> GetProjects()
         {
-            return _projectList;
+            return _projectList.Keys.ToList();
         }
         public Project AddProject(string projectID, string projectName)
         {
@@ -46,7 +48,7 @@ namespace GTTServerBackend
                 p = CreateProject(projectID, projectName);
             return p;
         }
-         public bool LinkTaskToProject(string taskID, string projectID)
+        public bool LinkTaskToProject(string taskID, string projectID)
         {
             bool result = _projectList.TryGetValue(projectID, out Project p);
             if (result)
@@ -66,8 +68,18 @@ namespace GTTServerBackend
             return result;            
         }
 
+        public string GetProjectByTask(string taskId)
+        {
+            foreach (var p in _projectList.Values)
+            {
+                if (p.TaskList.Contains(taskId)) return p.ID;
+            }
+
+            return "no project is linked for this task";
+        }
+
         #region Factories
-        private Project CreateProject(in string id, string projectName)
+        private Project CreateProject(string id, string projectName)
         {
             return new Project(id, projectName);
         }

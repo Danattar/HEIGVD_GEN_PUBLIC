@@ -104,7 +104,8 @@ namespace GTTServerBackend
             _isDeserialized = true;
         }
 
-        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, DateTime dueDate, TaskType taskType)
+        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, 
+                                DateTime dueDate, TaskType taskType)
         {
             TaskItem task = CreateTask(brief, summary, assignedUser, reviewer, dueDate, taskType);
             _taskList.Add(task);

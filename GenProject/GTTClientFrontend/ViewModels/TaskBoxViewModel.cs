@@ -6,6 +6,8 @@ using System.Windows.Threading;
 using Caliburn.Micro;
 using Castle.Core.Internal;
 using GTTClientBackend.Models;
+using GTTClientBackend.Services;
+using GTTServiceContract.ProjectImplementation;
 using GTTServiceContract.Task;
 using GTTServiceContract.TaskImplementation;
 
@@ -25,6 +27,7 @@ namespace GTTClientFrontend.ViewModels
         private readonly TaskBox _taskBox;
         private int _taskID;
         private string _timerLabel = "Start";
+        private string _selectedProject;
         public TaskType PreviousSelectedTaskType { get; set; }
         public TaskBoxViewModel()
         {
@@ -85,7 +88,17 @@ namespace GTTClientFrontend.ViewModels
         }
 
         public BindableCollection<string> Users { get; set; } = new BindableCollection<string>();
+        public BindableCollection<string> Project { get; set; } = new BindableCollection<string>();
 
+        public string SelectedProject
+        {
+            get => _selectedProject;
+            set
+            {
+                _selectedProject = value;
+                AppBootstrapper.ContainerInstance.GetInstance<ProjectService>().LinkTaskToProject(TaskID.ToString(), value);
+            }
+        }
 
         public int EllapsedTime
         {

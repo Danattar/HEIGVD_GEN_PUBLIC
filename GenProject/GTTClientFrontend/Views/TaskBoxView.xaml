@@ -63,9 +63,13 @@
                           Grid.Column="10" Grid.Row="2" VerticalAlignment="Top"
                           />
             <Label Content="Reviewer" Visibility="{Binding ExpandedDetailsVisibility}"
-                   Grid.Column="8" Grid.Row="3"/>
+                Grid.Column="8" Grid.Row="3"/>
             <ComboBox SelectedItem="{Binding Reviewer}" ItemsSource="{Binding Users}" Visibility="{Binding ExpandedDetailsVisibility}"
-                  Grid.Column="9" Grid.Row="3" VerticalAlignment="Top"/>
+                Grid.Column="9" Grid.Row="3" VerticalAlignment="Top"/>
+            <Label Content="Project : " Visibility="{Binding ExpandedDetailsVisibility}"
+                Grid.Column="8" Grid.Row="4"/>
+            <ComboBox x:Name="Project" Visibility="{Binding ExpandedDetailsVisibility}" 
+                Grid.Column="9" Grid.Row="4" VerticalAlignment="Top"/>
         </Grid>
         <DockPanel DockPanel.Dock="Bottom">
             <DockPanel DockPanel.Dock="Right" LastChildFill="False" HorizontalAlignment="Right">

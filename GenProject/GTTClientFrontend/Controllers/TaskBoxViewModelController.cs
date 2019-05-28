@@ -5,6 +5,7 @@ using System.Windows.Media.Animation;
 using GTTClientBackend.Models;
 using GTTClientFrontend.ViewModels;
 using GTTClientBackend.Services;
+using GTTServiceContract.ProjectImplementation;
 using GTTServiceContract.Task;
 using GTTServiceContract.TaskImplementation;
 
@@ -13,6 +14,7 @@ namespace GTTClientFrontend.Controllers
     public class TaskBoxViewModelController
     {
         private TaskService _taskService;
+        private ProjectService _projectService;
 
         public TaskBoxViewModelController(TaskService taskService)
         {

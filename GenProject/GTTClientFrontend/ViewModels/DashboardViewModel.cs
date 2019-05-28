@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
+using GTTClientBackend.Services;
 using GTTClientFrontend.Controllers;
 using GTTServiceContract.Task;
 using GTTServiceContract.TaskImplementation;
@@ -56,11 +57,13 @@ namespace GTTClientFrontend.ViewModels
         private readonly TaskBoxViewModelController _taskBoxController;
         private IWindowManager _windowManager;
 
-        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl, TaskBoxViewModelController taskBoxCtl, IWindowManager windowManager)
+        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl, TaskBoxViewModelController taskBoxCtl, 
+                                  IWindowManager windowManager, ProjectService projectService)
         {
             _chatBoxController = chatBoxCtl;
             _taskBoxController = taskBoxCtl;
             _windowManager = windowManager;
+            _projectService = projectService;
             //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
             // ChatBox2 = chatBoxCtl.GetChatBox(DisplayedChatBox.RoomID); //TODO call this async
         }
@@ -119,7 +122,9 @@ namespace GTTClientFrontend.ViewModels
         {
             TaskBoxViewModel task = new TaskBoxViewModel();
             var a = await _taskBoxController.GetAllUsers();
+            var b = await _projectService.GetProjectsId();
             task.Users.AddRange(a);
+            task.Project.AddRange(b);
 
             bool? result = _windowManager.ShowDialog(task);
             if (result.HasValue)
@@ -162,6 +167,7 @@ namespace GTTClientFrontend.ViewModels
         private int _chatBoxID = 0;
         private TaskBoxViewModel _selectedTask;
         private string _requestedChatBoxID;
+        private ProjectService _projectService;
 
         public string Username
         {
@@ -185,8 +191,11 @@ namespace GTTClientFrontend.ViewModels
         public async Task EditSelectedTask()
         {
             var a = await _taskBoxController.GetAllUsers();
+            var b = await _projectService.GetProjectsId();
             SelectedTask.Users.Clear();
             SelectedTask.Users.AddRange(a);
+            SelectedTask.Project.Clear();
+            SelectedTask.Project.AddRange(b);
             SelectedTask.SelectedAssignee = SelectedTask.Assignee;
             SelectedTask.ExpandedDetailsVisibility = Visibility.Visible;
             int selectedTaskID = SelectedTask.TaskID;

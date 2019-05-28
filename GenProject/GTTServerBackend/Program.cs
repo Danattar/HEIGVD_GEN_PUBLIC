@@ -22,7 +22,7 @@ namespace GTTServerBackend
                 .AddNamedPipeEndpoint<IProjectManager>(name: "endpoint5", pipeName: "pipeName3")
                 .AddTcpEndpoint<IRoomManager>(name: "endpoint2", ipEndpoint: serverIP, port: 45684)
                 .AddTcpEndpoint<ITaskManager>(name: "endpoint4", ipEndpoint: serverIP, port: 45685)
-                .AddTcpEndpoint<IProjectManager>(name: "endpoint6", ipEndpoint: serverIP, port: 45686)
+                .AddTcpEndpoint<IProjectManager>(name: "endpoint6", ipEndpoint: serverIP, port: 45681)
                 .Build()
                 .Run();
 
@@ -31,17 +31,24 @@ namespace GTTServerBackend
         private static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             return services.AddIpc(builder =>
-                {
-                    builder.AddNamedPipe
-                    (
-                        options => { options.ThreadCount = 2; }
-                    ).AddService<IRoomManager, RoomManager>();
-                }).AddIpc(builder => {
-                    builder.AddNamedPipe
-                    (
-                        options => { options.ThreadCount = 2; }
-                    ).AddService<ITaskManager, TaskManager>();
-                });
+            {
+                builder.AddNamedPipe
+                (
+                    options => { options.ThreadCount = 2; }
+                ).AddService<IRoomManager, RoomManager>();
+            }).AddIpc(builder =>
+            {
+                builder.AddNamedPipe
+                (
+                    options => { options.ThreadCount = 2; }
+                ).AddService<ITaskManager, TaskManager>();
+            }).AddIpc(builder =>
+            {
+                builder.AddNamedPipe
+                (
+                    options => { options.ThreadCount = 2; }
+                ).AddService<IProjectManager, ProjectManager>();
+            });
         }
     }
 }
