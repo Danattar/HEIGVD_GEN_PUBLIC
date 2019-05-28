@@ -24,6 +24,7 @@ namespace GTTServerBackend
             Room room = (Room)GetRoom(roomID);
             room.AddMessage(roomMessage);
             MessageAdded?.Invoke(room, roomMessage);
+            Console.WriteLine("Message added in RoomID : " + room.ID + " \n   Author : " + roomMessage.Author + " \n   Message : " + roomMessage.Message);
         }
 
         public Room AddRoom()
