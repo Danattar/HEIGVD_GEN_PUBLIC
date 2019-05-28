@@ -16,18 +16,27 @@
             <Label Name="Username" DockPanel.Dock="Left" />
             <Button Name="Zoom" Content="Zoom" DockPanel.Dock="Right"/>
         </DockPanel>
-        <Button Name="AddTask" Content="Add Task" VerticalAlignment="Top"/>
-        <ContentControl Name="TaskBox" DockPanel.Dock="Left" Margin="10" MinWidth="200"/>
+        <DockPanel LastChildFill="False">
+            <Button Name="AddTask" Content="Add Task" DockPanel.Dock="Top"/>
+            <Button Content="Edit Task" Name="EditSelectedTask" DockPanel.Dock="Top"/>
+            <Button Content="Create Project" Name="CreateProject" DockPanel.Dock="Top"/>
+            <Label Content="ID : " DockPanel.Dock="Top"/>
+            <TextBox Name="ProjectID" DockPanel.Dock="Top"/>
+            <Label Content="Name : " DockPanel.Dock="Top"/>
+            <TextBox Name="ProjectName" DockPanel.Dock="Top"/>
+        </DockPanel>
+<!--        <ContentControl Name="TaskBox" DockPanel.Dock="Left" Margin="10" MinWidth="200"/>-->
         <ListView DockPanel.Dock="Left" MinWidth="200" BorderBrush="Red" BorderThickness="2"
                   ItemsSource="{Binding BugTaskList}" SelectedItem="{Binding SelectedTask}" DisplayMemberPath="Brief"/>
         <ListView DockPanel.Dock="Left" MinWidth="200" BorderBrush="DarkOrange" BorderThickness="2"
                   ItemsSource="{Binding OtherTaskList}" SelectedItem="{Binding SelectedTask}" DisplayMemberPath="Brief"/>
-        <Button Content="Edit Task" Name="EditSelectedTask"/>
-        <Button Content="GetChatBox" Name="AddChatBox" VerticalAlignment="Top"/>
-        <TextBox Name="RequestedChatBoxID" Style="{StaticResource PlaceHolder}" Tag="10"/>
-<!--        <ListView ItemsSource="{Binding ChatBoxList}"/>-->
-       <ListView x:Name="ChatBoxList" DisplayMemberPath="RoomID" SelectedItem="{Binding DisplayedChatBox}"/>
+        <DockPanel LastChildFill="False">
+            <Button Content="GetChatBox" Name="AddChatBox" DockPanel.Dock="Top" />
+            <TextBox Name="RequestedChatBoxID" Style="{StaticResource PlaceHolder}" Tag="1000"  DockPanel.Dock="Top"/>
+            <!--        <ListView ItemsSource="{Binding ChatBoxList}"/>-->
+            <ListView x:Name="ChatBoxList" DisplayMemberPath="RoomID" SelectedItem="{Binding DisplayedChatBox}"  BorderThickness="0" Margin="10"  DockPanel.Dock="Top"/>
+        </DockPanel>
         <ContentControl Name="DisplayedChatBox" DockPanel.Dock="Left"
                         Margin="10" MinWidth="300" />
-     </DockPanel>
+    </DockPanel>
 </UserControl>
