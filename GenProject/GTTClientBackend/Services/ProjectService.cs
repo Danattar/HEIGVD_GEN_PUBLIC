@@ -70,5 +70,10 @@ namespace GTTClientBackend.Services
         {
             return await _client.InvokeAsync(x => x.LinkRoomToProject(roomId, projectId));
         }
+
+        public void CreateProjectIfNotExists(string projectId, string projectName)
+        {
+            _client.InvokeAsync(x => x.AddProject(projectId, projectName));
+        }
     }
 }

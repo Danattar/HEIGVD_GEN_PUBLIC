@@ -169,6 +169,8 @@ namespace GTTClientFrontend.ViewModels
         private TaskBoxViewModel _selectedTask;
         private string _requestedChatBoxID;
         private ProjectService _projectService;
+        private string _projectID;
+        private string _projectName;
 
         public string Username
         {
@@ -237,5 +239,28 @@ namespace GTTClientFrontend.ViewModels
             }
         }
 
+        public string ProjectID
+        {
+            get => _projectID;
+            set
+            {
+                _projectID = value;
+                NotifyOfPropertyChange(nameof(ProjectID));
+            }
+        }
+
+        public string ProjectName
+        {
+            get => _projectName;
+            set
+            {
+                _projectName = value;
+                NotifyOfPropertyChange(nameof(ProjectName));
+            }
+        }  
+        public void CreateProject()
+        {
+            _projectService.CreateProjectIfNotExists(ProjectID, ProjectName);
+        }
     }
 }

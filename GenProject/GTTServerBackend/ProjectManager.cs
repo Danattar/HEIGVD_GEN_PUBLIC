@@ -25,7 +25,7 @@ namespace GTTServerBackend
             _projectList.Add(project3.ID, project3);
             _projectList.Add(project4.ID, project4);
             _projectList.Add(project5.ID, project5);
-            Console.WriteLine("ProjectManagerConnected");
+//            Console.WriteLine("ProjectManagerConnected");
         }
 
         public Project GetProject(string id)
@@ -44,8 +44,13 @@ namespace GTTServerBackend
         public Project AddProject(string projectID, string projectName)
         {
             bool result = _projectList.TryGetValue(projectID, out Project p);
-            if (!result) 
+            if (!result)
+            {
                 p = CreateProject(projectID, projectName);
+                _projectList.Add(projectID,p);
+                Console.WriteLine(projectID + " created");
+            }
+
             return p;
         }
         public bool LinkTaskToProject(string taskID, string projectID)
@@ -54,6 +59,7 @@ namespace GTTServerBackend
             if (result)
             {
                 p.TaskList.Add(taskID);
+                Console.WriteLine("Task: " + taskID + " was linked to Project: " + projectID);
             }
             return result;
         }
@@ -64,6 +70,7 @@ namespace GTTServerBackend
             if (result)
             {
                 p.RoomList.Add(roomID);
+                Console.WriteLine("Room: " + roomID + " was linked to Project: " + projectID);
             }
             return result;            
         }

@@ -10,7 +10,7 @@ namespace GTTServerBackend
 {
     public class RoomManager : IRoomManager
     {
-        private readonly Dictionary<string, Room> _roomList = new Dictionary<string, Room>();
+        private static readonly Dictionary<string, Room> _roomList = new Dictionary<string, Room>();
         private Random _random;
         private string DEFAULT_ROOM_NUMBER = "1000";
 
