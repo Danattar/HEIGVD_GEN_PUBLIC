@@ -76,6 +76,9 @@ namespace GTTClientBackend.Services
             // return new ChatBox(10);
             // return AddChatBox(_chatboxManager.AddRoom());
         }
+
+
+
         public async Task<ChatBox> GetNewChatBoxAsync(string roomId)
         {
             IRoom room;
