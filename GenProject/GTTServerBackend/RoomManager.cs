@@ -13,6 +13,7 @@ namespace GTTServerBackend
         private static readonly Dictionary<string, Room> _roomList = new Dictionary<string, Room>();
         private Random _random;
         private string DEFAULT_ROOM_NUMBER = "1000";
+        private static Dictionary<Guid, Dictionary<string, List<IRoomMessage>>> _clientRoomQueues = new Dictionary<Guid, Dictionary<string, List<IRoomMessage>>>();
 
         public RoomManager()
         {
@@ -27,16 +28,29 @@ namespace GTTServerBackend
             RoomMessage roomMessage = CreateChatboxMessage(author, message);
             Room room = (Room)GetRoom(roomID);
             room.AddMessage(roomMessage);
-            MessageAdded?.Invoke(room, roomMessage);
+//            MessageAdded?.Invoke(room, roomMessage);
             Console.WriteLine("Message added in RoomID : " + room.ID + " \n   Author : " + roomMessage.Author + " \n   Message : " + roomMessage.Message);
         }
 
-        public Room AddRoom()
+        public Room AddRoom(Guid clientGuid)
         {
-            return GetRoom(DEFAULT_ROOM_NUMBER);
+            return GetRoom(DEFAULT_ROOM_NUMBER, clientGuid);
         }
 
-        public Room GetRoom(string roomID)
+        public Room GetRoom(string roomID, Guid clientGuid)
+        {
+            Console.WriteLine("Room "+ roomID +" requested by clientGuid: "+ clientGuid);
+            CreateQueueIfNotExists(roomID, clientGuid);
+            return GetRoom(roomID);
+        }
+
+        private void CreateQueueIfNotExists(string roomID, Guid clientGuid)
+        {
+            bool queueNotExists = _clientRoomQueues.TryAdd(clientGuid, new Dictionary<string, List<IRoomMessage>>());
+            if (queueNotExists) Console.WriteLine("Room " + roomID + " queue created for client: " + clientGuid);
+        }
+
+        private Room GetRoom(string roomID)
         {
             bool r = _roomList.TryGetValue(roomID, out Room room);
 //            Console.WriteLine("Room Getted : " + room.ID + " For roomid : " + roomID);
@@ -44,9 +58,8 @@ namespace GTTServerBackend
             {
                 return AddRoom(roomID);
             }
-            return room;
+            return room;            
         }
-
         private Room AddRoom(string roomId)
         {
             while (_roomList.TryGetValue(roomId, out Room r))

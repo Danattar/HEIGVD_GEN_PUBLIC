@@ -17,6 +17,7 @@ namespace GTTClientBackend.Services
         //        private readonly RoomManager _chatboxManager;
         private readonly List<ChatBox> _chatBoxList = new List<ChatBox>();
         private IpcServiceClient<IRoomManager> _client;
+        private Guid _clientGuid;
         /*        public async Task<string> TestConnectionAsync(int v)
                 {
 
@@ -26,6 +27,7 @@ namespace GTTClientBackend.Services
         */
         public ChatBoxService()
         {
+            _clientGuid = Guid.NewGuid();
             ConnectToServer();
             ExposeClient();
             //            _chatboxManager = chatboxManager;
@@ -51,7 +53,7 @@ namespace GTTClientBackend.Services
             //            _chatboxManager.AddRoomMessage(roomID, author, message);
             _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
         }
-        public async Task<ChatBox> GetChatBoxAsync(string roomID)
+/*        public async Task<ChatBox> GetChatBoxAsync(string roomID)
         {
             IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
             //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
@@ -59,12 +61,12 @@ namespace GTTClientBackend.Services
             room.RoomMessageList.ForEach(x => chatBox.RoomMessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
             return chatBox;
         }
-        public async Task<ChatBox> GetNewChatBoxAsync()
+*/      public async Task<ChatBox> GetNewChatBoxAsync()
         {
             IRoom room;
             try
             {
-                room = await _client.InvokeAsync(x => x.AddRoom());
+                room = await _client.InvokeAsync(x => x.AddRoom(_clientGuid));
             }
             catch (Exception e)
             {
@@ -84,7 +86,7 @@ namespace GTTClientBackend.Services
             IRoom room;
             try
             {
-                room = await _client.InvokeAsync(x => x.GetRoom(roomId));
+                room = await _client.InvokeAsync(x => x.GetRoom(roomId, _clientGuid));
             }
             catch (Exception e)
             {
@@ -131,6 +133,7 @@ namespace GTTClientBackend.Services
         #endregion
         #region ClientService
         private BackgroundWorker _clientService;
+
         private void ExposeClient()
         {
             _clientService = new BackgroundWorker();

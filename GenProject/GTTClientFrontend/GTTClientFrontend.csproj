@@ -26,12 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\CommentItemView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\TaskBoxView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Update="Views\CommentItemView.xaml.cs" />
+    <Compile Update="Views\TaskBoxView.xaml.cs" />
   </ItemGroup>
 
 </Project>

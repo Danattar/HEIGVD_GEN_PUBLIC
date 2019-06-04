@@ -3,6 +3,7 @@ using GTTServiceContract.Room;
 using JKang.IpcServiceFramework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
+using System;
 
 namespace GTTClientBackendTest
 {
@@ -10,9 +11,11 @@ namespace GTTClientBackendTest
     public class ChatboxServiceTest
     {
         private IpcServiceClient<IRoomManager> _client;
+        private Guid _clientGuid;
         [TestInitialize]
         public void setUp()
         {
+            _clientGuid = new Guid(); 
              _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
@@ -47,7 +50,7 @@ namespace GTTClientBackendTest
         [TestMethod]
         public async Task AddRoom__ID_equals_1__OK()
         {
-            var a = await _client.InvokeAsync(x => x.AddRoom());
+            var a = await _client.InvokeAsync(x => x.AddRoom(_clientGuid));
             Assert.AreEqual(1, a.ID) ;
         }
         /// <summary>
@@ -57,7 +60,7 @@ namespace GTTClientBackendTest
         [TestMethod]
         public async Task AddRoom__ID_equals_1__KO()
         {
-            var a = await _client.InvokeAsync(x => x.AddRoom());
+            var a = await _client.InvokeAsync(x => x.AddRoom(_clientGuid));
             Assert.AreEqual(1, a.ID);
         }
 
@@ -72,8 +75,8 @@ namespace GTTClientBackendTest
         [TestMethod]
         public async Task Test_Get_Two_Rooms_Same_ID__OK()
         {
-            var room1 = await _client.InvokeAsync(x => x.AddRoom());
-            var room2 = await _client.InvokeAsync(x => x.GetRoom(room1.ID));
+            var room1 = await _client.InvokeAsync(x => x.AddRoom(_clientGuid));
+            var room2 = await _client.InvokeAsync(x => x.GetRoom(room1.ID,_clientGuid));
             Assert.AreEqual(room1.ID, room1.ID,"ERROR: room1.ID is diffrent then room2.ID");
         }
         [TestCleanup]
