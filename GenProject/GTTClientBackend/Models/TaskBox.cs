@@ -19,7 +19,6 @@ namespace GTTClientBackend.Models
 
         public TaskBox()
         {
-            
         }
         internal TaskBox(int taskID, string brief, string summary, string assignee, string reviewer, DateTime dueDate, TaskType taskType)
         {

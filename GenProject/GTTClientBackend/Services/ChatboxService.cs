@@ -99,7 +99,7 @@ namespace GTTClientBackend.Services
 
         private async void AddMessage(IRoom room, IRoomMessage roomMessage)
         {
-            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.ID == room.ID).ToList();
+            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.RoomID == room.ID).ToList();
             var addedChatBoxMessageList = new List<ChatBoxMessage>();
             ChatBoxMessage chatBoxMessage;
             chatBoxLinkedToRoomList.ForEach(y =>

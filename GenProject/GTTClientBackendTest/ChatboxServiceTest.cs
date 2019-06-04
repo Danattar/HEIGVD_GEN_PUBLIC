@@ -77,7 +77,7 @@ namespace GTTClientBackendTest
         {
             var room1 = await _client.InvokeAsync(x => x.AddRoom(_clientGuid));
             var room2 = await _client.InvokeAsync(x => x.GetRoom(room1.ID,_clientGuid));
-            Assert.AreEqual(room1.ID, room1.ID,"ERROR: room1.ID is diffrent then room2.ID");
+            Assert.AreEqual(room1.ID, room1.ID,"ERROR: room1.RoomID is diffrent then room2.RoomID");
         }
         [TestCleanup]
         public void tearDown()
