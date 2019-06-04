@@ -9,7 +9,7 @@ namespace GTTClientFrontend.ViewModels
     {
         public BindableCollection<ChatBoxMessageViewModel> MessageList { get; } = new BindableCollection<ChatBoxMessageViewModel>();
 
-        public string RoomID => Chatbox.ID;
+        public string RoomID => Chatbox.RoomID;
         public string Name
         {
             get => Chatbox.Name;

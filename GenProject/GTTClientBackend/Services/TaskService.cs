@@ -141,7 +141,7 @@ namespace GTTClientBackend.Services
             return userTaskBox;
 
             //return _taskBoxList.Where(
-            //    x => taskItemsList.ToList().Where(y => x.ID == y.ID).FirstOrDefault() != null);
+            //    x => taskItemsList.ToList().Where(y => x.RoomID == y.RoomID).FirstOrDefault() != null);
         }
 
         #region Factory
