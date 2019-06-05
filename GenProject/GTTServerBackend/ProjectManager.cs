@@ -25,7 +25,6 @@ namespace GTTServerBackend
             _projectList.Add(project3.ID, project3);
             _projectList.Add(project4.ID, project4);
             _projectList.Add(project5.ID, project5);
-//            Console.WriteLine("ProjectManagerConnected");
         }
 
         public Project GetProject(string id)

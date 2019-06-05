@@ -31,7 +31,6 @@ namespace GTTClientFrontend.ViewModels
         public TaskBoxViewModel()
         {
             TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
-            //todo review below
             _taskBox = new TaskBox();
             InitDispatcher();
         }

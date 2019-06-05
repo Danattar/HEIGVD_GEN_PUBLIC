@@ -24,21 +24,9 @@ namespace GTTClientBackend.Services
 
         private void ConnectToServer()
         {
-            /*
-            _client = new IpcServiceClientBuilder<ITaskManager>()
-                .UseNamedPipe("pipeName")
-                .Build();
-                */
             _client = new IpcServiceClientBuilder<IProjectManager>()
                .UseNamedPipe("pipeName3")
                .Build();
-//            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
-
-            /*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
-                        _client = new IpcServiceClientBuilder<IRoomManager>()
-                            .UseTcp(serverIP, 45684)
-                            .Build();
-             */           //            192.168.0.248
         }
 
         public async Task<List<string>> GetProjectsId()

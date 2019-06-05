@@ -24,8 +24,6 @@ namespace GTTClientBackend.Services
             _clientGuid = Guid.NewGuid();
             ConnectToServer();
             ExposeClient(); 
-            //            _chatboxManager = chatboxManager;
-            //            _client.InvokeAsync(x => x.MessageAdded += AddMessage);
         }
 
 
@@ -34,12 +32,6 @@ namespace GTTClientBackend.Services
             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-
-            /*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
-                        _client = new IpcServiceClientBuilder<IRoomManager>()
-                            .UseTcp(serverIP, 45684)
-                            .Build();
-             */           //            192.168.0.248
         }
 
         public void AddMessage(string roomID, string author, string message)
@@ -47,15 +39,6 @@ namespace GTTClientBackend.Services
             //            _chatboxManager.AddRoomMessage(roomID, author, message);
             _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
         }
-        /*        public async Task<ChatBox> GetChatBoxAsync(string roomID)
-                {
-                    IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
-                    //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
-                    ChatBox chatBox = AddChatBox(room);
-                    room.RoomMessageList.ForEach(x => chatBox.RoomMessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
-                    return chatBox;
-                }
-        */
         public async Task<ChatBox> GetNewChatBoxAsync()
         {
             IRoom room;
@@ -69,9 +52,6 @@ namespace GTTClientBackend.Services
             }
 
             return AddChatBox(room);
-
-            // return new ChatBox(10);
-            // return AddChatBox(_chatboxManager.AddRoom());
         }
 
         public async Task<ChatBox> GetNewChatBoxAsync(string roomId)
@@ -140,7 +120,6 @@ namespace GTTClientBackend.Services
         {
             while (!_clientService.CancellationPending)
             {
-                //                System.Diagnostics.Trace.WriteLine("service running");
                 Dictionary<string, List<RoomMessage>> newMessages= await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
                 if(newMessages != null) UpdateMessages(newMessages);
                 _client.InvokeAsync(x => x.ClearMessageQueue(_clientGuid));
@@ -163,7 +142,6 @@ namespace GTTClientBackend.Services
         {
             System.Diagnostics.Trace.WriteLine("Client Service Stopped");
         }
-
 
         #endregion
 

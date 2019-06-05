@@ -13,8 +13,6 @@ namespace GTTServiceContract.Task
         void DeleteTask(int taskId);
         void AssignTaskToUser(int taskId, string newUser);
 
-        //public event Action<IRoom, IRoomMessage> MessageAdded;
-
 
         void LoggedInAs(string loginScreenUsername);
         List<string> GetAllUsers();

@@ -19,13 +19,10 @@ namespace GTTClientBackendTest
              _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
-  /*          _client = new IpcServiceClientBuilder<IRoomManager>()
-                .UseTcp(serverIP, 45684)
-                .Build();
-            Assert.IsNotNull(_client);
-   */       }
+            //System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
+        }
 
+        /*
         [TestMethod]
         public void testConnection_by_IP__OK()
         {
@@ -34,7 +31,7 @@ namespace GTTClientBackendTest
                 .UseTcp(serverIP, 45684)
                 .Build();
             Assert.IsNotNull(_client);
-        }
+        }*/
 
         [TestMethod]
         public async Task TestConnection__OKAsync()
@@ -64,14 +61,6 @@ namespace GTTClientBackendTest
             Assert.AreEqual(1, a.ID);
         }
 
-        //Abort, this functionality is out of scope of the project release 1
-        /*[TestMethod]
-        public async Task AddRoom__Is_Typeof_IRoom__OK()
-        {
-            var a = await _client.InvokeAsync(x => x.AddRoom());
-            Assert.AreEqual(typeof(IRoom), a.GetType());
-        }
-        */
         [TestMethod]
         public async Task Test_Get_Two_Rooms_Same_ID__OK()
         {

@@ -64,7 +64,7 @@ namespace GTTClientFrontend.Controllers
 
         private void SendMessage(string roomID, string message)
         {
-            //todo: put below in appservice
+            //todo release 2: put below in appservice
             string author = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>().Username;
             if(String.IsNullOrEmpty(author) || author == "Anonymous")
             {

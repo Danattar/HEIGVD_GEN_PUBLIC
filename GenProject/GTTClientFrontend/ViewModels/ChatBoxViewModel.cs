@@ -31,7 +31,6 @@ namespace GTTClientFrontend.ViewModels
         }
         private string _messageBox;
 
-
         internal ChatBox Chatbox { get; }
         public ChatBoxViewModel(ChatBox chatBox)
         {

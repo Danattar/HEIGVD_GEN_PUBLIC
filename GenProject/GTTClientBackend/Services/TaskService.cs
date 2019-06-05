@@ -19,7 +19,6 @@ namespace GTTClientBackend.Services
         private readonly List<TaskBox> _taskBoxList = new List<TaskBox>();
         private IpcServiceClient<ITaskManager> _client;
 
-
         public TaskService()
         {
             ConnectToServer();
@@ -27,21 +26,10 @@ namespace GTTClientBackend.Services
         }
         private void ConnectToServer()
         {
-            /*
             _client = new IpcServiceClientBuilder<ITaskManager>()
-                .UseNamedPipe("pipeName")
-                .Build();
-                */
-            _client = new IpcServiceClientBuilder<ITaskManager>()
-   .UseNamedPipe("pipeName2")
-   .Build();
+            .UseNamedPipe("pipeName2")
+            .Build();
             System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
-
-            /*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
-                        _client = new IpcServiceClientBuilder<IRoomManager>()
-                            .UseTcp(serverIP, 45684)
-                            .Build();
-             */           //            192.168.0.248
         }
         private void ExposeClient()
         {
@@ -59,8 +47,6 @@ namespace GTTClientBackend.Services
                 System.Diagnostics.Trace.WriteLine("service running");
                 Thread.Sleep(100);
             }
-
-    
         }
         private void StopService(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -80,9 +66,6 @@ namespace GTTClientBackend.Services
             }
 
             return AddTaskBox(taskItem);
-
-            // return new ChatBox(10);
-            // return AddChatBox(_chatboxManager.AddRoom());
         }
         public async Task<TaskBox> GetTaskBox(int id)
         {
@@ -139,12 +122,7 @@ namespace GTTClientBackend.Services
                 }
             });
             return userTaskBox;
-
-            //return _taskBoxList.Where(
-            //    x => taskItemsList.ToList().Where(y => x.RoomID == y.RoomID).FirstOrDefault() != null);
         }
-
- 
 
         public void LoggedInAs(string loginScreenUsername)
         {

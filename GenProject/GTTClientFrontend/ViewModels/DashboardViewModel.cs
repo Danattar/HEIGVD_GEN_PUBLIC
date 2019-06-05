@@ -64,8 +64,6 @@ namespace GTTClientFrontend.ViewModels
             _taskBoxController = taskBoxCtl;
             _windowManager = windowManager;
             _projectService = projectService;
-            //            chatBoxCtl.GetChatBoxAsync(); //TODO call this async
-            // ChatBox2 = chatBoxCtl.GetChatBox(DisplayedChatBox.RoomID); //TODO call this async
         }
 
         public async Task<bool> Login()

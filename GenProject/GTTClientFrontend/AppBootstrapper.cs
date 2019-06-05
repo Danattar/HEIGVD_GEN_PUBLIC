@@ -36,9 +36,6 @@ namespace GTTClientFrontend
             ContainerInstance.RegisterSingleton<TaskBoxViewModelController>();
             ContainerInstance.RegisterSingleton<TaskService>();
             ContainerInstance.RegisterSingleton<ProjectService>();
-
-
-//            ContainerInstance.RegisterSingleton<RoomManager>();
             
             ContainerInstance.Verify();
         }

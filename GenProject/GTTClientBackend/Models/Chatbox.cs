@@ -8,14 +8,10 @@ namespace GTTClientBackend.Models
         public string Name { get; set; }
         public List<ChatBoxMessage> RoomMessageList { get; } = new List<ChatBoxMessage>();
 
-
         internal ChatBox(string roomID)
         {
             RoomID = roomID;
         }
-
-
-
 
     }
 }
