@@ -21,10 +21,15 @@ namespace GTTServerBackendTest
             _taskMgr = new TaskManager();
         }
         [TestMethod]
-        public void TestAddTask__task_with_brief()
+        public void Test_Add_Task_and_check_if_expected_brief__Same_Brief()
         {
-            TaskItem task = _taskMgr.AddTask("brief", "a", _user1, "b", DateTime.Now, TaskType.Task); 
-            Assert.AreEqual(task.Brief, _taskMgr.GetTask(task.ID).Brief);
+            var expectedBrief = "brief";
+
+            TaskItem task = _taskMgr.AddTask(expectedBrief, "a", _user1, "b", DateTime.Now, TaskType.Task);
+            
+            var actual = _taskMgr.GetTask(task.ID).Brief;
+
+            Assert.AreEqual(expectedBrief, actual);
         }
 
         [TestCleanup]

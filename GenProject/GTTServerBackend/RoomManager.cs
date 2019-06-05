@@ -96,6 +96,8 @@ namespace GTTServerBackend
         {
             return new RoomMessage(author, message);
         }
+
+        #endregion
         public Dictionary<string, List<RoomMessage>> GetQueuedMessages(Guid clientGuid)
         {
             lock (_roomQueuesHolder.ClientRoomQueues)
@@ -104,6 +106,7 @@ namespace GTTServerBackend
                     out var newMessagesQueues);
                 Console.WriteLine(newMessagesQueues?.Count);
                 Dictionary<string, List<RoomMessage>> copiedClientRoomQueue;
+
                 if (queueExists && newMessagesQueues != null)
                 {
                     copiedClientRoomQueue = new Dictionary<string, List<RoomMessage>>(newMessagesQueues);
@@ -133,7 +136,5 @@ namespace GTTServerBackend
                 }
             }
         }
-
-        #endregion
     }
 }
