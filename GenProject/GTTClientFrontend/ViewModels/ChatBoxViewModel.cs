@@ -30,15 +30,15 @@ namespace GTTClientFrontend.ViewModels
             }
         }
         private string _messageBox;
-        private string _selectedProject;
+
 
         internal ChatBox Chatbox { get; }
         public ChatBoxViewModel(ChatBox chatBox)
         {
             Chatbox = chatBox;
         }
-        public BindableCollection<string> Project { get; set; } = new BindableCollection<string>();
-
+        //Abort below, project selection in chatbox tis out of scope of the project release 1
+        /*public BindableCollection<string> Project { get; set; } = new BindableCollection<string>();
         public string SelectedProject
         {
             get => _selectedProject;
@@ -48,6 +48,8 @@ namespace GTTClientFrontend.ViewModels
                 AppBootstrapper.ContainerInstance.GetInstance<ProjectService>().LinkRoomToProject(RoomID, value);
             }
         }
+        private string _selectedProject;
+        */
 
         public void SendMessage()
         {

@@ -14,17 +14,10 @@ namespace GTTClientBackend.Services
 {
     public class ChatBoxService 
     {
-        //        private readonly RoomManager _chatboxManager;
         private readonly List<ChatBox> _chatBoxList = new List<ChatBox>();
         private IpcServiceClient<IRoomManager> _client;
         private Guid _clientGuid;
-        /*        public async Task<string> TestConnectionAsync(int v)
-                {
 
-                    string result = await _client.InvokeAsync(x => x.TestConnection(v));
-                    return "a";
-                }
-        */
         public ChatBoxService()
         {
             _clientGuid = Guid.NewGuid();
@@ -53,15 +46,17 @@ namespace GTTClientBackend.Services
             //            _chatboxManager.AddRoomMessage(roomID, author, message);
             _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
         }
-/*        public async Task<ChatBox> GetChatBoxAsync(string roomID)
-        {
-            IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
-            //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
-            ChatBox chatBox = AddChatBox(room);
-            room.RoomMessageList.ForEach(x => chatBox.RoomMessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
-            return chatBox;
-        }
-*/      public async Task<ChatBox> GetNewChatBoxAsync()
+        /*        public async Task<ChatBox> GetChatBoxAsync(string roomID)
+                {
+                    IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
+                    //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
+                    ChatBox chatBox = AddChatBox(room);
+                    room.RoomMessageList.ForEach(x => chatBox.RoomMessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
+                    return chatBox;
+                }
+        */
+
+        public async Task<ChatBox> GetNewChatBoxAsync()
         {
             IRoom room;
             try
@@ -78,8 +73,6 @@ namespace GTTClientBackend.Services
             // return new ChatBox(10);
             // return AddChatBox(_chatboxManager.AddRoom());
         }
-
-
 
         public async Task<ChatBox> GetNewChatBoxAsync(string roomId)
         {
@@ -131,6 +124,7 @@ namespace GTTClientBackend.Services
         }
 
         #endregion
+
         #region ClientService
         private BackgroundWorker _clientService;
 
@@ -149,8 +143,6 @@ namespace GTTClientBackend.Services
 //                System.Diagnostics.Trace.WriteLine("service running");
                 Thread.Sleep(100);
             }
-
-            ;
         }
         private void StopService(object sender, RunWorkerCompletedEventArgs e)
         {

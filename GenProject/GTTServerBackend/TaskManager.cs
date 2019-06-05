@@ -24,6 +24,7 @@ namespace GTTServerBackend
             {
                 if (String.IsNullOrEmpty(_programsDirectory))
                 {
+                    //todo
                     _programsDirectory = System.IO.Path.Combine(SmartVisionDirectory, "Programs");
                     if (!System.IO.Directory.Exists(_programsDirectory))
                     {
