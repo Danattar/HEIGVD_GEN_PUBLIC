@@ -39,13 +39,13 @@ namespace GTTServerBackend
         {
             //            _clientRoomQueues.Select(x => x.Value.Where(y => y.Key == roomID)).ToList().ForEach(x=> x.Add(roomMessage));
             //            _clientRoomQueues.ToList().ForEach(x => x.Value.ToList().Where(y => y.Key == roomID).ToList().ForEach(z => z.Value.Add(roomMessage)));
-                foreach (var clientQueues in _roomQueuesHolder.ClientRoomQueues)
+            foreach (var clientQueues in _roomQueuesHolder.ClientRoomQueues)
+            {
+                if (clientQueues.Value.TryGetValue(roomID, out var messageList))
                 {
-                    if (clientQueues.Value.TryGetValue(roomID, out var messageList))
-                    {
-                        messageList.Add(roomMessage);
-                    }
+                    messageList.Add(roomMessage);
                 }
+            }
             /*MessagesQueue.Add(roomMessage);
                     Console.WriteLine("Message: " + roomMessage.Message +
                                       " was added to queue for RoomID: " + roomID +
@@ -67,9 +67,8 @@ namespace GTTServerBackend
 
         private void CreateQueueIfNotExists(string roomID, Guid clientGuid)
         {
-            var queue = new Dictionary<string, List<RoomMessage>>();
-            queue.Add(roomID, new List<RoomMessage>());
-            bool queueNotExists = _roomQueuesHolder.ClientRoomQueues.TryAdd(clientGuid, queue);
+            _roomQueuesHolder.ClientRoomQueues.TryAdd(clientGuid, new Dictionary<string, List<RoomMessage>>());
+            var queueNotExists = _roomQueuesHolder.ClientRoomQueues[clientGuid].TryAdd(roomID, new List<RoomMessage>());
             if (queueNotExists) Console.WriteLine("Room " + roomID + " queue created for client: " + clientGuid);
         }
 
@@ -121,19 +120,7 @@ namespace GTTServerBackend
                 if (queueExists && newMessagesQueues != null)
                 {
                     copiedClientRoomQueue = new Dictionary<string, List<RoomMessage>>(newMessagesQueues);
-/*                    foreach (string roomID in newMessagesQueues.Keys)
-                    {
-                        copiedClientRoomQueue.TryAdd(roomID, new List<RoomMessage>());
-                        lock (newMessagesQueues)
-                        {
-                            foreach (RoomMessage roomMessage in newMessagesQueues[roomID])
-                            {
-                                copiedClientRoomQueue[roomID].Add(roomMessage);
-                            }
-                            newMessagesQueues[roomID].Clear();
-                        }
-                    }
-*/                }
+                }
                 else
                 {
                     copiedClientRoomQueue = new Dictionary<string, List<RoomMessage>>();
@@ -141,6 +128,19 @@ namespace GTTServerBackend
 
                 Console.WriteLine(copiedClientRoomQueue?.Count);
                 return copiedClientRoomQueue;
+            }
+        }
+
+        public void ClearMessageQueue(Guid clientGuid)
+        {
+            lock (_roomQueuesHolder)
+            {
+                var queueExists = _roomQueuesHolder.ClientRoomQueues.TryGetValue(clientGuid,
+                    out var newMessagesQueues);
+                foreach (string roomID in newMessagesQueues.Keys)
+                {
+                    newMessagesQueues[roomID].Clear();
+                }
             }
         }
 

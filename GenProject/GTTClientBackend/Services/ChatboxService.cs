@@ -143,7 +143,8 @@ namespace GTTClientBackend.Services
                 //                System.Diagnostics.Trace.WriteLine("service running");
                 Dictionary<string, List<RoomMessage>> newMessages= await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
                 if(newMessages != null) UpdateMessages(newMessages);
-                Thread.Sleep(10000);
+                _client.InvokeAsync(x => x.ClearMessageQueue(_clientGuid));
+                Thread.Sleep(1000);
             }
         }
 

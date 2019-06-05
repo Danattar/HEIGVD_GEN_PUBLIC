@@ -12,5 +12,6 @@ namespace GTTServiceContract.Room
         RoomImplementation.Room GetRoom(string roomID, Guid _clientGuid);
         void AddRoomMessage(string roomID, string author, string message);
         Dictionary<string,List<RoomMessage>> GetQueuedMessages(Guid clientGuid);
+        void ClearMessageQueue(Guid clientGuid);
     }
 }
