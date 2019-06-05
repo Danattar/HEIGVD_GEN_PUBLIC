@@ -14,7 +14,6 @@ namespace GTTServerBackend
         {
             Console.WriteLine("New instance of GTTServerBackend Program");
             IServiceCollection services = ConfigureServices(new ServiceCollection());
-
             //            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
             System.Net.IPAddress serverIP = IPAddress.Loopback;
             new IpcServiceHostBuilder(services.BuildServiceProvider())
@@ -36,20 +35,10 @@ namespace GTTServerBackend
                 builder.AddNamedPipe
                 (
                     options => { options.ThreadCount = 2; }
-                ).AddService<IRoomManager, RoomManager>();
-            }).AddIpc(builder =>
-            {
-                builder.AddNamedPipe
-                (
-                    options => { options.ThreadCount = 2; }
-                ).AddService<ITaskManager, TaskManager>();
-            }).AddIpc(builder =>
-            {
-                builder.AddNamedPipe
-                (
-                    options => { options.ThreadCount = 2; }
-                ).AddService<IProjectManager, ProjectManager>();
-            });
+                ).AddService<IRoomManager, RoomManager>()
+                 .AddService<ITaskManager, TaskManager>()
+                 .AddService<IProjectManager, ProjectManager>();
+            }).AddSingleton<RoomQueuesHolder>();
         }
     }
 }

@@ -14,10 +14,11 @@ namespace GTTServerBackend
         private Random _random;
         private string DEFAULT_ROOM_NUMBER = "1000";
         //TODO: allow locking of this field
-        private static Dictionary<Guid, Dictionary<string, List<RoomMessage>>> _clientRoomQueues = new Dictionary<Guid, Dictionary<string, List<RoomMessage>>>();
+        private RoomQueuesHolder _roomQueuesHolder;
 
-        public RoomManager()
+        public RoomManager(RoomQueuesHolder roomQueuesHolder)
         {
+            _roomQueuesHolder = roomQueuesHolder;
             Console.WriteLine("New instance of RoomManager");
         }
         public bool IsConnected()
@@ -38,13 +39,13 @@ namespace GTTServerBackend
         {
             //            _clientRoomQueues.Select(x => x.Value.Where(y => y.Key == roomID)).ToList().ForEach(x=> x.Add(roomMessage));
 //            _clientRoomQueues.ToList().ForEach(x => x.Value.ToList().Where(y => y.Key == roomID).ToList().ForEach(z => z.Value.Add(roomMessage)));
-                        foreach(var clientQueues in _clientRoomQueues)
+                        foreach(var clientQueues in _roomQueuesHolder.ClientRoomQueues)
                         {
                             if(clientQueues.Value.TryGetValue(roomID, out var messageList))
                             {
                                 messageList.Add(roomMessage);
                             }
-
+;
                         }
             /*MessagesQueue.Add(roomMessage);
                     Console.WriteLine("Message: " + roomMessage.Message +
@@ -71,7 +72,7 @@ namespace GTTServerBackend
         {
             var queue = new Dictionary<string, List<RoomMessage>>();
             queue.Add(roomID, new List<RoomMessage>());
-            bool queueNotExists = _clientRoomQueues.TryAdd(clientGuid, queue);
+            bool queueNotExists = _roomQueuesHolder.ClientRoomQueues.TryAdd(clientGuid, queue);
             if (queueNotExists) Console.WriteLine("Room " + roomID + " queue created for client: " + clientGuid);
         }
 
@@ -114,9 +115,13 @@ namespace GTTServerBackend
         //Remark : Can return null
         public Dictionary<string, List<RoomMessage>> GetQueuedMessages(Guid clientGuid)
         {
-            var queueExists = _clientRoomQueues.TryGetValue(clientGuid,out var newMessages);
-            if(queueExists) _clientRoomQueues[clientGuid].Clear();
-            return newMessages;
+            var queueExists = _roomQueuesHolder.ClientRoomQueues.TryGetValue(clientGuid,
+                out var newMessages);
+            Console.WriteLine(newMessages?.Count);
+            var a = new Dictionary<string, List<RoomMessage>>(newMessages);
+            if(queueExists) _roomQueuesHolder.ClientRoomQueues[clientGuid].Clear();
+            Console.WriteLine(a?.Count);
+            return a;
         }
 
         #endregion
