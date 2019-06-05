@@ -131,12 +131,12 @@ namespace GTTClientBackend.Services
         private void ExposeClient()
         {
             _clientService = new BackgroundWorker();
-            _clientService.DoWork += StartServiceAsync;
+            _clientService.DoWork += StartChatMessagePollingService;
             _clientService.RunWorkerCompleted += StopService;
             _clientService.WorkerSupportsCancellation = true;
             _clientService.RunWorkerAsync();
         }
-        private async void StartServiceAsync(object sender, DoWorkEventArgs e)
+        private async void StartChatMessagePollingService(object sender, DoWorkEventArgs e)
         {
             while (!_clientService.CancellationPending)
             {
