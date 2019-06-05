@@ -23,7 +23,7 @@ namespace GTTClientBackend.Services
         {
             _clientGuid = Guid.NewGuid();
             ConnectToServer();
-            ExposeClient();
+            ExposeClient(); 
             //            _chatboxManager = chatboxManager;
             //            _client.InvokeAsync(x => x.MessageAdded += AddMessage);
         }
