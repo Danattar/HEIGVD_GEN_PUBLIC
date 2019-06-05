@@ -14,7 +14,7 @@ namespace GTTServiceContract.RoomImplementation
     {
         public string ID { get; set; }
         public string Name { get; set; }
-        public List<IRoomMessage> RoomMessageList { get; } = new List<IRoomMessage>();
+        public List<RoomMessage> RoomMessageList { get; set; } = new List<RoomMessage>();
 
         public Room(string id)
         {

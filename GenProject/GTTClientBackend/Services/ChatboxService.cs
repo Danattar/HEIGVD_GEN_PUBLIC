@@ -111,7 +111,9 @@ namespace GTTClientBackend.Services
 
         private ChatBox CreateChatbox(IRoom room)
         {
-            return new ChatBox(room.ID);
+            var chatBoxMessages = new List<ChatBoxMessage>();
+            room.RoomMessageList?.ForEach(x => chatBoxMessages.Add(CreateChatBoxMessage(x.Author, x.Message)));
+            return new ChatBox(room.ID, chatBoxMessages);
         }
         private ChatBoxMessage CreateChatBoxMessage(string author, string message)
         {

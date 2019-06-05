@@ -48,59 +48,14 @@ namespace GTTClientBackendTest
         [TestMethod]
         public async Task TestAddMessage___chatBox_received_new_message()
         {
-            await Task.Delay(1000);
-
             ChatBox chatBox = await _chatBoxService.GetNewChatBoxAsync();
 
-            /*    ChatBox chatBox = Task<ChatBox>.Run(async () =>
-                {
-                    return await _chatBoxService.GetNewChatBoxAsync();
-                    // Actual test code here.
-                }).GetAwaiter().GetResult();
-    */
-            await Task.Delay(1000);
+            ChatBox chatBox2 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
+            await _chatBoxService.AddMessage(chatBox.RoomID, "author1", "message1");
 
-            ChatBox chatBox2 = Task<ChatBox>.Run(async () =>
-            {
-                return await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
-                // Actual test code here.
-            }).GetAwaiter().GetResult();
+            ChatBox chatBox3 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
 
-            await Task.Delay(1000);
-
-            Task.Run(async () =>
-            {
-                await _chatBoxService.AddMessage(chatBox.RoomID, "author1", "message1");
-                // Actual test code here.
-            }).GetAwaiter().GetResult();
-
-            await Task.Delay(1000);
-
-            ChatBox chatBox3 = Task<ChatBox>.Run(async () =>
-            {
-                return await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
-                // Actual test code here.
-            }).GetAwaiter().GetResult();
-
-            await Task.Delay(1000);
-
-            //System.Threading.Thread.Sleep(1000);
-
-
-            //   System.Threading.Thread.Sleep(3000);
-            //   ChatBox chatBox = await _chatBoxService.GetNewChatBoxAsync();
-
-            //     ChatBox chatBox2 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
-            //     _chatBoxService.AddMessage(chatBox.RoomID, "author1", "message1");
-
-            //    ChatBox chatBox3 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
-
-            //      System.Threading.Thread.Sleep(3000);
-
-            //  _chatBoxService.get
-
-            Assert.AreEqual(true, true);
-            // Assert.AreEqual(chatBox3.RoomMessageList.find [chatBox3.RoomMessageList.Count - 1], "message1");
+            Assert.AreEqual(chatBox3.RoomMessageList[chatBox3.RoomMessageList.Count - 1].Message, "message1");
         }
 
 

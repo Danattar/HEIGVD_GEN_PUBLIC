@@ -124,9 +124,12 @@ namespace GTTServerBackend
             {
                 var queueExists = _roomQueuesHolder.ClientRoomQueues.TryGetValue(clientGuid,
                     out var newMessagesQueues);
-                foreach (string roomID in newMessagesQueues.Keys)
+                if (queueExists)
                 {
-                    newMessagesQueues[roomID].Clear();
+                    foreach (string roomID in newMessagesQueues.Keys)
+                    {
+                        newMessagesQueues[roomID].Clear();
+                    }
                 }
             }
         }

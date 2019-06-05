@@ -7,8 +7,8 @@ namespace GTTServiceContract.Room
 {
     public interface IRoomMessage : IXmlSerializable
     {
-        string Author { get; }
-        string Message { get; }
+        string Author { get; set; }
+        string Message { get; set; }
 
     }
 }

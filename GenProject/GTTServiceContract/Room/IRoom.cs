@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GTTServiceContract.RoomImplementation;
+using System;
 using System.Collections.Generic;
 
 namespace GTTServiceContract.Room
@@ -8,7 +9,7 @@ namespace GTTServiceContract.Room
         string Name { get; set; }
         string ID { get; }
         void AddMessage(IRoomMessage chatboxMessage);
-        List<IRoomMessage> RoomMessageList { get; }
+        List<RoomMessage> RoomMessageList { get; set; }
         event Action<IRoomMessage> NewMessage;
     }
 }

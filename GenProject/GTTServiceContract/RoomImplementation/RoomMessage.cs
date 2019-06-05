@@ -13,8 +13,8 @@ namespace GTTServiceContract.RoomImplementation
     [Serializable]
     public class RoomMessage : IRoomMessage
     {
-        public string Author { get; private set; }
-        public string Message { get; private set; }
+        public string Author { get; set; }
+        public string Message { get; set; }
         public RoomMessage()
         {
 
