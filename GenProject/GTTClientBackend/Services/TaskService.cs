@@ -144,11 +144,7 @@ namespace GTTClientBackend.Services
             //    x => taskItemsList.ToList().Where(y => x.RoomID == y.RoomID).FirstOrDefault() != null);
         }
 
-        #region Factory
-
-        private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.Assignee, taskItem.Reviewer, taskItem.DueDate, taskItem.TaskType);
-
-        #endregion
+ 
 
         public void LoggedInAs(string loginScreenUsername)
         {
@@ -159,5 +155,11 @@ namespace GTTClientBackend.Services
         {
             return _client.InvokeAsync(x => x.GetAllUsers());
         }
+
+        #region Factory
+        private TaskBox CreateTaskBox(ITaskItem taskItem) => new TaskBox(taskItem.ID, taskItem.Brief, taskItem.Summary, taskItem.Assignee, taskItem.Reviewer, taskItem.DueDate, taskItem.TaskType);
+
+        #endregion
+
     }
 }

@@ -13,8 +13,8 @@ namespace GTTClientFrontend.Controllers
 {
     public class TaskBoxViewModelController
     {
-        private TaskService _taskService;
-        private ProjectService _projectService;
+        private readonly TaskService _taskService;
+        private readonly ProjectService _projectService;
 
         public TaskBoxViewModelController(TaskService taskService)
         {
@@ -38,11 +38,6 @@ namespace GTTClientFrontend.Controllers
                 );
             }
             return taskBoxVM;
-        }
-
-        private async Task<TaskBoxViewModel> CreateTaskBoxViewModel(TaskBox taskBox)
-        {
-            return new TaskBoxViewModel(taskBox);
         }
 
         public void LoggedInAs(string loginScreenUsername)
@@ -75,5 +70,15 @@ namespace GTTClientFrontend.Controllers
             taskBoxList.ForEach(async taskBox => { taskBoxViewModelsList.Add(await CreateTaskBoxViewModel(taskBox)); });
             return taskBoxViewModelsList;
         }
+
+        #region Factory
+
+        private async Task<TaskBoxViewModel> CreateTaskBoxViewModel(TaskBox taskBox)
+        {
+            return new TaskBoxViewModel(taskBox);
+        }
+
+        #endregion
+
     }
 }

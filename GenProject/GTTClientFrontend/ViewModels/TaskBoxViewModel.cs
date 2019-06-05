@@ -30,7 +30,8 @@ namespace GTTClientFrontend.ViewModels
         public TaskType PreviousSelectedTaskType { get; set; }
         public TaskBoxViewModel()
         {
-                TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
+            TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
+            //todo review below
             _taskBox = new TaskBox();
             InitDispatcher();
         }
@@ -94,6 +95,7 @@ namespace GTTClientFrontend.ViewModels
             set
             {
                 _taskBox.SelectedProject = value;
+                //Use of IoC to directly get data from ProjectService without using standard data flows. Preimplementation to demonstrate the "project" functionality to the client, will be refactored in Release 2.
                 AppBootstrapper.ContainerInstance.GetInstance<ProjectService>().LinkTaskToProject(TaskID.ToString(), value);
             }
         }

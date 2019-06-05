@@ -15,17 +15,10 @@ namespace GTTClientBackend.Services
 {
     public class ChatBoxService
     {
-        //        private readonly RoomManager _chatboxManager;
         private readonly List<ChatBox> _chatBoxList = new List<ChatBox>();
         private IpcServiceClient<IRoomManager> _client;
         private Guid _clientGuid;
-        /*        public async Task<string> TestConnectionAsync(int v)
-                {
 
-                    string result = await _client.InvokeAsync(x => x.TestConnection(v));
-                    return "a";
-                }
-        */
         public ChatBoxService()
         {
             _clientGuid = Guid.NewGuid();
@@ -81,8 +74,6 @@ namespace GTTClientBackend.Services
             // return AddChatBox(_chatboxManager.AddRoom());
         }
 
-
-
         public async Task<ChatBox> GetNewChatBoxAsync(string roomId)
         {
             IRoom room;
@@ -133,6 +124,7 @@ namespace GTTClientBackend.Services
         }
 
         #endregion
+
         #region ClientService
         private BackgroundWorker _clientService;
 
@@ -153,8 +145,6 @@ namespace GTTClientBackend.Services
                 if(newMessages != null) UpdateMessages(newMessages);
                 Thread.Sleep(10000);
             }
-
-            ;
         }
 
         private void UpdateMessages(Dictionary<string, List<RoomMessage>> newMessages)
