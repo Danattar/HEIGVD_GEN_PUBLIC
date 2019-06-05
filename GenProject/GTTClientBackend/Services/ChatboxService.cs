@@ -24,21 +24,6 @@ namespace GTTClientBackend.Services
             _clientGuid = Guid.NewGuid();
             ConnectToServer();
             ExposeClient();
-
-
-            ChatBoxService _chatBoxService = this;
-       //     a();
-        }
-        ChatBoxService _chatBoxService;
-        async Task a()
-        {
-
-            ChatBox chatBox = await _chatBoxService.GetNewChatBoxAsync();
-            ChatBox chatBox2 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
-            _chatBoxService.AddMessage(chatBox.RoomID, "author1", "message1");
-
-            ChatBox chatBox3 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
-
         }
 
         private void ConnectToServer()
