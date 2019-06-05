@@ -90,9 +90,9 @@ namespace GTTClientBackend.Services
         }
 
 
-        private async void AddMessage(IRoom room, IRoomMessage roomMessage)
+        private async void AddMessage(string roomID, IRoomMessage roomMessage)
         {
-            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.RoomID == room.ID).ToList();
+            List<ChatBox> chatBoxLinkedToRoomList = _chatBoxList.Where(x => x.RoomID == roomID).ToList();
             var addedChatBoxMessageList = new List<ChatBoxMessage>();
             ChatBoxMessage chatBoxMessage;
             chatBoxLinkedToRoomList.ForEach(y =>
@@ -141,7 +141,7 @@ namespace GTTClientBackend.Services
             while (!_clientService.CancellationPending)
             {
                 //                System.Diagnostics.Trace.WriteLine("service running");
-                Dictionary<string, List<RoomMessage>> newMessages = await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
+                Dictionary<string, List<RoomMessage>> newMessages= await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
                 if(newMessages != null) UpdateMessages(newMessages);
                 Thread.Sleep(10000);
             }
@@ -153,8 +153,7 @@ namespace GTTClientBackend.Services
             {
                 foreach (RoomMessage roomMessage in newMessages[roomID])
                 {
-                    _chatBoxList.Where(x => x.RoomID == roomID).FirstOrDefault().RoomMessageList
-                            .Add(CreateChatBoxMessage(roomMessage.Author, roomMessage.Message));
+                    AddMessage(roomID, roomMessage);
                 }
             }
         }

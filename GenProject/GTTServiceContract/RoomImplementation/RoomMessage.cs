@@ -1,4 +1,5 @@
 ﻿using GTTServiceContract.Room;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace GTTServiceContract.RoomImplementation
         {
 
         }
+        [JsonConstructor]
         public RoomMessage(string author, string message)
         {
             Author = author;
