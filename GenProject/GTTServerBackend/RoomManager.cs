@@ -28,8 +28,30 @@ namespace GTTServerBackend
             RoomMessage roomMessage = CreateChatboxMessage(author, message);
             Room room = (Room)GetRoom(roomID);
             room.AddMessage(roomMessage);
+            QueueMessage(roomID, roomMessage);
 //            MessageAdded?.Invoke(room, roomMessage);
             Console.WriteLine("Message added in RoomID : " + room.ID + " \n   Author : " + roomMessage.Author + " \n   Message : " + roomMessage.Message);
+        }
+
+        private void QueueMessage(string roomID, RoomMessage roomMessage)
+        {
+//            _clientRoomQueues.Select(x => x.Value.Where(y => y.Key == roomID)).ToList().ForEach(x=> x.Add(roomMessage));
+            _clientRoomQueues.ToList().ForEach(x => x.Value.ToList().Where(y => y.Key == roomID).ToList().ForEach(z => z.Value.Add(roomMessage)));
+/*            foreach(var clientQueues in _clientRoomQueues)
+            {
+                if(clientQueues.Value.TryGetValue(roomID, out var messageList))
+                {
+                    messageList.Add(roomMessage);
+                }
+
+            }*/
+            /*MessagesQueue.Add(roomMessage);
+                    Console.WriteLine("Message: " + roomMessage.Message +
+                                      " was added to queue for RoomID: " + roomID +
+                                      " for ClientGuid: " + clientGuid);
+                }*/
+
+            ;
         }
 
         public Room AddRoom(Guid clientGuid)
@@ -46,7 +68,9 @@ namespace GTTServerBackend
 
         private void CreateQueueIfNotExists(string roomID, Guid clientGuid)
         {
-            bool queueNotExists = _clientRoomQueues.TryAdd(clientGuid, new Dictionary<string, List<IRoomMessage>>());
+            var queue = new Dictionary<string, List<IRoomMessage>>();
+            queue.Add(roomID, new List<IRoomMessage>());
+            bool queueNotExists = _clientRoomQueues.TryAdd(clientGuid, queue);
             if (queueNotExists) Console.WriteLine("Room " + roomID + " queue created for client: " + clientGuid);
         }
 

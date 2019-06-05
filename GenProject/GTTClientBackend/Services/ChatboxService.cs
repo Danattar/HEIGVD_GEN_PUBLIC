@@ -131,19 +131,29 @@ namespace GTTClientBackend.Services
         private void ExposeClient()
         {
             _clientService = new BackgroundWorker();
-            _clientService.DoWork += StartService;
+            _clientService.DoWork += StartServiceAsync;
             _clientService.RunWorkerCompleted += StopService;
             _clientService.WorkerSupportsCancellation = true;
             _clientService.RunWorkerAsync();
         }
-        private void StartService(object sender, DoWorkEventArgs e)
+        private async void StartServiceAsync(object sender, DoWorkEventArgs e)
         {
             while (!_clientService.CancellationPending)
             {
-//                System.Diagnostics.Trace.WriteLine("service running");
-                Thread.Sleep(100);
+                //                System.Diagnostics.Trace.WriteLine("service running");
+                List<IRoomMessage> newMessages = await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
+                UpdateMessages(newMessages);
+                Thread.Sleep(1000);
             }
         }
+
+        private void UpdateMessages(List<IRoomMessage> newMessages)
+        {
+            foreach(IRoomMessage roomMessage in newMessages)
+            {
+            }
+        }
+
         private void StopService(object sender, RunWorkerCompletedEventArgs e)
         {
             System.Diagnostics.Trace.WriteLine("Client Service Stopped");
