@@ -23,9 +23,23 @@ namespace GTTClientBackend.Services
         {
             _clientGuid = Guid.NewGuid();
             ConnectToServer();
-            ExposeClient(); 
-        }
+            ExposeClient();
 
+
+            ChatBoxService _chatBoxService = this;
+       //     a();
+        }
+        ChatBoxService _chatBoxService;
+        async Task a()
+        {
+
+            ChatBox chatBox = await _chatBoxService.GetNewChatBoxAsync();
+            ChatBox chatBox2 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
+            _chatBoxService.AddMessage(chatBox.RoomID, "author1", "message1");
+
+            ChatBox chatBox3 = await _chatBoxService.GetNewChatBoxAsync(chatBox.RoomID);
+
+        }
 
         private void ConnectToServer()
         {
@@ -34,10 +48,10 @@ namespace GTTClientBackend.Services
                 .Build();
         }
 
-        public void AddMessage(string roomID, string author, string message)
+        public async Task AddMessage(string roomID, string author, string message)
         {
             //            _chatboxManager.AddRoomMessage(roomID, author, message);
-            _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
+            await _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
         }
         public async Task<ChatBox> GetNewChatBoxAsync()
         {
@@ -91,6 +105,7 @@ namespace GTTClientBackend.Services
         }
 
         public event Action<ChatBox, ChatBoxMessage> MessageAdded;
+
 
         #region Factory
 

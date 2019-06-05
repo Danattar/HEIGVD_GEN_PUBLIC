@@ -64,11 +64,16 @@ namespace GTTClientBackendTest
             Assert.AreEqual(userTask.Count, 1);
 
             await _taskService.AssignTask(task2.ID, user1);
+            userTask = await _taskService.GetTaskBoxListForUser(user1);
 
-            //Todo: Implement event from server to clients to update tasks in client 
             Assert.AreEqual(userTask.Count, 2);
         }
 
+        [TestMethod]
+        public async Task tTaskBoxListForUser__user_task_retrieved_count_is_2__OK()
+        {
+
+        }
 
     }
 }
