@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using GTTClientBackend.Models;
 using GTTServiceContract.Room;
+using GTTServiceContract.RoomImplementation;
 using JKang.IpcServiceFramework;
 
 namespace GTTClientBackend.Services
 {
-    public class ChatBoxService 
+    public class ChatBoxService
     {
         //        private readonly RoomManager _chatboxManager;
         private readonly List<ChatBox> _chatBoxList = new List<ChatBox>();
@@ -40,12 +41,12 @@ namespace GTTClientBackend.Services
             _client = new IpcServiceClientBuilder<IRoomManager>()
                 .UseNamedPipe("pipeName")
                 .Build();
-            
-/*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
-            _client = new IpcServiceClientBuilder<IRoomManager>()
-                .UseTcp(serverIP, 45684)
-                .Build();
- */           //            192.168.0.248
+
+            /*            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.248");
+                        _client = new IpcServiceClientBuilder<IRoomManager>()
+                            .UseTcp(serverIP, 45684)
+                            .Build();
+             */           //            192.168.0.248
         }
 
         public void AddMessage(string roomID, string author, string message)
@@ -53,15 +54,16 @@ namespace GTTClientBackend.Services
             //            _chatboxManager.AddRoomMessage(roomID, author, message);
             _client.InvokeAsync(x => x.AddRoomMessage(roomID, author, message));
         }
-/*        public async Task<ChatBox> GetChatBoxAsync(string roomID)
-        {
-            IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
-            //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
-            ChatBox chatBox = AddChatBox(room);
-            room.RoomMessageList.ForEach(x => chatBox.RoomMessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
-            return chatBox;
-        }
-*/      public async Task<ChatBox> GetNewChatBoxAsync()
+        /*        public async Task<ChatBox> GetChatBoxAsync(string roomID)
+                {
+                    IRoom room = await _client.InvokeAsync(x => x.GetRoom(roomID));
+                    //            IRoom room = (IRoom)_chatboxManager.GetRoom(roomID);
+                    ChatBox chatBox = AddChatBox(room);
+                    room.RoomMessageList.ForEach(x => chatBox.RoomMessageList.Add(CreateChatBoxMessage(x.Author, x.Message)));
+                    return chatBox;
+                }
+        */
+        public async Task<ChatBox> GetNewChatBoxAsync()
         {
             IRoom room;
             try
@@ -95,7 +97,7 @@ namespace GTTClientBackend.Services
 
             return AddChatBox(room);
         }
- 
+
 
         private async void AddMessage(IRoom room, IRoomMessage roomMessage)
         {
@@ -147,18 +149,23 @@ namespace GTTClientBackend.Services
             while (!_clientService.CancellationPending)
             {
                 //                System.Diagnostics.Trace.WriteLine("service running");
-                List<IRoomMessage> newMessages = await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
-                UpdateMessages(newMessages);
-                Thread.Sleep(1000);
+                Dictionary<string, List<RoomMessage>> newMessages = await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
+                if(newMessages != null) UpdateMessages(newMessages);
+                Thread.Sleep(10000);
             }
 
             ;
         }
 
-        private void UpdateMessages(List<IRoomMessage> newMessages)
+        private void UpdateMessages(Dictionary<string, List<RoomMessage>> newMessages)
         {
-            foreach(IRoomMessage roomMessage in newMessages)
+            foreach (string roomID in newMessages.Keys)
             {
+                foreach (RoomMessage roomMessage in newMessages[roomID])
+                {
+                    _chatBoxList.Where(x => x.RoomID == roomID).FirstOrDefault().RoomMessageList
+                            .Add(CreateChatBoxMessage(roomMessage.Author, roomMessage.Message));
+                }
             }
         }
 
@@ -176,5 +183,5 @@ namespace GTTClientBackend.Services
             return true;
         }
 
-   }
+    }
 }
