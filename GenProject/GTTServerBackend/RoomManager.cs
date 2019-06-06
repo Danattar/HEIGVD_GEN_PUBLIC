@@ -18,7 +18,6 @@ namespace GTTServerBackend
         public RoomManager(RoomQueuesHolder roomQueuesHolder)
         {
             _roomQueuesHolder = roomQueuesHolder;
-            Console.WriteLine("New instance of RoomManager");
         }
         public bool IsConnected()
         {
@@ -26,7 +25,7 @@ namespace GTTServerBackend
         }
         public void AddRoomMessage(string roomID, string author, string message)
         {
-            RoomMessage roomMessage = CreateChatboxMessage(author, message);
+            RoomMessage roomMessage = CreateRoomMessage(author, message);
             Room room = (Room)GetRoom(roomID);
             room.AddMessage(roomMessage);
             QueueMessage(roomID, roomMessage);
@@ -92,7 +91,7 @@ namespace GTTServerBackend
         {
             return new Room(id);
         }
-        private RoomMessage CreateChatboxMessage(string author, string message)
+        private RoomMessage CreateRoomMessage(string author, string message)
         {
             return new RoomMessage(author, message);
         }
@@ -104,7 +103,6 @@ namespace GTTServerBackend
             {
                 var queueExists = _roomQueuesHolder.ClientRoomQueues.TryGetValue(clientGuid,
                     out var newMessagesQueues);
-                Console.WriteLine(newMessagesQueues?.Count);
                 Dictionary<string, List<RoomMessage>> copiedClientRoomQueue;
 
                 if (queueExists && newMessagesQueues != null)
@@ -116,7 +114,6 @@ namespace GTTServerBackend
                     copiedClientRoomQueue = new Dictionary<string, List<RoomMessage>>();
                 }
 
-                Console.WriteLine(copiedClientRoomQueue?.Count);
                 return copiedClientRoomQueue;
             }
         }
