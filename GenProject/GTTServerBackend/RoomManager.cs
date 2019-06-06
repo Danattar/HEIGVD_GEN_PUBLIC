@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GTTServiceContract;
-using GTTServiceContract.Room;
+﻿using GTTServiceContract.Room;
 using GTTServiceContract.RoomImplementation;
+using System;
+using System.Collections.Generic;
 namespace GTTServerBackend
 {
     public class RoomManager : IRoomManager
@@ -103,8 +99,8 @@ namespace GTTServerBackend
             {
                 var queueExists = _roomQueuesHolder.ClientRoomQueues.TryGetValue(clientGuid,
                     out var newMessagesQueues);
-                Dictionary<string, List<RoomMessage>> copiedClientRoomQueue = 
-                    (queueExists && newMessagesQueues != null) ? 
+                Dictionary<string, List<RoomMessage>> copiedClientRoomQueue =
+                    (queueExists && newMessagesQueues != null) ?
                       new Dictionary<string, List<RoomMessage>>(newMessagesQueues)
                     : new Dictionary<string, List<RoomMessage>>();
 

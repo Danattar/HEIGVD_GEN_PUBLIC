@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace GTTClientFrontend.Views
+﻿namespace GTTClientFrontend.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml

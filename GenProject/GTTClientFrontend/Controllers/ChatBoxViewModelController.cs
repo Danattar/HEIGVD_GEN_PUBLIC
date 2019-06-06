@@ -1,10 +1,10 @@
-﻿using System;
+﻿using GTTClientBackend.Models;
+using GTTClientBackend.Services;
+using GTTClientFrontend.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GTTClientBackend.Models;
-using GTTClientBackend.Services;
-using GTTClientFrontend.ViewModels;
 
 namespace GTTClientFrontend.Controllers
 {
@@ -39,7 +39,7 @@ namespace GTTClientFrontend.Controllers
         }
         public async Task<ChatBoxViewModel> GetChatBoxAsync(string roomId)
         {
-             ChatBoxViewModel chatBoxVM = null;
+            ChatBoxViewModel chatBoxVM = null;
             try
             {
                 chatBoxVM = CreateChatboxViewModel(await _chatBoxService.GetNewChatBoxAsync(roomId));
@@ -66,7 +66,7 @@ namespace GTTClientFrontend.Controllers
         {
             //todo release 2: put below in appservice
             string author = AppBootstrapper.ContainerInstance.GetInstance<DashboardViewModel>().Username;
-            if(String.IsNullOrEmpty(author) || author == "Anonymous")
+            if (String.IsNullOrEmpty(author) || author == "Anonymous")
             {
                 author = "Anonymous (" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + ")";
             }

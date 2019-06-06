@@ -2,9 +2,7 @@
 using GTTServiceContract.TaskImplementation;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace GTTServerBackend
 {
@@ -16,8 +14,8 @@ namespace GTTServerBackend
         public TaskManager()
         {
         }
-      
-        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer, 
+
+        public TaskItem AddTask(string brief, string summary, string assignedUser, string reviewer,
                                 DateTime dueDate, TaskType taskType)
         {
             TaskItem task = CreateTask(brief, summary, assignedUser, reviewer, dueDate, taskType);
@@ -60,7 +58,7 @@ namespace GTTServerBackend
 
         public void LoggedInAs(string loginScreenUsername)
         {
-            if(_users.Where(x=> x == loginScreenUsername).Count() == 0)
+            if (_users.Where(x => x == loginScreenUsername).Count() == 0)
                 _users.Add(loginScreenUsername);
             Console.WriteLine("Logged in as : " + loginScreenUsername);
         }

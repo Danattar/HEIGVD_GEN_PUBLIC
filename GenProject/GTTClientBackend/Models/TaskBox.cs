@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GTTServiceContract.Task;
-using GTTServiceContract.TaskImplementation;
+﻿using GTTServiceContract.TaskImplementation;
+using System;
 
 namespace GTTClientBackend.Models
 {

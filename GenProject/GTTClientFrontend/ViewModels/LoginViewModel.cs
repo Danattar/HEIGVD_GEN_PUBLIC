@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Text;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 
 namespace GTTClientFrontend.ViewModels
 {

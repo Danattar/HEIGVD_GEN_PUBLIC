@@ -1,14 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using GTTClientBackend.Services;
 using GTTClientFrontend.Controllers;
 using GTTClientFrontend.ViewModels;
-using GTTServiceContract.Room;
-using JKang.IpcServiceFramework;
 using SimpleInjector;
+using System;
+using System.Windows;
 
 namespace GTTClientFrontend
 {
@@ -36,7 +32,7 @@ namespace GTTClientFrontend
             ContainerInstance.RegisterSingleton<TaskBoxViewModelController>();
             ContainerInstance.RegisterSingleton<TaskService>();
             ContainerInstance.RegisterSingleton<ProjectService>();
-            
+
             ContainerInstance.Verify();
         }
         protected override void OnStartup(object sender, StartupEventArgs e)

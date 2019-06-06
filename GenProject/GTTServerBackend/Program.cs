@@ -1,6 +1,6 @@
-﻿using GTTServiceContract.Room;
+﻿using GTTServiceContract.Project;
+using GTTServiceContract.Room;
 using GTTServiceContract.Task;
-using GTTServiceContract.Project;
 using JKang.IpcServiceFramework;
 using Microsoft.Extensions.DependencyInjection;
 using System;

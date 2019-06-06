@@ -1,11 +1,7 @@
-using System.Net;
-using GTTServiceContract.Room;
-using JKang.IpcServiceFramework;
+using GTTClientBackend.Models;
+using GTTClientBackend.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
-using System;
-using GTTClientBackend.Services;
-using GTTClientBackend.Models;
 
 
 namespace GTTClientBackendTest
@@ -19,7 +15,7 @@ namespace GTTClientBackendTest
         [TestInitialize]
         public void setUp()
         {
-            _chatBoxService = new ChatBoxService();       
+            _chatBoxService = new ChatBoxService();
         }
 
         [TestMethod]

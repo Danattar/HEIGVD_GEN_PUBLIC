@@ -1,7 +1,6 @@
-﻿using System;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using GTTClientBackend.Models;
-using GTTClientBackend.Services;
+using System;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -55,6 +54,6 @@ namespace GTTClientFrontend.ViewModels
             NewMessage?.Invoke(RoomID, MessageBox);
             MessageBox = string.Empty;
         }
-        public event Action<string, string> NewMessage; 
+        public event Action<string, string> NewMessage;
     }
 }

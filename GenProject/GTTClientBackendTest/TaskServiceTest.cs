@@ -1,14 +1,10 @@
-﻿using JKang.IpcServiceFramework;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using GTTServiceContract.Task;
+﻿using GTTClientBackend.Models;
 using GTTClientBackend.Services;
-using GTTClientBackend.Models;
 using GTTServiceContract.TaskImplementation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GTTClientBackendTest
 {
@@ -20,7 +16,7 @@ namespace GTTClientBackendTest
         [TestInitialize]
         public void setUp()
         {
-             _taskService = new TaskService();
+            _taskService = new TaskService();
         }
 
         [TestMethod]
@@ -40,7 +36,7 @@ namespace GTTClientBackendTest
             string user1 = "simon";
             string user2 = "fred";
             await _taskService.GetNewTaskBoxAsync("test task1",
-                "This is a task created by a unit test", user1, user2,DateTime.Today, TaskType.Task);
+                "This is a task created by a unit test", user1, user2, DateTime.Today, TaskType.Task);
             await _taskService.GetNewTaskBoxAsync("test task2",
                 "This is a task created by a unit test", user2, user1, DateTime.Today, TaskType.Task);
             await _taskService.GetNewTaskBoxAsync("test task3",

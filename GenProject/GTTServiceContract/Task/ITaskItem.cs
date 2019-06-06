@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GTTServiceContract.TaskImplementation;
+﻿using GTTServiceContract.TaskImplementation;
+using System;
 
 namespace GTTServiceContract.Task
 {

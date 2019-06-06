@@ -8,7 +8,7 @@ namespace GTTClientFrontend.ViewModels
         private readonly ChatBoxMessage _chatboxMessage;
         public string Message => _chatboxMessage.Message;
         public string Author => _chatboxMessage.Author;
-               
+
         public ChatBoxMessageViewModel(ChatBoxMessage chatboxMessage)
         {
             _chatboxMessage = chatboxMessage;

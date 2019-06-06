@@ -1,9 +1,8 @@
-﻿using System;
+﻿using GTTServiceContract.Project;
+using GTTServiceContract.ProjectImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using GTTServiceContract.Project;
-using GTTServiceContract.ProjectImplementation;
 
 namespace GTTServerBackend
 {
@@ -46,7 +45,7 @@ namespace GTTServerBackend
             if (!result)
             {
                 p = CreateProject(projectID, projectName);
-                _projectList.Add(projectID,p);
+                _projectList.Add(projectID, p);
                 Console.WriteLine(projectID + " created");
             }
 
@@ -71,7 +70,7 @@ namespace GTTServerBackend
                 p.RoomList.Add(roomID);
                 Console.WriteLine("Room: " + roomID + " was linked to Project: " + projectID);
             }
-            return result;            
+            return result;
         }
 
         public string GetProjectByTask(string taskId)
@@ -92,5 +91,5 @@ namespace GTTServerBackend
         #endregion
 
 
-   }
+    }
 }
