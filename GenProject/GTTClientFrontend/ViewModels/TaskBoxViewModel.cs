@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using Castle.Core.Internal;
+using GTTClientBackend.Models;
+using GTTClientBackend.Services;
+using GTTServiceContract.TaskImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
-using Caliburn.Micro;
-using Castle.Core.Internal;
-using GTTClientBackend.Models;
-using GTTClientBackend.Services;
-using GTTServiceContract.ProjectImplementation;
-using GTTServiceContract.Task;
-using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -37,7 +35,7 @@ namespace GTTClientFrontend.ViewModels
 
         public TaskBoxViewModel(TaskBox taskBox)
         {
-                TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
+            TaskType = Enum.GetValues(typeof(TaskType)).Cast<TaskType>().ToList();
             _taskBox = taskBox;
             InitDispatcher();
         }
@@ -221,19 +219,19 @@ namespace GTTClientFrontend.ViewModels
         }
         #region ManageTaskTypeEnumCombobox
 
-            private TaskType _selectedTaskType;
+        private TaskType _selectedTaskType;
 
-            public TaskType SelectedTaskType
+        public TaskType SelectedTaskType
+        {
+            get => _taskBox.TaskType;
+            set
             {
-                get => _taskBox.TaskType;
-                set
-                {
-                    PreviousSelectedTaskType = SelectedTaskType;
-                    _taskBox.TaskType = value;
-                }
+                PreviousSelectedTaskType = SelectedTaskType;
+                _taskBox.TaskType = value;
             }
+        }
 
-            public IReadOnlyList<TaskType> TaskType { get; }
+        public IReadOnlyList<TaskType> TaskType { get; }
         #endregion
     }
 }

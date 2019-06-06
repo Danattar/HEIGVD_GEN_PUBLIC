@@ -1,4 +1,4 @@
 ﻿namespace GTTServiceContract.TaskImplementation
 {
-    public enum TaskType { Bug, Task}
+    public enum TaskType { Bug, Task }
 }

@@ -1,13 +1,10 @@
-﻿using System;
+﻿using GTTClientBackend.Models;
+using GTTClientBackend.Services;
+using GTTClientFrontend.ViewModels;
+using GTTServiceContract.TaskImplementation;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Windows.Media.Animation;
-using GTTClientBackend.Models;
-using GTTClientFrontend.ViewModels;
-using GTTClientBackend.Services;
-using GTTServiceContract.ProjectImplementation;
-using GTTServiceContract.Task;
-using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientFrontend.Controllers
 {

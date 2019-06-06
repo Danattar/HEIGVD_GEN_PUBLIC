@@ -1,13 +1,9 @@
-﻿using System;
+﻿using GTTServiceContract.Project;
+using JKang.IpcServiceFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using GTTClientBackend.Models;
-using GTTServiceContract.Project;
-using GTTServiceContract.ProjectImplementation;
-using JKang.IpcServiceFramework;
 
 namespace GTTClientBackend.Services
 {

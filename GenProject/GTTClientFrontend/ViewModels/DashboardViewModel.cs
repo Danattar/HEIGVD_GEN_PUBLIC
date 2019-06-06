@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using GTTClientBackend.Services;
+using GTTClientFrontend.Controllers;
+using GTTServiceContract.TaskImplementation;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using Caliburn.Micro;
-using GTTClientBackend.Services;
-using GTTClientFrontend.Controllers;
-using GTTServiceContract.Task;
-using GTTServiceContract.TaskImplementation;
 
 namespace GTTClientFrontend.ViewModels
 {
@@ -57,7 +56,7 @@ namespace GTTClientFrontend.ViewModels
         private readonly TaskBoxViewModelController _taskBoxController;
         private IWindowManager _windowManager;
 
-        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl, TaskBoxViewModelController taskBoxCtl, 
+        public DashboardViewModel(ChatBoxViewModelController chatBoxCtl, TaskBoxViewModelController taskBoxCtl,
                                   IWindowManager windowManager, ProjectService projectService)
         {
             _chatBoxController = chatBoxCtl;
@@ -214,7 +213,7 @@ namespace GTTClientFrontend.ViewModels
                         switch (SelectedTask.SelectedTaskType)
                         {
                             case TaskType.Task:
-//                                BugTaskList.Remove(BugTaskList.Select(x => x.TaskID == selectedTaskID).ToList().First()());
+                                //                                BugTaskList.Remove(BugTaskList.Select(x => x.TaskID == selectedTaskID).ToList().First()());
                                 OtherTaskList.Add(SelectedTask);
                                 BugTaskList.Remove(SelectedTask);
                                 break;
@@ -255,7 +254,7 @@ namespace GTTClientFrontend.ViewModels
                 _projectName = value;
                 NotifyOfPropertyChange(nameof(ProjectName));
             }
-        }  
+        }
         public void CreateProject()
         {
             _projectService.CreateProjectIfNotExists(ProjectID, ProjectName);

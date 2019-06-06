@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using GTTClientBackend.Models;
+﻿using GTTClientBackend.Models;
 using GTTServiceContract.Room;
 using GTTServiceContract.RoomImplementation;
 using JKang.IpcServiceFramework;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace GTTClientBackend.Services
 {
@@ -122,8 +120,8 @@ namespace GTTClientBackend.Services
         {
             while (!_clientService.CancellationPending)
             {
-                Dictionary<string, List<RoomMessage>> newMessages= await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
-                if(newMessages != null) UpdateMessages(newMessages);
+                Dictionary<string, List<RoomMessage>> newMessages = await _client.InvokeAsync(x => x.GetQueuedMessages(_clientGuid));
+                if (newMessages != null) UpdateMessages(newMessages);
                 _client.InvokeAsync(x => x.ClearMessageQueue(_clientGuid));
                 Thread.Sleep(1000);
             }

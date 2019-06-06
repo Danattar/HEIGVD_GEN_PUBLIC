@@ -1,7 +1,6 @@
-﻿using System;
+﻿using GTTServiceContract.RoomImplementation;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using GTTServiceContract.RoomImplementation;
 
 namespace GTTServiceContract.Room
 {
@@ -11,7 +10,7 @@ namespace GTTServiceContract.Room
         RoomImplementation.Room AddRoom(Guid _clientGuid);
         RoomImplementation.Room GetRoom(string roomID, Guid _clientGuid);
         void AddRoomMessage(string roomID, string author, string message);
-        Dictionary<string,List<RoomMessage>> GetQueuedMessages(Guid clientGuid);
+        Dictionary<string, List<RoomMessage>> GetQueuedMessages(Guid clientGuid);
         void ClearMessageQueue(Guid clientGuid);
     }
 }

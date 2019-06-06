@@ -2,8 +2,6 @@
 using GTTServiceContract.TaskImplementation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GTTServerBackendTest
 {
@@ -17,7 +15,7 @@ namespace GTTServerBackendTest
         [TestInitialize]
         public void setUp()
         {
-            
+
             _taskMgr = new TaskManager();
         }
         [TestMethod]
@@ -26,7 +24,7 @@ namespace GTTServerBackendTest
             var expectedBrief = "brief";
 
             TaskItem task = _taskMgr.AddTask(expectedBrief, "a", _user1, "b", DateTime.Now, TaskType.Task);
-            
+
             var actual = _taskMgr.GetTask(task.ID).Brief;
 
             Assert.AreEqual(expectedBrief, actual);

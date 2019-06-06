@@ -1,16 +1,13 @@
 ﻿using GTTServiceContract.Room;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace GTTServiceContract.RoomImplementation
 {
-    public class Room  : IRoom, IXmlSerializable
+    public class Room : IRoom, IXmlSerializable
     {
         public string ID { get; set; }
         public string Name { get; set; }

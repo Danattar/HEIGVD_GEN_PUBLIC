@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GTTClientBackend.Models
 {
@@ -12,7 +10,7 @@ namespace GTTClientBackend.Models
 
         internal ChatBox(string roomID)
         {
-            RoomID = "te";//roomID;
+            RoomID = roomID;
         }
 
         internal ChatBox(string roomID, List<ChatBoxMessage> chatBoxMsgList)

@@ -1,7 +1,5 @@
-using System.Net;
 using GTTServerBackend;
 using GTTServiceContract.ProjectImplementation;
-using GTTServiceContract.Room;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GTTServerBackendTest
