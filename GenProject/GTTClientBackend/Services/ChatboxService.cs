@@ -23,7 +23,7 @@ namespace GTTClientBackend.Services
         {
             _clientGuid = Guid.NewGuid();
             ConnectToServer();
-            ExposeClient();
+            CreateChatMessagePollingService();
         }
 
         private void ConnectToServer()
@@ -110,11 +110,11 @@ namespace GTTClientBackend.Services
         #region ClientService
         private BackgroundWorker _clientService;
 
-        private void ExposeClient()
+        private void CreateChatMessagePollingService()
         {
             _clientService = new BackgroundWorker();
             _clientService.DoWork += StartChatMessagePollingService;
-            _clientService.RunWorkerCompleted += StopService;
+            _clientService.RunWorkerCompleted += StopChatMessagePollingService;
             _clientService.WorkerSupportsCancellation = true;
             _clientService.RunWorkerAsync();
         }
@@ -140,9 +140,9 @@ namespace GTTClientBackend.Services
             }
         }
 
-        private void StopService(object sender, RunWorkerCompletedEventArgs e)
+        private void StopChatMessagePollingService(object sender, RunWorkerCompletedEventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine("Client Service Stopped");
+            System.Diagnostics.Trace.WriteLine("ChatMessage Polling service stopped");
         }
 
         #endregion
