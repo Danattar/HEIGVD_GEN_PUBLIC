@@ -103,16 +103,10 @@ namespace GTTServerBackend
             {
                 var queueExists = _roomQueuesHolder.ClientRoomQueues.TryGetValue(clientGuid,
                     out var newMessagesQueues);
-                Dictionary<string, List<RoomMessage>> copiedClientRoomQueue;
-
-                if (queueExists && newMessagesQueues != null)
-                {
-                    copiedClientRoomQueue = new Dictionary<string, List<RoomMessage>>(newMessagesQueues);
-                }
-                else
-                {
-                    copiedClientRoomQueue = new Dictionary<string, List<RoomMessage>>();
-                }
+                Dictionary<string, List<RoomMessage>> copiedClientRoomQueue = 
+                    (queueExists && newMessagesQueues != null) ? 
+                      new Dictionary<string, List<RoomMessage>>(newMessagesQueues)
+                    : new Dictionary<string, List<RoomMessage>>();
 
                 return copiedClientRoomQueue;
             }
