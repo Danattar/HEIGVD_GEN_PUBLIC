@@ -56,5 +56,6 @@ namespace GTTServerBackendTest
             Assert.AreEqual(lastRoomMessageExpected.Message, messageActual2);
             Assert.AreEqual(lastRoomMessageExpected.Author, _user2Name);
         }
+
     }
 }
