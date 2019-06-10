@@ -3,6 +3,7 @@ using JKang.IpcServiceFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace GTTClientBackend.Services
@@ -21,7 +22,8 @@ namespace GTTClientBackend.Services
         private void ConnectToServer()
         {
             _client = new IpcServiceClientBuilder<IProjectManager>()
-               .UseNamedPipe("pipeName3")
+                //.UseNamedPipe("pipeName3")
+               .UseTcp(IPAddress.Parse("40.118.123.198"),45683)
                .Build();
         }
 

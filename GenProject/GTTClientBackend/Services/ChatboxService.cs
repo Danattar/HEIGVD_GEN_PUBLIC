@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,8 +28,10 @@ namespace GTTClientBackend.Services
         private void ConnectToServer()
         {
             _client = new IpcServiceClientBuilder<IRoomManager>()
-                .UseNamedPipe("pipeName")
+                //.UseNamedPipe("pipeName")
+                .UseTcp(IPAddress.Parse("40.118.123.198"),45681)
                 .Build();
+
         }
 
         public async Task AddMessage(string roomID, string author, string message)

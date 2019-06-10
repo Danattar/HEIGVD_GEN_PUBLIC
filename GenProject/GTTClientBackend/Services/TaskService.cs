@@ -26,9 +26,10 @@ namespace GTTClientBackend.Services
         private void ConnectToServer()
         {
             _client = new IpcServiceClientBuilder<ITaskManager>()
-            .UseNamedPipe("pipeName2")
+            //.UseNamedPipe("pipeName2")
+            .UseTcp(IPAddress.Parse("40.118.123.198"),45682)
             .Build();
-            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
+//            System.Net.IPAddress serverIP = IPAddress.Parse("192.168.0.234");
         }
         private void ExposeClient()
         {
